@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 
 
 frontend = SharedDataMiddleware(NotFound(), {
-
+    '/': '../frontend/dist/index.html'
 })
 
 
