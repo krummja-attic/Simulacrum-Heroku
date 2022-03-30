@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 from flask import Flask
 
-from admin import init_admin
+from api.admin import init_admin
 
 if TYPE_CHECKING:
     from flask import Config

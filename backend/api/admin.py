@@ -7,7 +7,7 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from flask_sqlalchemy import SQLAlchemy
 
-from model import DB, User, Post
+from api.model import DB, User, Post
 
 if TYPE_CHECKING:
     from flask import Flask
