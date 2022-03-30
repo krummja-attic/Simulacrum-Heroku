@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from flask import Config
 
 
-DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = os.environ['DATABASE_URI']
 
 
 def create_app(test_config: Dict[str, Any] | None = None) -> Flask:
