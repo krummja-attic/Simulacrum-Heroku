@@ -21,9 +21,11 @@ DB = SQLAlchemy()
 
 class Post(DB.Model):
     __tablename__ = 'post'
+
     id = Column(Integer, Sequence('user_id_seq'), primary_key = True)
     title = Column(String)
     created = Column(DateTime, server_default = func.now())
+    body = Column(Text)
 
     author_id = Column(Integer, ForeignKey('user.id'))
     user = relationship('User', back_populates = 'posts')
