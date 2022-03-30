@@ -24,6 +24,8 @@ class Post(DB.Model):
     id = Column(Integer, Sequence('user_id_seq'), primary_key = True)
     title = Column(String)
     created = Column(DateTime, server_default = func.now())
+
+    author_id = Column(Integer, ForeignKey('user.id'))
     user = relationship('User', back_populates = 'posts')
 
     def __repr__(self) -> str:
