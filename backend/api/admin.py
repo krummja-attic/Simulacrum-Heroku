@@ -27,7 +27,7 @@ def init_db_command() -> None:
     """Clear existing data and create new tables."""
 
     DB.create_all()
-    # with open('data.sql') as inf:
-    #     for statement in inf:
-    #         DB.engine.execute(statement)
+    with open('data.sql') as inf:
+        for statement in inf:
+            DB.engine.execute(statement)
     click.echo('Initialized the database.')
