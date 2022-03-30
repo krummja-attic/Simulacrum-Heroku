@@ -14,6 +14,9 @@ if TYPE_CHECKING:
 
 
 frontend = SharedDataMiddleware(NotFound(), {
+    '/js/': '../frontend/dist/js/',
+    '/css/': '../frontend/dist/css/',
+    '/img/': '../frontend/dist/img/',
     '/': '../frontend/dist/index.html'
 })
 
