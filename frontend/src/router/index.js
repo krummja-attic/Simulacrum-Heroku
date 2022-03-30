@@ -1,6 +1,7 @@
 
 import * as VueRouter from 'vue-router';
 import Home from '../views/Home';
+import About from '../views/About';
 
 const routes = [
     {
@@ -11,7 +12,7 @@ const routes = [
     {
         path: '/about',
         name: 'about',
-        component: () => import('../views/About.vue')
+        component: About
     }
 ];
 
