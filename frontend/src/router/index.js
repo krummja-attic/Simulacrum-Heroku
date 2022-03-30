@@ -1,8 +1,6 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Home from '../views/Home';
 
-Vue.use(VueRouter);
+import * as VueRouter from 'vue-router';
+import Home from '../views/Home';
 
 const routes = [
     {
@@ -12,10 +10,9 @@ const routes = [
     }
 ];
 
-const router = new VueRouter({
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes
+const router = new VueRouter.createRouter({
+    history: VueRouter.createWebHashHistory(),
+    routes,
 });
 
 export default router;
