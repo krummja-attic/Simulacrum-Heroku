@@ -1,0 +1,21 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "author": "Jonathan Crum",
+  "license": "ISC",
+  "dependencies": {
+    "@vue/cli": "^5.0.4",
+    "@vue/cli-plugin-router": "^5.0.4",
+    "@vue/cli-service-global": "^4.5.17",
+    "core-js": "^3.21.1",
+    "vue": "^3.2.31",
+    "vue-router": "^4.0.14"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^4.5.17"
+  }
+}
