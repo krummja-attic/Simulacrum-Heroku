@@ -7,7 +7,7 @@ from werkzeug.middleware.shared_data import SharedDataMiddleware
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from werkzeug.wrappers import Request, Response
 
-from api import create_app
+from api import create_app, EnvMode
 
 if TYPE_CHECKING:
     pass
@@ -22,7 +22,7 @@ frontend = SharedDataMiddleware(
 
 # Green Unicorn target.
 app = DispatcherMiddleware(frontend, {
-    '/api': create_app()
+    '/api': create_app(env = EnvMode.PRODUCTION)
 })
 
 if __name__ == '__main__':

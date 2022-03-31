@@ -2,7 +2,7 @@
   "name": "simulacrum-space",
   "engines": {"npm":  ">=7.14.0"},
   "scripts": {
-    "deploy": "git add . && git commit -m '$(date)' && git push https://${GITHUB}@github.com/krummja/Simulacrum-Heroku.git",
+    "deploy": "git push https://${GITHUB}@github.com/krummja/Simulacrum-Heroku.git",
     "postinstall": "cd frontend && npm install && npm run build"
   }
 }
