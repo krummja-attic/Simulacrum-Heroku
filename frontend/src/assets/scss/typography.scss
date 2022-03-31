@@ -1,0 +1,58 @@
+
+.type-notebook {
+  $title: 'Raleway', sans-serif;
+  $copy: 'Raleway', sans-serif;
+
+  color: var(--color);
+
+  p  {
+    font-family: $copy;
+    font-size: 1rem;
+  }
+
+  ul {   }
+
+  ol {   }
+
+  h1 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid alpha(var(--color), 0.25);
+    font-family: $title;
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-family: $title;
+    font-style: italic;
+    font-size: 2rem;
+  }
+
+  h3 {
+    margin: 20px 0 10px 0;
+    font-family: $title;
+    font-style: italic;
+    font-size: 1.5rem;
+  }
+}
+
+.type-garden-plot {
+  $title: 'Raleway', sans-serif;
+  $copy: 'Raleway', sans-serif;
+
+  color: var(--color);
+
+  p  {    }
+
+  ul {    }
+
+  ol {    }
+
+  h1 {
+    font-family: $title;
+    font-size: 1.5rem;
+  }
+
+  h2 {    }
+
+  h3 {    }
+}
