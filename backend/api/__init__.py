@@ -26,7 +26,7 @@ if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 
-def initialize(test_config: Dict[str, Any] | None = None) -> Flask:
+def create_app(test_config: Dict[str, Any] | None = None) -> Flask:
 
     app = Flask(__name__, instance_relative_config = True)
     app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
