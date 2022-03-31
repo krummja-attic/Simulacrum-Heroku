@@ -11,3 +11,5 @@ __pycache__/
 backend/instance/
 frontend/dist/
 node_modules/
+
+.idea
