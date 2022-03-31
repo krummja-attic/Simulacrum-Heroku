@@ -42,8 +42,8 @@ def initialize(test_config: Dict[str, Any] | None = None) -> Flask:
     # Initialize the Admin application
     init_admin(app)
 
-    @app.route('/register/', methods=('POST',))
-    def register():
-        data = request.get_json()
+    # @app.route('/register/', methods=('POST',))
+    # def register():
+    #     data = request.get_json()
 
     return app
