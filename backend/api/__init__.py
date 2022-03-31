@@ -39,6 +39,7 @@ def initialize(test_config: Dict[str, Any] | None = None) -> Flask:
 
     Path(app.instance_path).mkdir(exist_ok = True)
 
+    # Initialize the Admin application
     init_admin(app)
 
     @app.route('/register/', methods=('POST',))

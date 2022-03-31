@@ -25,8 +25,8 @@ backend = {
 }
 
 # Green Unicorn target.
-APP = DispatcherMiddleware(frontend, backend)
+app = DispatcherMiddleware(frontend, backend)
 
 if __name__ == '__main__':
     from werkzeug.serving import run_simple
-    run_simple('127.0.0.1', 5000, APP, use_debugger = True, use_reloader = True)
+    run_simple('127.0.0.1', 5000, app, use_debugger = True, use_reloader = True)
