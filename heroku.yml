@@ -1,2 +1,2 @@
 run:
-  web: cd backend && export FLASK_APP=api && flask init-db && gunicorn dispatcher:APP
+  web: cd backend && export FLASK_APP=api && flask init-db && gunicorn dispatcher:APP --log-file -
