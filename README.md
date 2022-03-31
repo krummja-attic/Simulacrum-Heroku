@@ -21,7 +21,7 @@ In the current terms of this application, I use Green Unicorn for the server imp
 Flask features a built-in web server; however, it is a blocking server, meaning it can only process a single request at a time. Deploying this type of server on Heroku is inefficient, and it can lead to applications that do not feel snappy or responsive. [Gunicorn](https://gunicorn.org/) is a pure-Python HTTP server for WSGI applications. It lets you run Python applications concurrently by running multiple Python processes on a single Heroku dyno.
 
 Additional Reading:  
-	- [https://devcenter.heroku.com/articles/python-gunicorn](Deploying Python Applications with Gunicorn)
+	- [Deploying Python Applications with Gunicorn](https://devcenter.heroku.com/articles/python-gunicorn)
 
 ##### Werkzeug Middlewares
 
