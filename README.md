@@ -34,7 +34,7 @@ I use the `DispatcherMiddleware` to pull together the front end along with the d
 These middleware objects implement their `__call__` methods with the required `environ` and `start_response` parameters defined in the WSGI specification for the application side of the protocol.
 
 Additional Reading:  
-	- [Serve Shared Static Files](https://werkzeug.palletsprojects.com/en/2.1.x/middleware/shared_data/)
+	- [Serve Shared Static Files](https://werkzeug.palletsprojects.com/en/2.1.x/middleware/shared_data/)  
 	- [Application Dispatcher](https://werkzeug.palletsprojects.com/en/2.1.x/middleware/dispatcher/)
 
 ### Frontend
