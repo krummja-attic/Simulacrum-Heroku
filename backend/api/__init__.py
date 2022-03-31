@@ -8,34 +8,49 @@ from __future__ import annotations
 from typing import *
 
 import os
+from dotenv import load_dotenv
 from pathlib import Path
 from datetime import datetime, timedelta
 from functools import wraps
 from flask import Flask, Blueprint, jsonify, request, current_app
-
+from enum import Enum
 import jwt
 
-from api.admin import init_admin
+from .config import DevConfig, ProdConfig, BASE_DIR
+from .admin import init_admin
 
 if TYPE_CHECKING:
     from flask import Config
 
 
-DATABASE_URL = os.environ['DATABASE_URI']
-if DATABASE_URL.startswith("postgres://"):
-    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+load_dotenv(os.path.join(BASE_DIR, '../../.env'))
+
+PROD_DATABASE_URI = os.environ['DATABASE_URI']
+DEV_DATABASE_URI = os.environ['DEV_DATABASE_URI']
+
+for URI in [PROD_DATABASE_URI, DEV_DATABASE_URI]:
+    if URI.startswith("postgres://"):
+        URI = URI.replace("postgres://", "postgresql://", 1)
 
 
-def create_app(test_config: Dict[str, Any] | None = None) -> Flask:
+class EnvMode(Enum):
+    DEVELOPMENT = 0
+    PRODUCTION = 1
+
+
+def create_app(env: EnvMode = EnvMode.DEVELOPMENT) -> Flask:
 
     app = Flask(__name__, instance_relative_config = True)
-    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    if test_config is None:
-        app.config.from_pyfile('config.py', silent = True)
-    else:
-        app.config.update(test_config)
+    # TODO Is this how I want to approach this?
+    match env:
+        case EnvMode.DEVELOPMENT:
+            app.config.from_object(config.DevConfig)
+            app.config['SQLALCHEMY_DATABASE_URI'] = DEV_DATABASE_URI
+        case EnvMode.PRODUCTION:
+            app.config.from_object(config.ProdConfig)
+            app.config['SQLALCHEMY_DATABASE_URI'] = PROD_DATABASE_URI
 
     Path(app.instance_path).mkdir(exist_ok = True)
 
