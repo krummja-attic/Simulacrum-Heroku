@@ -2,6 +2,7 @@
   "name": "simulacrum-space",
   "engines": {"npm":  ">=7.14.0"},
   "scripts": {
+    "deploy": "git add . && git commit -m '$(date)' && git push heroku master",
     "postinstall": "cd frontend && npm install && npm run build"
   }
 }
