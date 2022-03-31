@@ -1,6 +1,7 @@
 from __future__ import annotations
 from typing import *
 
+import sys
 from pathlib import Path
 from werkzeug.exceptions import NotFound
 from werkzeug.middleware.shared_data import SharedDataMiddleware

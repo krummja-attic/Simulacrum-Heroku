@@ -11,6 +11,7 @@ class Config:
     """Base config."""
     SECRET_KEY = environ.get('SECRET_KEY')
     SESSION_COOKIE_NAME = environ.get('SESSION_COOKIE_NAME')
+    SQLALCHEMY_DATABASE_URI = environ.get('DATABASE_URI')
 
 
 class ProdConfig(Config):
