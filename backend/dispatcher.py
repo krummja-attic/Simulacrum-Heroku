@@ -7,23 +7,26 @@ from werkzeug.middleware.shared_data import SharedDataMiddleware
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from werkzeug.wrappers import Request, Response
 
-from api import create_app
+from api import initialize
 
 if TYPE_CHECKING:
     pass
 
+frontend = SharedDataMiddleware(
+    NotFound(), {
+        '/js/': '../frontend/dist/js/',
+        '/css/': '../frontend/dist/css/',
+        '/img/': '../frontend/dist/img/',
+        '/': '../frontend/dist/index.html'
+    })
 
-frontend = SharedDataMiddleware(NotFound(), {
-    '/js/': '../frontend/dist/js/',
-    '/css/': '../frontend/dist/css/',
-    '/img/': '../frontend/dist/img/',
-    '/': '../frontend/dist/index.html'
-})
+backend = {
+    '/api': initialize()
+}
 
-
-app = DispatcherMiddleware(frontend, {'/api': create_app()})
-
+# Green Unicorn target.
+APP = DispatcherMiddleware(frontend, backend)
 
 if __name__ == '__main__':
     from werkzeug.serving import run_simple
-    run_simple('127.0.0.1', 5000, app, use_debugger = True, use_reloader = True)
+    run_simple('127.0.0.1', 5000, APP, use_debugger = True, use_reloader = True)

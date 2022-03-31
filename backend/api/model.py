@@ -1,6 +1,7 @@
 from __future__ import annotations
 from typing import *
 
+# SQLAlchemy
 from sqlalchemy import (
     Column,
     Integer,
@@ -10,10 +11,12 @@ from sqlalchemy import (
     DateTime,
     ForeignKey,
 )
-
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from flask_sqlalchemy import SQLAlchemy
+
+# Security
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 DB = SQLAlchemy()
@@ -42,6 +45,27 @@ class User(DB.Model):
     password = Column(String)
 
     posts = relationship('Post', order_by = Post.id, back_populates = 'user')
+
+    @classmethod
+    def authenticate(cls, **kwargs):
+        email = kwargs.get('email')
+        password = kwargs.get('password')
+
+        if not email or not password:
+            return None
+
+        user = cls.query.filter_by(email=email).first()
+        if not user or not check_password_hash(user.password, password):
+            return None
+
+        return user
+
+    def to_dict(self):
+        return dict(id=self.id, email=self.email)
+
+    def __init__(self, email, password) -> None:
+        self.email = email
+        self.password = generate_password_hash(password, method='sha256')
 
     def __repr__(self) -> str:
         return repr(f'<User: {self.username}')

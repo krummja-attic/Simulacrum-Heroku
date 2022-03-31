@@ -1,9 +1,19 @@
+"""
+api package
+- provides the API endpoints for consuming and producing
+  REST requests and responses
+"""
+
 from __future__ import annotations
 from typing import *
 
 import os
 from pathlib import Path
-from flask import Flask
+from datetime import datetime, timedelta
+from functools import wraps
+from flask import Flask, Blueprint, jsonify, request, current_app
+
+import jwt
 
 from api.admin import init_admin
 
@@ -16,7 +26,7 @@ if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 
-def create_app(test_config: Dict[str, Any] | None = None) -> Flask:
+def initialize(test_config: Dict[str, Any] | None = None) -> Flask:
 
     app = Flask(__name__, instance_relative_config = True)
     app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
@@ -31,8 +41,8 @@ def create_app(test_config: Dict[str, Any] | None = None) -> Flask:
 
     init_admin(app)
 
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
+    @app.route('/register/', methods=('POST',))
+    def register():
+        data = request.get_json()
 
     return app
