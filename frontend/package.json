@@ -14,9 +14,7 @@
     "core-js": "^3.21.1",
     "vue": "^3.2.31",
     "vue-router": "^4.0.14",
-    "sass-loader": "^10.1.1"
-  },
-  "devDependencies": {
+    "sass-loader": "^10.1.1",
     "@vue/cli-service": "^4.5.17",
     "sass": "^1.32.8"
   }
