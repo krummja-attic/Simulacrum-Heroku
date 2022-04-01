@@ -18,7 +18,6 @@
   },
   "devDependencies": {
     "@vue/cli-service": "^4.5.17",
-    "sass": "^1.32.8",
-    "node-sass": "^7.0.1"
+    "sass": "^1.32.8"
   }
 }
