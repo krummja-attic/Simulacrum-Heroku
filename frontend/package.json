@@ -8,14 +8,19 @@
   "author": "Jonathan Crum",
   "license": "ISC",
   "dependencies": {
+    "@nuxt/content": "^1.13.1",
     "@vue/cli": "^5.0.4",
     "@vue/cli-plugin-router": "^5.0.4",
     "@vue/cli-service-global": "^4.5.17",
     "core-js": "^3.21.1",
+    "nuxt": "^2.15.3",
     "vue": "^3.2.31",
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
+    "@nuxt/types": "^2.15.8",
+    "@nuxt/typescript-build": "^2.1.0",
+    "@nuxt/typescript-runtime": "^2.1.0",
     "@vue/cli-service": "^4.5.17",
     "sass": "^1.32.8",
     "sass-loader": "^10.1.1",
