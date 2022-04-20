@@ -4,10 +4,11 @@
 </template>
 
 <script>
-import { gsap } from 'gsap';
-
 export default {
-  name: "projects"
+  name: "projects",
+  mounted() {
+    this.$store.dispatch("siteElements/setActiveButton", this.$route.name);
+  }
 }
 </script>
 

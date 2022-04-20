@@ -1,10 +1,10 @@
 <template>
   <div class="nav-item">
     <div class="nav-item-view" ref="navItem">
-      <router-link :to='path'>
+      <router-link :to='path' @click="updateButtonData()">
         {{ label }}
       </router-link>
-    </div>
+    </div> <!-- /nav-item-view -->
   </div> <!-- /nav-item -->
 </template>
 
@@ -15,14 +15,25 @@ export default {
     label: String
   },
   methods: {
-    getPositionInfo() {
+    updateButtonData() {
+      /**
+       * Get the button's bounding rect and the x coordinate and width to the
+       * store. Data is consumed in the parent `NavBar` component.
+       */
       let item = this.$refs.navItem;
-      let rectData = item.getBoundingClientRect();
-      this.$emit('updatePosition', rectData);
+      let domRect = item.getBoundingClientRect();
+
+      this.$store.dispatch('siteElements/updateButtonData', {
+        name: this.label,
+        data: {
+          left: domRect.left,
+          width: domRect.width,
+        }
+      });
     }
   },
   mounted() {
-    this.getPositionInfo();
+    this.updateButtonData();
   }
 }
 </script>

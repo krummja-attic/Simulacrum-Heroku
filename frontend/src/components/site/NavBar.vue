@@ -1,22 +1,24 @@
 <template>
   <div class="navbar">
     <div class="navbar-view">
+
       <div class="indicator" ref="indicator"></div>
+
       <NavItem 
-        v-for="(item, index) in pathMap" 
+        v-for="(item) in pathMap" 
         :key="item.path" 
         :path="item.path" 
         :label="item.label"
         :ref="item.label"
-        @click="setIndicator"
-        @updatePosition="onUpdatePosition($event, index)"
       />
+      
     </div> <!-- /navbar-view -->
   </div> <!-- /navbar -->
 </template>
 
 <script>
 import { gsap } from 'gsap';
+import { mapState } from 'vuex';
 import NavItem from '@/components/site/NavItem';
 
 export default {
@@ -45,31 +47,32 @@ export default {
       ],
     }
   },
+  computed: mapState('siteElements', ["activeButton", "buttonData"]),
   methods: {
-
-    setIndicator(event) {
-      let target = event.target;
-      let pos = target.getBoundingClientRect();
-      let indicator = this.$refs.indicator;
-      gsap.to(indicator, { 
-        duration: 0.25, 
-        x: pos.left, 
-        width: pos.width,
+    updateIndicator() { 
+      const indicator = this.$refs.indicator;
+      const tl = gsap.timeline();
+      
+      tl.to(indicator, { 
+        duration: 0.25,
+        x: this.buttonData[this.activeButton].left, 
+        width: this.buttonData[this.activeButton].width,
         ease: "circ.inOut"
       });
-    },
 
-    onUpdatePosition(rectData, index) {
-      if ( index === 0 ) {
-        let indicator = this.$refs.indicator;
-        gsap.set(indicator, { 
-          opacity: 1, 
-          x: rectData.left, 
-          width: rectData.width 
-        });
+      if (indicator.style.opacity < 1) {
+        tl.set(indicator, { opacity: 1 }, ">");
       }
+    },
+  },
+  watch: {
+    activeButton() {
+      /**
+       * Watch for an update to the store's `activeButton` property.
+       * When detected, update the indicator's position accordingly.
+       */
+      this.updateIndicator();
     }
-    
   }
 }
 </script>
