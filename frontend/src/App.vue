@@ -1,21 +1,40 @@
 <template>
-  <div id="app">
+  <div class="app">
+    <div class="container">
+      <!-- TODO Make a separate component -->
+      <!-- <div id="nav">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link>
+      </div> -->
 
-    <!-- TODO Make a separate component -->
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <Header />
+
+      <router-view/>
+
+      <div id="spacer"></div>
+      <footer>copyright 2022 - jonathan crum</footer>
     </div>
-
-    <router-view/>
-
-    <div id="spacer"></div>
-    <footer></footer>
   </div>
 </template>
 
+<script>
+import Header from '@/components/site/Header';
+
+export default {
+  components: {
+    Header,
+  }
+}
+</script>
+
 <style lang="scss">
 @import url('assets/scss/reset.scss');
+@import url('assets/scss/typography.scss');
+// @import url('assets/scss/crt.scss');
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 html {
   height: 100%;
@@ -23,25 +42,42 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  font-size: 100%;
 
   body {
-    height: 100%;
-    background-color: rgba(21, 21, 21, 1.0);
-    color: rgba(247, 243, 239, 1.0);
-    transition: background-color 0.6s;
+    height: 100vh;
+    background-color: #212121;
+    background-image: url("../public/img/noise_2.png");
   }
 }
 
 #app {
-  margin: 0 auto;
-  background-color: transparent;
+  height: 100%;
+}
+
+.app {
   height: 100%;
 
-  display: flex;
-  flex-direction: column;
+  .container {
+    margin: 0 20px;
+    background-color: transparent;
+    height: 100%;
 
-  #spacer {
-    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    #spacer {
+      flex-grow: 1;
+    }
+
+    footer {
+      display: flex;
+      flex-direction: row;
+      margin: auto;
+      padding-bottom: 4px;
+      font: 14pt gruppo, cursive;
+      color: rgba(247, 243, 239, 0.4);
+    }
   }
 }
 </style>

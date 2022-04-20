@@ -1,3 +1,24 @@
+@font-face {
+  font-family: fira-mono;
+  src: url('../../../public/fonts/FiraMono-Regular.ttf');
+}
+
+@font-face {
+  font-family: megrim;
+  src: url('../../../public/fonts/Megrim-Regular.ttf');
+}
+
+@font-face {
+  font-family: gruppo;
+  src: url('../../../public/fonts/Gruppo-Regular.ttf');
+}
+
+.type-crt {
+  h1 {
+    font-size: 10pt;
+    font-weight: bold;
+  }
+}
 
 .type-notebook {
   $title: 'Raleway', sans-serif;

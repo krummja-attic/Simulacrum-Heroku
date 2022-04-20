@@ -1,12 +1,19 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <div class="home-view">
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'home',
-  components: {}
+  name: 'home'
 }
 </script>
+
+<style lang="scss" scoped>
+.home {
+  padding-top: 14pt;
+}
+</style>
+  
