@@ -55,7 +55,7 @@ export default {
           right: 0;
           margin-bottom: 5px;
           text-align: center;
-          font: 60pt 'Megrim', cursive;
+          font: 60pt 'Megrim', monospace;
           color: rgba(247, 243, 239, 0.5);
         }
       }

@@ -45,7 +45,7 @@ $cyan: rgba(0, 255, 255, 1);
   padding: 16px 8px;
 
   &-view {
-    font: 20pt 'Gruppo', cursive;
+    font: 20pt 'Gruppo', sans-serif;
     text-transform: uppercase;
 
     a {
