@@ -1,16 +1,16 @@
 @font-face {
   font-family: fira-mono;
-  src: font-url('../fonts/FiraMono-Regular.ttf');
+  src: local('../../../.fonts/FiraMono-Regular.ttf'), asset-url('../fonts/FiraMono-Regular.ttf');
 }
 
 @font-face {
   font-family: megrim;
-  src: font-url('../fonts/Megrim-Regular.ttf');
+  src: local('../../../.fonts/Megrim-Regular.ttf'), asset-url('../fonts/Megrim-Regular.ttf');
 }
 
 @font-face {
   font-family: gruppo;
-  src: font-url('../fonts/Gruppo-Regular.ttf');
+  src: local('../../../.fonts/Gruppo-Regular.ttf'), asset-url('../fonts/Gruppo-Regular.ttf');
 }
 
 .type-crt {
