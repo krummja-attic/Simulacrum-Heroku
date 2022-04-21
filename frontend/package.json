@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "license": "ISC",
   "author": "Jonathan Crum",
+  "engines": {
+    "node": "16.14.2"
+  },
   "scripts": {
     "build": "vue-cli-service build",
     "serve": "vue-cli-service serve"
