@@ -6,7 +6,7 @@
   transform: translate3d(-50%, -50%, 0);
 }
 
-// https://codyhouse.co/blog/post/how-to-combine-sass-color-functions-and-css-variables
+/* https://codyhouse.co/blog/post/how-to-combine-sass-color-functions-and-css-variables */
 @mixin defineColorHSL($color, $hue, $saturation, $lightness)
 {
   #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");
