@@ -1,11 +1,6 @@
 <template>
   <div class="app">
     <div class="container">
-      <!-- TODO Make a separate component -->
-      <!-- <div id="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
-      </div> -->
 
       <Header />
 
@@ -30,11 +25,6 @@ export default {
 <style lang="scss">
 @import url('assets/scss/reset.scss');
 @import url('assets/scss/typography.scss');
-// @import url('assets/scss/crt.scss');
-
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
 
 html {
   height: 100%;
