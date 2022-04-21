@@ -1,3 +1,15 @@
+<script>
+import NavBar from '@/components/site/NavBar';
+import Logo from '@/components/site/Logo';
+
+export default {
+  components: {
+    NavBar,
+    Logo,
+  }
+}
+</script>
+
 <template>
   <div class="header">
     <div class="header-view">
@@ -13,18 +25,6 @@
     </div> <!-- /header-view -->
   </div> <!-- /header -->
 </template>
-
-<script>
-import NavBar from '@/components/site/NavBar';
-import Logo from '@/components/site/Logo';
-
-export default {
-  components: {
-    NavBar,
-    Logo,
-  }
-}
-</script>
 
 <style lang="scss" scoped>
 .header {

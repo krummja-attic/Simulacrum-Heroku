@@ -1,13 +1,3 @@
-<template>
-  <div class="nav-item">
-    <div class="nav-item-view" ref="navItem">
-      <router-link :to='path' @click="updateButtonData()">
-        {{ label }}
-      </router-link>
-    </div> <!-- /nav-item-view -->
-  </div> <!-- /nav-item -->
-</template>
-
 <script>
 export default {
   props: {
@@ -37,6 +27,16 @@ export default {
   }
 }
 </script>
+
+<template>
+  <div class="nav-item">
+    <div class="nav-item-view" ref="navItem">
+      <router-link :to='path' @click="updateButtonData()">
+        {{ label }}
+      </router-link>
+    </div> <!-- /nav-item-view -->
+  </div> <!-- /nav-item -->
+</template>
 
 <style lang="scss" scoped>
 $cyan: rgba(0, 255, 255, 1);

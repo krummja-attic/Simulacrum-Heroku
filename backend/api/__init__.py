@@ -51,8 +51,8 @@ def create_app(env: EnvMode = EnvMode.DEVELOPMENT) -> Flask:
     # Initialize the Admin application
     init_admin(app)
 
-    # @app.route('/register/', methods=('POST',))
-    # def register():
-    #     data = request.get_json()
+    @app.route('/register', methods=('POST', 'GET'))
+    def register():
+        return "Hello world!"
 
     return app

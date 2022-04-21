@@ -1,8 +1,3 @@
-<template>
-  <div class="projects">
-  </div>
-</template>
-
 <script>
 export default {
   name: "projects",
@@ -11,6 +6,11 @@ export default {
   }
 }
 </script>
+
+<template>
+  <div class="projects">
+  </div>
+</template>
 
 <style lang="scss" scoped>
 </style>

@@ -1,16 +1,3 @@
-<template>
-  <div class="app">
-    <div class="container">
-
-      <Header />
-
-      <router-view/>
-
-      <div id="spacer"></div>
-      <footer>copyright 2022 - jonathan crum</footer>
-    </div>
-  </div>
-</template>
 
 <script>
 import Header from '@/components/site/Header';
@@ -21,6 +8,22 @@ export default {
   }
 }
 </script>
+
+
+<template>
+<div class="app">
+  <div class="container">
+
+    <Header />
+
+    <router-view/>
+
+    <div id="spacer"></div>
+    <footer>copyright 2022 - jonathan crum</footer>
+  </div>
+</div>
+</template>
+
 
 <style lang="scss">
 @import url('assets/scss/reset.scss');

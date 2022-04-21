@@ -1,9 +1,3 @@
-<template>
-  <div class="about">
-
-  </div>
-</template>
-
 <script>
 export default {
   name: "about",
@@ -12,6 +6,11 @@ export default {
   }
 }
 </script>
+
+<template>
+  <div class="about">
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .box {
