@@ -65,7 +65,7 @@ html {
       flex-direction: row;
       margin: auto;
       padding-bottom: 4px;
-      font: 14pt gruppo, cursive;
+      font: 14pt 'Gruppo', cursive;
       color: rgba(247, 243, 239, 0.4);
     }
   }
