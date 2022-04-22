@@ -1,0 +1,17 @@
+// Breakpoints
+$screen-xs-max: 767px;
+$screen-sm-min: 768px;
+$screen-sm-max: 991px;
+$screen-md-min: 992px;
+
+$mobile-breakpoint: 650px;
+$mobile-site: "max-width: 649px";
+$desktop-site: "min-width: 650px";
+
+$site-max-width: 1150px;
+
+@media($mobile-site) {
+  .mobile-hidden {
+    display: none;
+  }
+}

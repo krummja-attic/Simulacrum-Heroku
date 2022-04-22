@@ -1,9 +1,9 @@
 <script>
 export default {
-  name: "about",
   mounted() {
     this.$store.dispatch("siteElements/setActiveButton", this.$route.name);
-  }
+  },
+  beforeRouteLeave(to, from) {}
 }
 </script>
 
@@ -13,9 +13,4 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.box {
-  height: 30px;
-  width: 30px;
-  background: rgba(247, 243, 239, 0.5);
-}
 </style>

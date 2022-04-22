@@ -1,9 +1,9 @@
 <script>
 export default {
-  name: "projects",
   mounted() {
     this.$store.dispatch("siteElements/setActiveButton", this.$route.name);
-  }
+  },
+  beforeRouteLeave(to, from) {}
 }
 </script>
 

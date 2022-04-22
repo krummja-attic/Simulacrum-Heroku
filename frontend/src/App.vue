@@ -1,10 +1,11 @@
-
 <script>
 import Header from '@/components/site/Header';
+import Home from '@/views/Home';
 
 export default {
   components: {
     Header,
+    Home,
   }
 }
 </script>
@@ -16,9 +17,13 @@ export default {
 
     <Header />
 
-    <router-view/>
+    <router-view v-slot="{ Component, route }">
+      <transition name="fade">
+        <component :is="Component" :key="route.path" />
+      </transition>
+    </router-view>
 
-    <div id="spacer"></div>
+    <div class="spacer"></div>
     <footer>copyright 2022 - jonathan crum</footer>
   </div>
 </div>
@@ -37,40 +42,64 @@ html {
   -webkit-font-smoothing: antialiased;
   font-size: 100%;
 
-  body {
-    height: 100vh;
-    background-color: #212121;
-    background-image: url("../public/img/noise_2.png");
+  overflow-y: scroll;
+
+  @supports (scrollbar-gutter: stable) {
+    overflow-y: auto;
+    scrollbar-gutter: stable;
   }
 }
 
-#app {
-  height: 100%;
+body {
+  height: 100vh;
+  background-color: $defaultian;
+  background-image: url("../public/img/noise_2.png");
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  padding-bottom: 4px;
+  
+  font: 14pt 'Gruppo', cursive;
+  color: $dark-ash;
 }
 
 .app {
   height: 100%;
+}
 
-  .container {
-    margin: 0 20px;
-    background-color: transparent;
-    height: 100%;
+.container {
+  margin: 0 20px;
+  background-color: transparent;
+  height: 100%;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
 
-    #spacer {
-      flex-grow: 1;
-    }
+.fade-enter-from {
+  transform: translate(0, 200px);
+}
 
-    footer {
-      display: flex;
-      flex-direction: row;
-      margin: auto;
-      padding-bottom: 4px;
-      font: 14pt 'Gruppo', cursive;
-      color: rgba(247, 243, 239, 0.4);
-    }
-  }
+.fade-leave-to {
+  transform: translate(0, -100px);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: 
+    opacity 0.1s ease-out,
+    transform 0.1s ease-out;
+}
+
+.spacer {
+  flex-grow: 1;
 }
 </style>

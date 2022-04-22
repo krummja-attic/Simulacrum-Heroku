@@ -1,33 +1,96 @@
+<script>
+import { gsap } from 'gsap';
+
+export default {
+  data() {
+    return {
+      polyTopLeft: [
+        { x: 125, y: 0   },
+        { x: 125, y: 70  },
+        { x: 65,  y: 105 },
+        { x: 5,   y: 70  },
+      ],
+      polyTopRight: [
+        { x: 135, y: 0 },
+        { x: 135, y: 70 },
+        { x: 195, y: 105 },
+        { x: 255, y: 70 },
+      ],
+      polyBottomLeft: [
+        { x: 0, y: 80 },
+        { x: 0, y: 148 },
+        { x: 54, y: 111 },
+      ],
+      polyBottomCenter: [
+        { x: 130, y: 80 },
+        { x: 76, y: 111 },
+        { x: 130, y: 141 },
+        { x: 184, y: 111 },
+      ],
+      polyBottomRight: [
+        { x: 260, y: 80 },
+        { x: 207, y: 110 },
+        { x: 260, y: 143 },
+      ],
+    }
+  },
+  methods: {
+    constructPolygon(definition) {
+      let path = "";
+      for (let coords of definition) {
+        path = path + `${coords.x},${coords.y},`;
+      }
+
+      return path;
+    },
+
+    separateElements() {
+      const topL = this.$refs.topL;
+      const topR = this.$refs.topR;
+      const botL = this.$refs.botL;
+      const botC = this.$refs.botC;
+      const botR = this.$refs.botR;
+
+      const sep = 6;
+
+      gsap.to(topL, { x: -sep, y: -sep, duration: 0.35 });
+      gsap.to(topR, { x:  sep, y: -sep, duration: 0.35 });
+      gsap.to(botL, { x: -sep, y:  sep, duration: 0.35 });
+      gsap.to(botC, { x:    0, y:  sep, duration: 0.35 });
+      gsap.to(botR, { x:  sep, y:  sep, duration: 0.35 });
+    },
+
+    resetElements() {
+      const topL = this.$refs.topL;
+      const topR = this.$refs.topR;
+      const botL = this.$refs.botL;
+      const botC = this.$refs.botC;
+      const botR = this.$refs.botR;
+
+      gsap.to(topL, { x: 0, y: 0, duration: 0.35 });
+      gsap.to(topR, { x: 0, y: 0, duration: 0.35 });
+      gsap.to(botL, { x: 0, y: 0, duration: 0.35 });
+      gsap.to(botC, { x: 0, y: 0, duration: 0.35 });
+      gsap.to(botR, { x: 0, y: 0, duration: 0.35 });
+    },
+  }
+}
+</script>
+
 <template>
-  <div id="logo">
+  <div class="logo">
     <router-link :to="'/'">
-      <div id="logo-view">
-        <svg viewBox="-10 -10 290 170">
-          <path
-            d="
-              M 125,0 95,17.5 65,35 35,52.5 5,70 35,87.5 65,105 95,87.5 125,70 
-              V 35 
-              Z 
-
-              m 10,0 
-              V 35 70 
-              L 165,87.5 195,105 225,87.5 255,70 225,52.5 195,35 165,17.5 
-              Z 
-
-              M 0,80 
-              v 35 27.91602 
-              L 11.085938,136.44922 53.927734,111.45898 30,97.5 
-              Z 
-
-              M 130,80 100,97.5 76.072266,111.45898 130,142.91602 183.92773,111.45898 160,97.5 
-              Z 
-
-              m 130,0 -30,17.5 -23.92773,13.95898 41.0625,23.95313 
-              L 260,142.91602 
-              V 115 
-              Z
-            "
-          />
+      <div 
+        class="logo-view" 
+        @mouseenter="separateElements()" 
+        @mouseleave="resetElements()"
+      >
+        <svg ref="logo" viewBox="-10 -10 290 170">
+          <polygon ref="topL" :points="constructPolygon(polyTopLeft)" />
+          <polygon ref="topR" :points="constructPolygon(polyTopRight)" />
+          <polygon ref="botL" :points="constructPolygon(polyBottomLeft)" />
+          <polygon ref="botC" :points="constructPolygon(polyBottomCenter)" />
+          <polygon ref="botR" :points="constructPolygon(polyBottomRight)" />
         </svg>
       </div> <!-- /logo-view -->
     </router-link>
@@ -35,9 +98,9 @@
 </template>
 
 <style lang="scss" scoped>
-$aberration: 6px;
+$aberration: 4px;
 
-#logo {
+.logo {
   &-view {
     position: relative;
         

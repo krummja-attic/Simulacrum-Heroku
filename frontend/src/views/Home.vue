@@ -1,40 +1,21 @@
 <script>
 import Panel from '@/components/site/Panel.vue';
+import { gsap } from 'gsap';
 
 export default {
-  name: 'home',
   components: {
     Panel
   },
-  data() {
-    return {
-      posts: [
-        {
-          title: "Test Title",
-          body: "This is some simple test content."
-        },
-        {
-          title: "Test Title",
-          body: "This is some simple test content."
-        }
-      ]
-    }
-  },
   mounted() {
     this.$store.dispatch("siteElements/setActiveButton", this.$route.name);
-  }
+  },
+  beforeRouteLeave(to, from) {}
 }
 </script>
 
 <template>
-  <div class="home">
+  <div ref="componentRoot" class="home">
     <div class="home-view">
-      <Panel 
-        v-for="post in posts" 
-        :key="post"
-        :title="post.title"
-        :body="post.body"
-      />
     </div>
   </div>
 </template>
@@ -42,10 +23,9 @@ export default {
 <style lang="scss" scoped>
 .home {
   &-view {
-    margin: 0 12%;
-
     display: flex;
     flex-direction: row wrap;
+    margin: 0 12%;
   }
 }
 </style>

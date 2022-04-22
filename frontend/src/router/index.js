@@ -8,22 +8,26 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: Home
+        component: Home,
+        meta: { transition: 'slide-right' }
     },
     {
         path: '/blog',
         name: 'blog',
-        component: Blog
+        component: Blog,
+        meta: { transition: 'slide-right' }
     },
     {
         path: '/projects',
         name: 'projects',
-        component: Projects
+        component: Projects,
+        meta: { transition: 'slide-right' }
     },
     {
         path: '/about',
         name: 'about',
-        component: About
+        component: About,
+        meta: { transition: 'slide-right' }
     }
 ];
 
@@ -31,5 +35,9 @@ const router = new VueRouter.createRouter({
     history: VueRouter.createWebHistory(),
     routes,
 });
+
+// router.beforeEach((to, from) => {
+//     console.log(to);
+// });
 
 export default router;

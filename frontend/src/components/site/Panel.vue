@@ -19,6 +19,7 @@ export default {
 
 <style lang="scss" scoped>
 $aberration: 6px;
+$margin: 10px;
 
 .panel {
   flex-basis: auto;
@@ -26,16 +27,14 @@ $aberration: 6px;
   flex-direction: column;
   justify-content: space-between;
 
-  height: 350px;
-  width: 350px;
-  margin: 10px;
-  padding: 2rem;
-
-  background-color: rgba(21, 21, 21, 1);
+  margin: $margin;
+  height: 200px;
+  width: calc(50% - ($margin * 2));
+  
+  @include cut-corners(45px);
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-  color: rgba(247, 243, 239, 1);
-
-  transition-property: box-shadow, transform;
+  
+  transition-property: transform;
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier();
 
@@ -44,6 +43,14 @@ $aberration: 6px;
   }
 
   &-view {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    background-color: $nero;
+    padding: 2.5rem 3rem;
+    color: $papier;
+    
     h2 {
       font: 26pt "Gruppo", sans-serif;
     }
