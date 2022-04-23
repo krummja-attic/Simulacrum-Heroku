@@ -3,6 +3,9 @@
     "eslint:recommended",
     "plugin:vue/recommended"
   ],
+  "env": {
+    "node": true
+  },
   "rules": {
     "vue/no-unused-vars": 1,
     "vue/script-setup-uses-vars": 1,

@@ -1,5 +1,6 @@
 <script setup>
 import SiteHeader from '@/components/site/SiteHeader';
+import SiteFooter from '@/components/site/SiteFooter';
 </script>
 
 
@@ -9,17 +10,19 @@ import SiteHeader from '@/components/site/SiteHeader';
 
       <SiteHeader />
 
-      <router-view v-slot="{ Component, route }">
-        <transition name="fade">
-          <component 
-            :is="Component" 
-            :key="route.path" 
-          />
-        </transition>
-      </router-view>
+      <div class="content">
+        <router-view v-slot="{ Component, route }">
+          <transition name="fade">
+            <component 
+              :is="Component" 
+              :key="route.path" 
+            />
+          </transition>
+        </router-view>
+      </div>
 
-      <div class="spacer" />
-      <footer>copyright 2022 - jonathan crum</footer>
+      <SiteFooter />
+
     </div>
   </div>
 </template>
@@ -31,6 +34,20 @@ import SiteHeader from '@/components/site/SiteHeader';
 
 
 /** Standard Elements */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $accent-purple-4 transparent;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    border: 3px solid $nero;
+  }
+}
 
 html {
   height: 100%;
@@ -52,16 +69,6 @@ body {
   background-image: url("../public/img/noise_2.png");
 }
 
-footer {
-  display: flex;
-  flex-direction: row;
-  margin: auto;
-  padding-bottom: 4px;
-  
-  font: 14pt 'Gruppo', monospace;
-  color: $dark-ash;
-}
-
 
 /** Application Base */
 
@@ -78,8 +85,8 @@ footer {
   flex-direction: column;
 }
 
-.spacer {
-  flex-grow: 1;
+.content {
+  flex: 1 0 auto;
 }
 
 

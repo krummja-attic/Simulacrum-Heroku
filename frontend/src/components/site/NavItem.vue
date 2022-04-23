@@ -17,16 +17,16 @@ const props = defineProps({
   }
 });
 
-// DOM Element References
-const navItem = ref(null);
-
-// Local Variables
+// Component Data
 const padding = { vertical: 16, horizontal: 8 };
 
 // Computed
 const cssVars = computed(() => { return {
   '--padding': `${padding.vertical}px ${padding.horizontal}px`
 } });
+
+// DOM Element References
+const navItem = ref(null);
 
 // Methods
 function updateButtonData() 

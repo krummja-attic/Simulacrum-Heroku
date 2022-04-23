@@ -22,16 +22,19 @@ const state = () => ({
 });
 
 const getters = {
-  activeButtonData (state, getters) {
+  activeButtonData (state) {
     return state.buttonData[state.activeButton];
+  },
+  buttonData (state) {
+    return state.buttonData;
   }
 }
 
 const actions = {
-  updateButtonData ({ state, commit }, payload) {
+  updateButtonData ({ commit }, payload) {
     commit('UPDATE_BUTTON_DATA', payload);
   },
-  setActiveButton({ state, commit }, buttonName) {
+  setActiveButton({ commit }, buttonName) {
     commit('SET_ACTIVE_BUTTON', buttonName);
   }
 }
