@@ -1,67 +1,91 @@
-<script>
-export default {
-  props: {
-    path: String,
-    label: String
-  },
-  methods: {
-    updateButtonData() {
-      /**
-       * Get the button's bounding rect and the x coordinate and width to the
-       * store. Data is consumed in the parent `NavBar` component.
-       */
-      let item = this.$refs.navItem;
-      let domRect = item.getBoundingClientRect();
+<script setup>
+import { computed, defineProps, onMounted, ref } from 'vue';
+import { useStore } from 'vuex';
 
-      this.$store.dispatch('siteElements/updateButtonData', {
-        name: this.label,
-        data: {
-          left: domRect.left,
-          width: domRect.width,
-        }
-      });
-    }
+// Vuex
+const store = useStore();
+
+// Component Props
+const props = defineProps({
+  path: {
+    type: String,
+    default: ""
   },
-  mounted() {
-    this.updateButtonData();
+  label: {
+    type: String,
+    default: ""
   }
+});
+
+// DOM Element References
+const navItem = ref(null);
+
+// Local Variables
+const padding = { vertical: 16, horizontal: 8 };
+
+// Computed
+const cssVars = computed(() => { return {
+  '--padding': `${padding.vertical}px ${padding.horizontal}px`
+} });
+
+// Methods
+function updateButtonData() 
+{
+  const domRect = navItem.value.getBoundingClientRect();
+  store.dispatch('siteElements/updateButtonData', {
+    name: props.label,
+    data: {
+      left: padding.horizontal + domRect.left,
+      width: domRect.width - (padding.horizontal * 2),
+    }
+  });
 }
+
+// Vue Lifecycle
+onMounted(() => {
+  updateButtonData();
+});
 </script>
 
+
 <template>
-  <div class="nav-item">
-    <div class="nav-item-view" ref="navItem">
-      <router-link :to='path' @click="updateButtonData()">
-        {{ label }}
-      </router-link>
-    </div> <!-- /nav-item-view -->
-  </div> <!-- /nav-item -->
+  <div 
+    ref="navItem" 
+    class="nav-item" 
+    :style="cssVars"
+  >
+
+    <router-link 
+      :to="path"
+      @click="updateButtonData()"
+    >
+      {{ label }}
+    </router-link>
+    
+  </div>
 </template>
 
+
 <style lang="scss" scoped>
-$cyan: rgba(0, 255, 255, 1);
-
 .nav-item {
-  padding: 16px 8px;
+  padding: var(--padding);
 
-  &-view {
-    font: 20pt 'Gruppo', sans-serif;
-    text-transform: uppercase;
+  font: 20pt 'Gruppo', sans-serif;
+  text-transform: uppercase;
 
-    a {
-      text-decoration: none;
-      transition-property: color;
-      transition-duration: 0.2s;
-      transition-timing-function: cubic-bezier();
+  a {
+    text-decoration: none;
+    transition-property: color;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);
 
-      &:link, 
-      &:visited {
-        color: rgba(247, 243, 239, 0.5);
-      }
+    &:link, 
+    &:visited {
+      color: rgba(247, 243, 239, 0.5);
+    }
 
-      &:hover {
-        color: rgba(255, 255, 255, 1);
-      }
+    &:hover {
+      color: rgba(255, 255, 255, 1);
     }
   }
 }

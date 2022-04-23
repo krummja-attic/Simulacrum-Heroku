@@ -1,21 +1,3 @@
-<template>
-  <div class="navbar">
-    <div class="navbar-view">
-
-      <div class="indicator" ref="indicator"></div>
-
-      <NavItem 
-        v-for="(item) in pathMap" 
-        :key="item.path" 
-        :path="item.path" 
-        :label="item.label"
-        :ref="item.label"
-      />
-      
-    </div> <!-- /navbar-view -->
-  </div> <!-- /navbar -->
-</template>
-
 <script>
 import { gsap } from 'gsap';
 import { mapState } from 'vuex';
@@ -67,17 +49,50 @@ export default {
   },
   watch: {
     activeButton() {
-      /**
-       * Watch for an update to the store's `activeButton` property.
-       * When detected, update the indicator's position accordingly.
-       */
       this.updateIndicator();
     }
   }
 }
 </script>
 
+
+<template>
+  <div class="navbar">
+    <div class="navbar-content">
+
+      <div class="indicator" ref="indicator" />
+
+      <NavItem 
+        v-for="(item) in pathMap" 
+        :key="item.path" 
+        :path="item.path" 
+        :label="item.label"
+        :ref="item.label"
+      />
+      
+    </div>
+  </div>
+</template>
+
+
 <style lang="scss" scoped>
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  width: 100%;
+
+  &-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 35vw;
+    padding: 4px 0;
+  }
+}
+
 .indicator {
   position: absolute;
   margin-top: 15px;
@@ -86,19 +101,5 @@ export default {
 
   left: 0;
   opacity: 0;
-}
-
-.navbar {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  
-  width: 35vw;
-
-  &-view {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
 }
 </style>

@@ -1,32 +1,32 @@
 import * as VueRouter from 'vue-router';
-import Home from '../views/Home';
-import About from '../views/About';
-import Blog from '../views/Blog';
-import Projects from '../views/Projects';
+import HomeView from '../views/HomeView';
+import AboutView from '../views/AboutView';
+import BlogView from '../views/BlogView';
+import ProjectsView from '../views/ProjectsView';
 
 const routes = [
     {
         path: '/',
         name: 'home',
-        component: Home,
+        component: HomeView,
         meta: { transition: 'slide-right' }
     },
     {
         path: '/blog',
         name: 'blog',
-        component: Blog,
+        component: BlogView,
         meta: { transition: 'slide-right' }
     },
     {
         path: '/projects',
         name: 'projects',
-        component: Projects,
+        component: ProjectsView,
         meta: { transition: 'slide-right' }
     },
     {
         path: '/about',
         name: 'about',
-        component: About,
+        component: AboutView,
         meta: { transition: 'slide-right' }
     }
 ];
