@@ -39,7 +39,7 @@ Additional Reading:
 
 ### Frontend
 
-The frontend is built in Vue.js.
+The frontend is built in Vue.js. I have recently started converting my Vue workflow to use the Composition API, which has improved readability and maintainability of my components immensely.
 
 #### Router
 
