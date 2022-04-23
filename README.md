@@ -1,6 +1,6 @@
 # Simulacrum Heroku
 
-This is my personal web space, now deployed to Heroku! 
+This is my personal web space, now deployed to Heroku! It's still very much in development, so there isn't much to see currently.
 
 ## Application Structure
 
