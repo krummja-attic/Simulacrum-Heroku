@@ -7,6 +7,7 @@
 <style lang="scss" scoped>
 .footer {
   flex-shrink: 0;
+  bottom: 0;
   margin: auto;
   padding-bottom: 4px;
 

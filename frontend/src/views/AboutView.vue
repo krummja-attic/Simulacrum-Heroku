@@ -1,9 +1,4 @@
-<script>
-export default {
-  mounted() {
-    this.$store.dispatch("siteElements/setActiveButton", this.$route.name);
-  }
-}
+<script setup>
 </script>
 
 

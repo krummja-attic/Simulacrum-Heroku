@@ -6,35 +6,55 @@ import SiteLogo from '@/components/site/SiteLogo';
 
 <template>
   <div class="header">
-    <div class="header-content">
-      <SiteLogo />
-      <span class="logo-text">simulacrum</span>
+    <SiteLogo />
+    <div class="mobile-content desktop-hidden">
+      <!--  -->
     </div>
-
-    <NavBar />
+    <div class="header-content mobile-hidden">
+      <NavBar />
+    </div>
   </div>
 </template>
 
 
 <style lang="scss" scoped>
 .header {
-  width: 100%;
-  padding: 20px 0 5px 0;
+  display: flex;
+}
 
-  &-content {
-    display: flex;
+@include mobile {
+  .header {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .mobile-content {
+    flex-direction: row;
+    width: 100%;
+    height: 100px;
+  }
+}
+
+@include tablet {
+  .header {
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
+  }
 
-    border-bottom: 2px solid rgba(247, 243, 239, 0.5);
+  .header-content {
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+  }
+}
 
-    .logo-text {
-      margin-top: auto;
-      margin-bottom: 5px;
-
-      font: 60pt 'Megrim', monospace;
-      color: rgba(247, 243, 239, 0.5);
-    }
+@include desktop {
+  .header {
+    flex-direction: row;
+    top: 0;
+    width: 100%;
+    height: 60px;
   }
 }
 </style>

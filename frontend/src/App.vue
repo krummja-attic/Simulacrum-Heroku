@@ -1,6 +1,6 @@
 <script setup>
 import SiteHeader from '@/components/site/SiteHeader';
-import SiteFooter from '@/components/site/SiteFooter';
+// import SiteFooter from '@/components/site/SiteFooter';
 </script>
 
 
@@ -21,7 +21,7 @@ import SiteFooter from '@/components/site/SiteFooter';
         </router-view>
       </div>
 
-      <SiteFooter />
+      <!-- <SiteFooter /> -->
 
     </div>
   </div>
@@ -29,11 +29,10 @@ import SiteFooter from '@/components/site/SiteFooter';
 
 
 <style lang="scss">
-@import url('assets/scss/reset.scss');
-@import url('assets/scss/typography.scss');
+@import './assets/scss/reset.scss';
+@import './assets/scss/typography.scss';
 
-
-/** Standard Elements */
+/** Document Elements */
 
 * {
   scrollbar-width: thin;
@@ -64,11 +63,54 @@ html {
 }
 
 body {
-  height: 100vh;
-  background-color: $defaultian;
-  background-image: url("../public/img/noise_2.png");
+  background-color: var(--bg-primary);
 }
 
+@include mobile {
+  body {
+    --body-width: calc(100vw - 36px);
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    width: var(--body-width);
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 5px;
+  }
+}
+
+@include tablet {
+  body {
+    --body-width: calc(650px + 15vw);
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    width: var(--body-width);
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 5px;
+  }
+}
+
+@include desktop {
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  .content {
+    width: 100%;
+  }
+}
 
 /** Application Base */
 
@@ -76,24 +118,10 @@ body {
   height: 100%;
 }
 
-.container {
-  margin: 0 12%;
-  background-color: transparent;
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-}
-
-.content {
-  flex: 1 0 auto;
-}
-
-
 /** Router Transitions */
 
 .fade-enter-from {
-  transform: translate(0, 200px);
+  transform: translate(0, 100px);
 }
 
 .fade-leave-to {
@@ -108,7 +136,7 @@ body {
 .fade-enter-active, 
 .fade-leave-active {
   transition: 
-    opacity 0.1s ease-out,
-    transform 0.1s ease-out;
+    opacity 0.15s ease-out,
+    transform 0.15s ease-out;
 }
 </style>

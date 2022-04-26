@@ -1,16 +1,32 @@
-// Breakpoints
-$screen-xs-max: 767px;
-$screen-sm-min: 768px;
-$screen-sm-max: 991px;
-$screen-md-min: 992px;
+$breakpoint-mobile: "max-width: 799px";
+$breakpoint-tablet: "min-width: 800px";
+$breakpoint-desktop: "min-width: 1250px";
 
-$mobile-breakpoint: 650px;
-$mobile-site: "max-width: 649px";
-$desktop-site: "min-width: 650px";
+@mixin mobile {
+  @media ($breakpoint-mobile) {
+    @content;
+  }
+}
 
-$site-max-width: 1150px;
+@mixin tablet {
+  @media ($breakpoint-tablet) {
+    @content;
+  }
+}
 
-@media($mobile-site) {
+@mixin desktop {
+  @media ($breakpoint-desktop) {
+    @content;
+  }
+}
+
+@media ($breakpoint-tablet) {
+  .desktop-hidden {
+    display: none;
+  }
+}
+
+@media ($breakpoint-mobile) {
   .mobile-hidden {
     display: none;
   }

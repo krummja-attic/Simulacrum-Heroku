@@ -29,6 +29,18 @@ const posts = [
     title: "Test Title",
     body: "This is some simple test content."
   },
+  {
+    title: "Test Title",
+    body: "This is some simple test content."
+  },
+  {
+    title: "Test Title",
+    body: "This is some simple test content."
+  },
+  {
+    title: "Test Title",
+    body: "This is some simple test content."
+  },
 ];
 
 onMounted(() => {
@@ -57,7 +69,26 @@ onMounted(() => {
 <style lang="scss" scoped>
 .blog {
   display: flex;
-  flex-flow: row wrap;
-  margin: 3% 12%;
+}
+
+@include mobile {
+  .blog {
+    flex-flow: column;
+    margin: 0 10px;
+  }
+}
+
+@include tablet {
+  .blog {
+    flex-flow: row wrap;
+    margin: 0 6%;
+  }
+}
+
+@include desktop {
+  .blog {
+    flex-flow: row wrap;
+    margin: 3% 12%;
+  }
 }
 </style>
