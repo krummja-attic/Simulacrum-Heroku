@@ -1,7 +1,7 @@
 import * as VueRouter from 'vue-router';
 import HomeView from '../views/HomeView';
 import AboutView from '../views/AboutView';
-import BlogView from '../views/BlogView';
+import GardenView from '../views/GardenView';
 import ProjectsView from '../views/ProjectsView';
 
 const routes = [
@@ -11,9 +11,9 @@ const routes = [
         component: HomeView,
     },
     {
-        path: '/blog',
-        name: 'blog',
-        component: BlogView,
+        path: '/garden',
+        name: 'garden',
+        component: GardenView,
     },
     {
         path: '/projects',

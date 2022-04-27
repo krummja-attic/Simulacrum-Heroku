@@ -5,7 +5,7 @@ import SiteLogo from '@/components/site/SiteLogo';
 
 
 <template>
-  <div class="header">
+  <div class="app-header">
     <SiteLogo />
     <div class="mobile-content desktop-hidden">
       <!--  -->
@@ -18,12 +18,17 @@ import SiteLogo from '@/components/site/SiteLogo';
 
 
 <style lang="scss" scoped>
-.header {
+@import "@/assets/scss/app.scss";
+
+.app-header {
   display: flex;
 }
 
+.header-content {
+}
+
 @include mobile {
-  .header {
+  .app-header {
     flex-direction: row;
     width: 100%;
   }
@@ -36,7 +41,7 @@ import SiteLogo from '@/components/site/SiteLogo';
 }
 
 @include tablet {
-  .header {
+  .app-header {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
@@ -50,11 +55,11 @@ import SiteLogo from '@/components/site/SiteLogo';
 }
 
 @include desktop {
-  .header {
+  .app-header {
     flex-direction: row;
     top: 0;
     width: 100%;
-    height: 60px;
+    height: 100px;
   }
 }
 </style>

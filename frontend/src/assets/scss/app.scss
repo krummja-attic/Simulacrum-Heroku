@@ -1,6 +1,5 @@
-$container-max-widths: (
-  sm: 576px,
-  md: 720px,
-  lg: 940px,
-  xl: 1180px
-);
+@import "@/assets/abstracts/_mixins.scss";
+@import "@/assets/scss/layout.scss";
+@import "@/assets/vars/_colors.scss";
+@import "@/assets/vars/_constants.scss";
+@import "@/assets/vars/_themes.scss";

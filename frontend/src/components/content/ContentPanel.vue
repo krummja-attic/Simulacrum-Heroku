@@ -25,6 +25,8 @@ defineProps({
 
 
 <style lang="scss" scoped>
+@import "@/assets/scss/app.scss";
+
 $aberration: 6px;
 $margin: 10px;
 

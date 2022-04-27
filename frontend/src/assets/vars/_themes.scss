@@ -1,8 +1,10 @@
+@import "@/assets/abstracts/_mixins.scss";
 
 $bg-primary: hsl(0, 1%, 16%);
 $bg-secondary: hsl(343, 7%, 21%);
 $fg-primary: hsl(30, 33%, 95%);
-$fg-secondary: hsl(314, 7%, 63%);
+$fg-secondary: hsl(24, 28%, 74%);
+// $fg-secondary: hsl(314, 7%, 63%);
 $accent-1: hsl(344, 61%, 69%);
 $accent-2: hsl(10, 60%, 35%);
 $accent-3: hsl(357, 67%, 41%);
@@ -13,19 +15,27 @@ $accent-5: hsl(59, 67%, 35%);
   @include defineColorHSL(--bg-primary, 0, 1%, 16%);
   @include defineColorHSL(--bg-secondary, 343, 7%, 21%);
   @include defineColorHSL(--fg-primary, 30, 33%, 95%);
-  @include defineColorHSL(--fg-secondary, 314, 7%, 63%);
+  @include defineColorHSL(--fg-secondary, 24, 28%, 74%);
   @include defineColorHSL(--accent-1, 344, 61%, 69%);
   @include defineColorHSL(--accent-2, 10, 60%, 35%);
   @include defineColorHSL(--accent-3, 357, 67%, 41%);
   @include defineColorHSL(--accent-4, 185, 48%, 35%);
   @include defineColorHSL(--accent-5, 59, 67%, 35%);
+  --border-width: 1px;
+  --border-style: solid;
+  --border-color: var(--fg-secondary);
+  --border-radius: 2px;
+  --placeholder-color: hsla(var(--fg-secondary), 0.2);
+  --body-font-family: 'Arvo';
+  --body-font-size: 14px;
+  --body-font-color: var(--fg-primary);
 }
 
 .dark-mode {
   @include defineColorHSL(--bg-primary, 0, 1%, 16%);
   @include defineColorHSL(--bg-secondary, 343, 7%, 21%);
   @include defineColorHSL(--fg-primary, 30, 33%, 95%);
-  @include defineColorHSL(--fg-secondary, 314, 7%, 63%);
+  @include defineColorHSL(--fg-secondary, 24, 28%, 74%);
   @include defineColorHSL(--accent-1, 344, 61%, 69%);
   @include defineColorHSL(--accent-2, 10, 60%, 35%);
   @include defineColorHSL(--accent-3, 357, 67%, 41%);

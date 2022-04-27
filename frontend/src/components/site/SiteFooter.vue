@@ -1,18 +1,32 @@
+<script setup>
+import { onMounted } from 'vue';
+
+onMounted(() => {
+  document.body.style.setProperty(
+    "--scrollbar-width",
+    `${window.innerWidth - document.body.clientWidth}px`
+  );
+});
+</script>
+
 <template>
   <div class="footer">
-    <span>copyright 2022 - jonathan crum</span>
+    <span>Copyright 2022 - Jonathan Crum</span>
   </div>
 </template>
 
 <style lang="scss" scoped>
+@import "@/assets/scss/app.scss";
+
 .footer {
+  display: flex;
+  flex-direction: row;
   flex-shrink: 0;
-  bottom: 0;
-  margin: auto;
-  padding-bottom: 4px;
+  justify-content: center;
+  width: 100%;
 
   span {
-    font: 14pt 'Gruppo', monospace;
+    font: 12pt 'Arvo', sans-serif;
     color: $dark-ash;
   }
 }

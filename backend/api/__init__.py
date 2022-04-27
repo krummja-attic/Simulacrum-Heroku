@@ -29,6 +29,15 @@ load_dotenv(os.path.join(BASE_DIR, '../../.env'))
 class EnvMode(Enum):
     DEVELOPMENT = 0
     PRODUCTION = 1
+    
+    
+BOOKS = [
+    {
+        'title': 'On the Road',
+        'author': 'Jack Kerouac',
+        'read': False
+    }
+]
 
 
 def create_app(env: EnvMode = EnvMode.DEVELOPMENT) -> Flask:
@@ -54,5 +63,20 @@ def create_app(env: EnvMode = EnvMode.DEVELOPMENT) -> Flask:
     @app.route('/register', methods=('POST', 'GET'))
     def register():
         return "Hello world!"
+    
+    @app.route('/books', methods=['GET', 'POST'])
+    def all_books():
+        response_object = {'status': 'success'}
+        if request.method == 'POST':
+            post_data = request.get_json()
+            BOOKS.append({
+                'title': post_data.get('title'),
+                'author': post_data.get('author'),
+                'read': post_data.get('read')
+            })
+            response_object['message'] = 'Book added!'
+        else:
+            response_object['books'] = BOOKS
+        return jsonify(response_object)
 
     return app

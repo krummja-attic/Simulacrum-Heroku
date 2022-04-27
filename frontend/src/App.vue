@@ -1,27 +1,29 @@
 <script setup>
 import SiteHeader from '@/components/site/SiteHeader';
-// import SiteFooter from '@/components/site/SiteFooter';
+import SiteFooter from '@/components/site/SiteFooter';
 </script>
-
 
 <template>
   <div class="app">
-    <div class="container">
+    <div class="app-container">
 
       <SiteHeader />
 
       <div class="content">
-        <router-view v-slot="{ Component, route }">
-          <transition name="fade">
+        <router-view v-slot="{ Component, path }">
+          <transition
+            mode="out-in"
+            name="fade"
+          >
             <component 
-              :is="Component" 
-              :key="route.path" 
+              :is="Component"
+              :key="path"
             />
           </transition>
         </router-view>
       </div>
 
-      <!-- <SiteFooter /> -->
+      <SiteFooter />
 
     </div>
   </div>
@@ -29,14 +31,16 @@ import SiteHeader from '@/components/site/SiteHeader';
 
 
 <style lang="scss">
+@import "@/assets/scss/app.scss";
 @import './assets/scss/reset.scss';
 @import './assets/scss/typography.scss';
 
-/** Document Elements */
+
+// GLOBAL ================================================================== //
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: $accent-purple-4 transparent;
+  scrollbar-color: $accent-1 transparent;
 
   &::-webkit-scrollbar {
     width: 12px;
@@ -49,12 +53,14 @@ import SiteHeader from '@/components/site/SiteHeader';
 }
 
 html {
-  height: 100%;
   -ms-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
-  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 
   overflow-y: scroll;
+  font-size: 100%;
 
   @supports (scrollbar-gutter: stable) {
     overflow-y: auto;
@@ -63,15 +69,25 @@ html {
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   background-color: var(--bg-primary);
 }
+
+.app {
+  height: 100%;
+}
+
+
+// MOBILE ================================================================== //
 
 @include mobile {
   body {
     --body-width: calc(100vw - 36px);
   }
 
-  .container {
+  .app-container {
     display: flex;
     flex-direction: column;
 
@@ -81,13 +97,16 @@ body {
     padding: 0 5px;
   }
 }
+
+
+// TABLET ================================================================== //
 
 @include tablet {
   body {
     --body-width: calc(650px + 15vw);
   }
 
-  .container {
+  .app-container {
     display: flex;
     flex-direction: column;
 
@@ -98,45 +117,34 @@ body {
   }
 }
 
+
+// DESKTOP ================================================================= //
+
 @include desktop {
-  .container {
+  body {
+    --body-width: 100%;
+  }
+
+  .app-container {
     display: flex;
     flex-direction: column;
-
-    width: 100%;
     height: 100%;
   }
 
   .content {
-    width: 100%;
+    flex: 1 0 auto;
   }
 }
 
-/** Application Base */
 
-.app {
-  height: 100%;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.1s ease;
 }
 
-/** Router Transitions */
-
-.fade-enter-from {
-  transform: translate(0, 100px);
-}
-
-.fade-leave-to {
-  transform: translate(0, -100px);
-}
-
-.fade-enter-from, 
+.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }
 
-.fade-enter-active, 
-.fade-leave-active {
-  transition: 
-    opacity 0.15s ease-out,
-    transform 0.15s ease-out;
-}
 </style>
