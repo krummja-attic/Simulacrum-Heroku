@@ -1,44 +1,68 @@
-@import "@/assets/abstracts/_mixins.scss";
-
-$bg-primary: hsl(0, 1%, 16%);
-$bg-secondary: hsl(343, 7%, 21%);
-$fg-primary: hsl(30, 33%, 95%);
-$fg-secondary: hsl(24, 28%, 74%);
-// $fg-secondary: hsl(314, 7%, 63%);
-$accent-1: hsl(344, 61%, 69%);
-$accent-2: hsl(10, 60%, 35%);
-$accent-3: hsl(357, 67%, 41%);
-$accent-4: hsl(185, 48%, 35%);
-$accent-5: hsl(59, 67%, 35%);
+@use "sass:color";
+@import "@/assets/vars/_colors.scss";
 
 :root {
-  @include defineColorHSL(--bg-primary, 0, 1%, 16%);
-  @include defineColorHSL(--bg-secondary, 343, 7%, 21%);
-  @include defineColorHSL(--fg-primary, 30, 33%, 95%);
-  @include defineColorHSL(--fg-secondary, 24, 28%, 74%);
-  @include defineColorHSL(--accent-1, 344, 61%, 69%);
-  @include defineColorHSL(--accent-2, 10, 60%, 35%);
-  @include defineColorHSL(--accent-3, 357, 67%, 41%);
-  @include defineColorHSL(--accent-4, 185, 48%, 35%);
-  @include defineColorHSL(--accent-5, 59, 67%, 35%);
-  --border-width: 1px;
-  --border-style: solid;
-  --border-color: var(--fg-secondary);
-  --border-radius: 2px;
-  --placeholder-color: hsla(var(--fg-secondary), 0.2);
-  --body-font-family: 'Arvo';
-  --body-font-size: 14px;
-  --body-font-color: var(--fg-primary);
+  --primary-color: #{$primary-color};
+  --primary-hover-color: #{$primary-hover-color};
+  --primary-selected-color: #{$primary-selected-color};
+
+  --positive-color: #{$positive-color};
+  --positive-color-hover:  #{$positive-color-hover};
+  --positive-color-selected:  #{$positive-color-selected};
+  --negative-color: #{$negative-color};
+  --negative-color-hover:  #{$negative-color-hover};
+  --negative-color-selected:  #{$negative-color-selected};
+
+  --primary-background-color: #{$primary-background-color};
+  --secondary-background-color: #{$secondary-background-color};
+  --primary-background-color-hover: #{$primary-background-color-hover};
+
+  --primary-text-color: #{$primary-text-color};
+  --primary-text-color-dark: #{$primary-text-color-dark};
+  --secondary-text-color: #{$secondary-text-color};
+  --secondary-text-on-secondary-color: #{$secondary-text-on-secondary-color};
+  --text-color-on-primary: #{$text-color-on-primary};
+
+  --placeholder-color: #{$placeholder-color};
+  --disabled-text-color: #{$disabled-text-color};
+
+  --link-color: #{$link-color};
+  --link-accent-color: #{$link-accent-color};
+
+  --body-font-family:  #{$body-font-family};
+  --body-font-size:  #{$body-font-size};
+  --body-font-color:  #{$body-font-color};
 }
 
-.dark-mode {
-  @include defineColorHSL(--bg-primary, 0, 1%, 16%);
-  @include defineColorHSL(--bg-secondary, 343, 7%, 21%);
-  @include defineColorHSL(--fg-primary, 30, 33%, 95%);
-  @include defineColorHSL(--fg-secondary, 24, 28%, 74%);
-  @include defineColorHSL(--accent-1, 344, 61%, 69%);
-  @include defineColorHSL(--accent-2, 10, 60%, 35%);
-  @include defineColorHSL(--accent-3, 357, 67%, 41%);
-  @include defineColorHSL(--accent-4, 185, 48%, 35%);
-  @include defineColorHSL(--accent-5, 59, 67%, 35%);
+
+[theme="dark"] {
+  --primary-color: #{$primary-color};
+  --primary-hover-color: #{$primary-hover-color};
+  --primary-selected-color: #{$primary-selected-color};
+
+  --positive-color: #{$positive-color};
+  --positive-color-hover:  #{$positive-color-hover};
+  --positive-color-selected:  #{$positive-color-selected};
+  --negative-color: #{$negative-color};
+  --negative-color-hover:  #{$negative-color-hover};
+  --negative-color-selected:  #{$negative-color-selected};
+
+  --primary-background-color: #{$primary-background-color-dark};
+  --secondary-background-color: #{$secondary-background-color};
+  --primary-background-color-hover: #{$primary-background-color-hover};
+
+  --primary-text-color: #{$primary-text-color-dark};
+  --secondary-text-color: #{$secondary-text-color};
+  --secondary-text-on-secondary-color: #{$secondary-text-on-secondary-color};
+  --text-color-on-primary: #{$text-color-on-primary};
+
+  --placeholder-color: #{$placeholder-color};
+  --disabled-text-color: #{$disabled-text-color};
+
+  --link-color: #{$link-color};
+  --link-accent-color: #{$link-accent-color};
+
+  --body-font-family:  #{$body-font-family};
+  --body-font-size:  #{$body-font-size};
+  --body-font-color:  #{$body-font-color};
 }

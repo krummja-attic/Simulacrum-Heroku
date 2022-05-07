@@ -3,17 +3,19 @@
     <router-link :to="'/'">
       <img 
         class="logo" 
-        src="@/assets/image/logo.svg"
+        src="@/assets/image/logo-dark.svg"
       >
     </router-link>
   </div>
 </template>
 
 <style lang="scss" scoped>
+@import "@/assets/scss/app.scss";
+
 .logo {
   position: absolute;
   top: 30px;
-  left: 30px;
+  left: 96px;
   width: 64px;
 
   transition-property: transform, filter;
@@ -27,8 +29,10 @@
     transform:
       translateY(-5px);
     filter:
-      brightness(10)
-      drop-shadow(-2px 2px var(--accent-1));
+      brightness(1.6)
+      contrast(200%)
+      hue-rotate(-80deg)
+      drop-shadow(-2px 2px var(--link-color));
   }
 }
 </style>

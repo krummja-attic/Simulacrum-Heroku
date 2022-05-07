@@ -1,6 +1,28 @@
 <script setup>
 import SiteHeader from '@/components/site/SiteHeader';
 import SiteFooter from '@/components/site/SiteFooter';
+import { onMounted, ref, watch } from 'vue';
+
+const darkMode = ref(false);
+
+onMounted(() => {
+  let bodyElement = document.body;
+  bodyElement.classList.add("app-background");
+});
+
+watch(darkMode, () => {
+  let htmlElement = document.documentElement;
+
+  if (darkMode.value) {
+    console.log("Dark Mode");
+    localStorage.setItem("theme", "dark");
+    htmlElement.setAttribute("theme", "dark");
+  } else {
+    console.log("Light Mode");
+    localStorage.setItem("theme", "light");
+    htmlElement.setAttribute("theme", "light");
+  }
+});
 </script>
 
 <template>
@@ -10,6 +32,12 @@ import SiteFooter from '@/components/site/SiteFooter';
       <SiteHeader />
 
       <div class="content">
+        <input 
+          v-model="darkMode"
+          type="checkbox"
+          class="theme-switch"
+        >
+
         <router-view v-slot="{ Component, path }">
           <transition
             mode="out-in"
@@ -31,16 +59,16 @@ import SiteFooter from '@/components/site/SiteFooter';
 
 
 <style lang="scss">
-@import "@/assets/scss/app.scss";
 @import './assets/scss/reset.scss';
+@import "@/assets/scss/app.scss";
 @import './assets/scss/typography.scss';
 
 
 // GLOBAL ================================================================== //
 
 * {
-  scrollbar-width: thin;
-  scrollbar-color: $accent-1 transparent;
+  // scrollbar-width: thin;
+  // scrollbar-color: $accent-1 transparent;
 
   &::-webkit-scrollbar {
     width: 12px;
@@ -48,7 +76,7 @@ import SiteFooter from '@/components/site/SiteFooter';
 
   &::-webkit-scrollbar-thumb {
     border-radius: 20px;
-    border: 3px solid $nero;
+    border: 3px solid var(--primary-text-color);
   }
 }
 
@@ -72,7 +100,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: var(--bg-primary);
+  background-color: var(--primary-background-color);
 }
 
 .app {

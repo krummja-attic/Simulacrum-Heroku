@@ -9,11 +9,13 @@ onMounted(() => {
 });
 </script>
 
+
 <template>
   <div class="footer">
-    <span>Copyright 2022 - Jonathan Crum</span>
+    <!-- <span>Copyright 2022 - Jonathan Crum</span> -->
   </div>
 </template>
+
 
 <style lang="scss" scoped>
 @import "@/assets/scss/app.scss";
@@ -27,7 +29,7 @@ onMounted(() => {
 
   span {
     font: 12pt 'Arvo', sans-serif;
-    color: $dark-ash;
+    color: var(--primary-text-color);
   }
 }
 </style>

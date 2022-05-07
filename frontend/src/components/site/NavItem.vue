@@ -13,6 +13,7 @@ defineProps({
 });
 </script>
 
+
 <template>
   <div class="navitem">
     <router-link :to="path">
@@ -21,7 +22,10 @@ defineProps({
   </div>
 </template>
 
-<style lang="scss" scoped>
+
+<style scoped lang="scss">
+@import "@/assets/scss/app.scss";
+
 .navitem {
   position: relative;
   width: auto;
@@ -30,16 +34,16 @@ defineProps({
 
   a {
     text-decoration: none;
-    color: var(--fg-secondary);
+    color: var(--primary-text-color);
 
     &:hover {
-      color: white;
+      color: var(--link-accent-color);
     }
 
     &::before {
       content: "";
       transform-origin: 50% 100% 0px;
-      background-color: var(--accent-1);
+      background-color: var(--link-color);
       transition: clip-path 0.3s ease 0s, transform 0.3s cubic-bezier(0.2, 1, 0.8, 1) 0s;
       position: absolute;
       top: 100%;

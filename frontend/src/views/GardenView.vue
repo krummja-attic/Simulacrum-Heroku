@@ -1,44 +1,4 @@
 <script setup>
-import ContentPanel from '@/components/content/ContentPanel';
-
-const posts = [
-  {
-    title: "Test Title",
-    body: "This is some simple test content."
-  },
-  {
-    title: "Test Title",
-    body: "This is some simple test content."
-  },
-  // {
-  //   title: "Test Title",
-  //   body: "This is some simple test content."
-  // },
-  // {
-  //   title: "Test Title",
-  //   body: "This is some simple test content."
-  // },
-  // {
-  //   title: "Test Title",
-  //   body: "This is some simple test content."
-  // },
-  // {
-  //   title: "Test Title",
-  //   body: "This is some simple test content."
-  // },
-  // {
-  //   title: "Test Title",
-  //   body: "This is some simple test content."
-  // },
-  // {
-  //   title: "Test Title",
-  //   body: "This is some simple test content."
-  // },
-  // {
-  //   title: "Test Title",
-  //   body: "This is some simple test content."
-  // },
-];
 </script>
 
 
@@ -47,12 +7,7 @@ const posts = [
     ref="componentRoot" 
     class="garden"
   >
-    <ContentPanel 
-      v-for="post in posts" 
-      :key="post"
-      :title="post.title"
-      :body="post.body"
-    />
+    <!--  -->
   </div>
 </template>
 

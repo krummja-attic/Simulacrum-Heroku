@@ -57,6 +57,27 @@ button,
 textarea,
 select {
   font: inherit;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+input {
+  overflow: visible;
+  border: 0;
+  padding: 0;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */

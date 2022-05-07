@@ -36,6 +36,6 @@ const pathMap = [
   width: 300px;
   height: 16px;
   margin-top: 30px;
-  margin-right: 30px;
+  margin-right: 96px;
 }
 </style>
