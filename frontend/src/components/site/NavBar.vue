@@ -18,7 +18,10 @@ const pathMap = [
 </script>
 
 <template>
-  <div class="app-navbar">
+  <div 
+    ref="navbar" 
+    class="app-navbar"
+  >
     <NavItem
       v-for="item in pathMap"
       :key="item.path"

@@ -16,37 +16,30 @@ $sakura14: rgb(190, 223, 169);
 $sakura15: rgb(148, 181, 224);
 
 
-$primary-color: $sakura9;
-$primary-hover-color: $sakura10;
-$primary-selected-color: $sakura7;
+$deep-night: (
+  "dark": $sakura0,
+  "normal": $sakura1,
+  "light": $sakura2,
+  "lighter": $sakura3,
+);
 
-$positive-color: $sakura14;
-$positive-color-hover: color.adjust($sakura14, $lightness: -10%);
-$positive-color-selected: color.adjust($sakura14, $lightness: 10%);
+$overcast: (
+  "light": $sakura4,
+  "normal": $sakura5,
+  "dark": $sakura6,  
+);
 
-$negative-color: $sakura11;
-$negative-color-hover: color.adjust($sakura11, $lightness: -10%);
-$negative-color-selected: color.adjust($sakura11, $lightness: 10%);
+$cherry-blossom: (
+  "lighter": $sakura7,
+  "light": $sakura8,
+  "normal": $sakura9,
+  "dark": $sakura10, 
+);
 
-$primary-background-color: $sakura4;
-$primary-background-color-dark: $sakura0;
-
-$secondary-background-color: $sakura5;
-$primary-background-color-hover: $sakura6;
-
-$primary-text-color: $sakura0;
-$primary-text-color-dark: $sakura4;
-
-$secondary-text-color: $sakura2;
-$secondary-text-on-secondary-color: $sakura2;
-$text-color-on-primary: $sakura4;
-
-$placeholder-color: $sakura3;
-$disabled-text-color: $sakura3;
-
-$link-color: $sakura10;
-$link-accent-color: $sakura11;
-
-$body-font-family: 'Arvo';
-$body-font-size: 14px;
-$body-font-color: $primary-text-color;
+$sunset: (
+  "red": $sakura11,
+  "orange": $sakura12,
+  "yellow": $sakura13,
+  "green": $sakura14,
+  "blue": $sakura15,
+);

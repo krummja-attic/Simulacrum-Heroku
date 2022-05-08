@@ -15,7 +15,7 @@ defineProps({
 
 
 <template>
-  <div class="navitem">
+  <div class="navitem type-general">
     <router-link :to="path">
       {{ label }}
     </router-link>
@@ -31,36 +31,5 @@ defineProps({
   width: auto;
   height: calc(100% + 5px);
   font: 16px 'Arvo', sans-serif;
-
-  a {
-    text-decoration: none;
-    color: var(--primary-text-color);
-
-    &:hover {
-      color: var(--link-accent-color);
-    }
-
-    &::before {
-      content: "";
-      transform-origin: 50% 100% 0px;
-      background-color: var(--link-color);
-      transition: clip-path 0.3s ease 0s, transform 0.3s cubic-bezier(0.2, 1, 0.8, 1) 0s;
-      position: absolute;
-      top: 100%;
-      left: 0px;
-      width: 100%;
-      height: 1px;
-      clip-path: 
-        polygon(0% 0%, 0% 100%, 0px 100%, 0px 0px, 100% 0px, 100% 100%, 0px 100%, 0px 100%, 100% 100%, 100% 0%);
-    }
-
-    &:hover {
-      &::before {
-        transform: translate3d(0px, 2px, 0px) scale3d(1, 2, 1);
-        clip-path: 
-          polygon(0% 0%, 0% 100%, 100% 100%, 50% 0px, 50% 0px, 50% 100%, 50% 100%, 0px 100%, 100% 100%, 100% 0%)
-      }
-    }
-  }
 }
 </style>

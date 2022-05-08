@@ -1,68 +1,70 @@
 @use "sass:color";
+@use "sass:map";
 @import "@/assets/vars/_colors.scss";
 
+
 :root {
-  --primary-color: #{$primary-color};
-  --primary-hover-color: #{$primary-hover-color};
-  --primary-selected-color: #{$primary-selected-color};
+  // Accents
+  --primary-color: #{map.get($cherry-blossom, "normal")};
+  --primary-hover-color: #{map.get($cherry-blossom, "dark")};
+  --primary-selected-color: #{map.get($cherry-blossom, "lighter")};
 
-  --positive-color: #{$positive-color};
-  --positive-color-hover:  #{$positive-color-hover};
-  --positive-color-selected:  #{$positive-color-selected};
-  --negative-color: #{$negative-color};
-  --negative-color-hover:  #{$negative-color-hover};
-  --negative-color-selected:  #{$negative-color-selected};
+  // Semantic Colors
+  --positive-color: #{map.get($sunset, "green")};
+  --positive-color-hover:  #{color.adjust(map.get($sunset, "green"), $lightness: -10%)};
+  --positive-color-selected:  #{color.adjust(map.get($sunset, "green"), $lightness: 10%)};
+  
+  --negative-color: #{map.get($sunset, "red")};
+  --negative-color-hover:  #{color.adjust(map.get($sunset, "red"), $lightness: -10%)};
+  --negative-color-selected:  #{color.adjust(map.get($sunset, "red"), $lightness: 10%)};
 
-  --primary-background-color: #{$primary-background-color};
-  --secondary-background-color: #{$secondary-background-color};
-  --primary-background-color-hover: #{$primary-background-color-hover};
+  // Backgrounds
+  --primary-background-color: #{map.get($overcast, "light")};
 
-  --primary-text-color: #{$primary-text-color};
-  --primary-text-color-dark: #{$primary-text-color-dark};
-  --secondary-text-color: #{$secondary-text-color};
-  --secondary-text-on-secondary-color: #{$secondary-text-on-secondary-color};
-  --text-color-on-primary: #{$text-color-on-primary};
-
-  --placeholder-color: #{$placeholder-color};
-  --disabled-text-color: #{$disabled-text-color};
-
-  --link-color: #{$link-color};
-  --link-accent-color: #{$link-accent-color};
-
-  --body-font-family:  #{$body-font-family};
-  --body-font-size:  #{$body-font-size};
-  --body-font-color:  #{$body-font-color};
+  // Type
+  --primary-text-color: #{map.get($deep-night, "dark")};
+  --secondary-text-color: #{map.get($deep-night, "light")};
+  --text-color-on-primary: #{map.get($overcast, "light")};
+  --tertiary-text-color: #{map.get($overcast, "dark")};
+  --placeholder-color: #{map.get($deep-night, "light")};
+  --disabled-text-color: #{map.get($deep-night, "light")};
+  --link-color: #{map.get($cherry-blossom, "dark")};
+  --link-accent-color: #{map.get($sunset, "red")};
+  
+  --inactive-icon-color: invert(17%) sepia(15%) saturate(294%) hue-rotate(292deg) brightness(95%) contrast(90%);
 }
 
 
 [theme="dark"] {
-  --primary-color: #{$primary-color};
-  --primary-hover-color: #{$primary-hover-color};
-  --primary-selected-color: #{$primary-selected-color};
+  // Accents
+  --primary-color: #{map.get($cherry-blossom, "normal")};
+  --primary-hover-color: #{map.get($cherry-blossom, "dark")};
+  --primary-color-selected: #{map.get($cherry-blossom, "lighter")};
 
-  --positive-color: #{$positive-color};
-  --positive-color-hover:  #{$positive-color-hover};
-  --positive-color-selected:  #{$positive-color-selected};
-  --negative-color: #{$negative-color};
-  --negative-color-hover:  #{$negative-color-hover};
-  --negative-color-selected:  #{$negative-color-selected};
+  // Semantic Colors
+  --positive-color: #{map.get($sunset, "green")};
+  --positive-color-hover:  #{color.adjust(map.get($sunset, "green"), $lightness: -10%)};
+  --positive-color-selected:  #{color.adjust(map.get($sunset, "green"), $lightness: 10%)};
+  
+  --negative-color: #{map.get($sunset, "red")};
+  --negative-color-hover:  #{color.adjust(map.get($sunset, "red"), $lightness: -10%)};
+  --negative-color-selected:  #{color.adjust(map.get($sunset, "red"), $lightness: 10%)};
 
-  --primary-background-color: #{$primary-background-color-dark};
-  --secondary-background-color: #{$secondary-background-color};
-  --primary-background-color-hover: #{$primary-background-color-hover};
+  // Backgrounds
+  --primary-background-color: #{map.get($deep-night, "dark")};
+  --primary-background-color-hover: #{color.adjust(map.get($deep-night, "dark"), $lightness: 2%)};
+  --secondary-background-color: #{map.get($deep-night, "normal")};
 
-  --primary-text-color: #{$primary-text-color-dark};
-  --secondary-text-color: #{$secondary-text-color};
-  --secondary-text-on-secondary-color: #{$secondary-text-on-secondary-color};
-  --text-color-on-primary: #{$text-color-on-primary};
+  // Type
+  --primary-text-color: #{map.get($overcast, "light")};
+  --secondary-text-color: #{map.get($deep-night, "lighter")};
+  --tertiary-text-color: #{map.get($deep-night, "light")};
+  --text-color-on-primary: #{map.get($overcast, "light")};
+  --placeholder-color: #{map.get($overcast, "dark")};
+  --disabled-text-color: #{map.get($overcast, "dark")};
+  --link-color: #{map.get($cherry-blossom, "dark")};
+  --link-accent-color: #{map.get($sunset, "red")};
 
-  --placeholder-color: #{$placeholder-color};
-  --disabled-text-color: #{$disabled-text-color};
-
-  --link-color: #{$link-color};
-  --link-accent-color: #{$link-accent-color};
-
-  --body-font-family:  #{$body-font-family};
-  --body-font-size:  #{$body-font-size};
-  --body-font-color:  #{$body-font-color};
+  --active-icon-color: invert(92%) sepia(32%) saturate(35%) hue-rotate(279deg) brightness(99%) contrast(97%);
+  --inactive-icon-color: none;
 }

@@ -3,7 +3,7 @@
     <router-link :to="'/'">
       <img 
         class="logo" 
-        src="@/assets/image/logo-dark.svg"
+        src="@/assets/image/logo-light.svg"
       >
     </router-link>
   </div>
@@ -18,21 +18,23 @@
   left: 96px;
   width: 64px;
 
-  transition-property: transform, filter;
+  transition-property: transform;
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   &:hover {
-    transition-property: transform, filter;
+    transition-property: transform;
     transition-duration: 0.3s;
     transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transform:
       translateY(-5px);
-    filter:
-      brightness(1.6)
-      contrast(200%)
-      hue-rotate(-80deg)
-      drop-shadow(-2px 2px var(--link-color));
+    filter: 
+      invert(68%) 
+      sepia(24%) 
+      saturate(7463%) 
+      hue-rotate(307deg) 
+      brightness(92%)
+      contrast(82%);
   }
 }
 </style>

@@ -1,29 +1,35 @@
 <script setup>
 import SiteHeader from '@/components/site/SiteHeader';
 import SiteFooter from '@/components/site/SiteFooter';
-import { onMounted, ref, watch } from 'vue';
+import PageOptions from '@/components/elements/PageOptions';
+import { onMounted, watch, computed } from 'vue';
+import { useStore } from 'vuex';
 
-const darkMode = ref(false);
+const store = useStore();
+
+const switchTheme = () => {
+  let htmlElement = document.documentElement;
+
+  if (store.state.siteElements.darkMode) {
+    localStorage.setItem("theme", "dark");
+    htmlElement.setAttribute("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+    htmlElement.setAttribute("theme", "light");
+  }
+};
 
 onMounted(() => {
   let bodyElement = document.body;
   bodyElement.classList.add("app-background");
+  switchTheme();
 });
 
-watch(darkMode, () => {
-  let htmlElement = document.documentElement;
+const darkMode = computed(() => store.state.siteElements.darkMode);
 
-  if (darkMode.value) {
-    console.log("Dark Mode");
-    localStorage.setItem("theme", "dark");
-    htmlElement.setAttribute("theme", "dark");
-  } else {
-    console.log("Light Mode");
-    localStorage.setItem("theme", "light");
-    htmlElement.setAttribute("theme", "light");
-  }
-});
+watch(darkMode, switchTheme);
 </script>
+
 
 <template>
   <div class="app">
@@ -32,11 +38,6 @@ watch(darkMode, () => {
       <SiteHeader />
 
       <div class="content">
-        <input 
-          v-model="darkMode"
-          type="checkbox"
-          class="theme-switch"
-        >
 
         <router-view v-slot="{ Component, path }">
           <transition
@@ -51,6 +52,8 @@ watch(darkMode, () => {
         </router-view>
       </div>
 
+      <PageOptions />
+
       <SiteFooter />
 
     </div>
@@ -59,49 +62,9 @@ watch(darkMode, () => {
 
 
 <style lang="scss">
-@import './assets/scss/reset.scss';
+@import '@/assets/scss/reset.scss';
 @import "@/assets/scss/app.scss";
-@import './assets/scss/typography.scss';
-
-
-// GLOBAL ================================================================== //
-
-* {
-  // scrollbar-width: thin;
-  // scrollbar-color: $accent-1 transparent;
-
-  &::-webkit-scrollbar {
-    width: 12px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 20px;
-    border: 3px solid var(--primary-text-color);
-  }
-}
-
-html {
-  -ms-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-
-  overflow-y: scroll;
-  font-size: 100%;
-
-  @supports (scrollbar-gutter: stable) {
-    overflow-y: auto;
-    scrollbar-gutter: stable;
-  }
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: var(--primary-background-color);
-}
+@import '@/assets/scss/typography.scss';
 
 .app {
   height: 100%;
@@ -111,10 +74,6 @@ body {
 // MOBILE ================================================================== //
 
 @include mobile {
-  body {
-    --body-width: calc(100vw - 36px);
-  }
-
   .app-container {
     display: flex;
     flex-direction: column;
@@ -130,10 +89,6 @@ body {
 // TABLET ================================================================== //
 
 @include tablet {
-  body {
-    --body-width: calc(650px + 15vw);
-  }
-
   .app-container {
     display: flex;
     flex-direction: column;
@@ -149,10 +104,6 @@ body {
 // DESKTOP ================================================================= //
 
 @include desktop {
-  body {
-    --body-width: 100%;
-  }
-
   .app-container {
     display: flex;
     flex-direction: column;
@@ -174,5 +125,4 @@ body {
 .fade-leave-to {
   opacity: 0;
 }
-
 </style>

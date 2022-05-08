@@ -1,4 +1,5 @@
 <script setup>
+import GardenPlot from "@/components/blog/GardenPlot.vue";
 </script>
 
 
@@ -6,8 +7,19 @@
   <div 
     ref="componentRoot" 
     class="garden"
-  >
-    <!--  -->
+  > 
+    <div class="garden-wrapper">
+      <GardenPlot />
+      <GardenPlot title="Some Much Longer Cooler Title" />
+      <GardenPlot title="Another Title, But Different" />
+      <GardenPlot />
+      <GardenPlot />
+      <GardenPlot />
+      <GardenPlot />
+      <GardenPlot />
+      <GardenPlot />
+      <GardenPlot />
+    </div>
   </div>
 </template>
 
@@ -17,6 +29,16 @@
 
 .garden {
   display: flex;
+  height: auto;
+}
+
+.garden-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
 }
 
 @include mobile {

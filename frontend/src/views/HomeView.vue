@@ -4,8 +4,7 @@
 
 <template>
   <div class="home">
-    <!-- <button class="positive">Test</button>
-    <button class="negative">Test</button> -->
+    <!--  -->
   </div>
 </template>
 
@@ -34,7 +33,7 @@ button {
   border-radius: 4px;
   font-family: $body-font-family;
   font-size: $body-font-size;
-  color: $body-font-color;
+  color: var(--primary-text-color);
   font-weight: 700;
 
   cursor: pointer;
@@ -45,18 +44,18 @@ button {
 }
 
 .positive {
-  background-color: $positive-color;
+  background-color: var(--positive-color);
 
   &:hover {
-    background-color: $positive-color-hover;
+    background-color: var(--positive-color-hover);
   }
 }
 
 .negative {
-  background-color: $negative-color;
+  background-color: var(--negative-color);
 
   &:hover {
-    background-color: $negative-color-hover;
+    background-color: var(--negative-color-hover);
   }
 }
 </style>

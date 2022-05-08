@@ -55,7 +55,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .zdog-canvas {
-  width: 300px;
-  height: 300px;
+  width: auto;
+  height: 100px;
 }
 </style>

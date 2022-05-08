@@ -1,6 +1,23 @@
 <script setup>
 import NavBar from '@/components/site/NavBar';
 import SiteLogo from '@/components/site/SiteLogo';
+import { onMounted } from "vue";
+
+const options = {
+  root: document.querySelector('#app'),
+  rootMargin: '0px',
+  threshold: 1.0,
+};
+
+const observer = new IntersectionObserver((entities, observer) => {
+  console.log(entities);
+  console.log(observer);
+}, options);
+
+onMounted(() => {
+  let navWrapper = document.querySelector('#navWrapper');
+  observer.observe(navWrapper);
+});
 </script>
 
 
@@ -10,7 +27,10 @@ import SiteLogo from '@/components/site/SiteLogo';
     <div class="mobile-content desktop-hidden">
       <!--  -->
     </div>
-    <div class="header-content mobile-hidden">
+    <div 
+      id="navWrapper"
+      class="header-content mobile-hidden"
+    >
       <NavBar />
     </div>
   </div>
