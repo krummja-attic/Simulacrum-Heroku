@@ -88,10 +88,12 @@ const props = defineProps({
 
   .preview-fade {
     position: absolute;
-    inset: 0;
-    width: 100%;
+    bottom: 0;
+    right: 0;
+    height: 25px;
+    width: 100px;
     text-align: center;
-    background-image: linear-gradient(to bottom, transparent, var(--primary-background-color));
+    background-image: linear-gradient(to right, transparent, var(--primary-background-color));
   }
 }
 

@@ -1,24 +1,7 @@
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue';
-import { useStore } from 'vuex';
-
-const store = useStore();
-const icon = ref(null);
-
-const setTheme = () => {
-  if (store.state.siteElements.darkMode) {
-    icon.value.setAttribute("theme", "dark");
-  } else {
-    icon.value.setAttribute("theme", "light");
-  }
-};
-
-onMounted(() => {
-  setTheme();
-})
-
-const darkMode = computed(() => store.state.siteElements.darkMode);
-watch(darkMode, setTheme);
+import { ref } from 'vue';
+import { useTheme } from '../../../plugins/useTheme';
+const icon = useTheme(ref(null));
 </script>
 
 
