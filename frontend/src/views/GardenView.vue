@@ -1,5 +1,19 @@
 <script setup>
 import GardenPlot from "@/components/blog/GardenPlot.vue";
+// import { inject, onMounted } from 'vue';
+
+// const axios = inject('axios');
+
+// const getPosts = () => {
+//   console.log("Getting Posts...");
+//   axios
+//     .get('/posts')
+//     .then((res) => {
+//       console.log(res.data);
+//     });
+// };
+
+// onMounted(getPosts);
 </script>
 
 

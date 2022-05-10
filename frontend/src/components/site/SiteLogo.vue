@@ -1,13 +1,34 @@
+<script setup>
+import { ref, watch, computed } from 'vue';
+import { useStore } from 'vuex';
+
+const dark = ref(true);
+const store = useStore();
+const darkMode = computed(() => store.state.siteElements.darkMode);
+
+watch(darkMode, () => {
+  dark.value = !dark.value;
+});
+</script>
+
+
 <template>
   <div class="site-logo">
     <router-link :to="'/'">
       <img 
+        v-if="dark"
         class="logo" 
         src="@/assets/image/logo-light.svg"
+      >
+      <img 
+        v-else
+        class="logo" 
+        src="@/assets/image/logo-dark.svg"
       >
     </router-link>
   </div>
 </template>
+
 
 <style lang="scss" scoped>
 @import "@/assets/scss/app.scss";

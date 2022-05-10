@@ -70,8 +70,9 @@ watch(darkMode, switchTheme);
   height: 100%;
 }
 
-
-// MOBILE ================================================================== //
+#app {
+  height: 100%;
+}
 
 @include mobile {
   .app-container {
@@ -86,8 +87,6 @@ watch(darkMode, switchTheme);
 }
 
 
-// TABLET ================================================================== //
-
 @include tablet {
   .app-container {
     display: flex;
@@ -100,8 +99,6 @@ watch(darkMode, switchTheme);
   }
 }
 
-
-// DESKTOP ================================================================= //
 
 @include desktop {
   .app-container {

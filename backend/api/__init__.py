@@ -31,11 +31,11 @@ class EnvMode(Enum):
     PRODUCTION = 1
     
     
-BOOKS = [
+POSTS = [
     {
-        'title': 'On the Road',
-        'author': 'Jack Kerouac',
-        'read': False
+        'title': 'A Title Served From Database',
+        'body': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        'date': 'May 9, 2022 at 8:11pm'
     }
 ]
 
@@ -45,6 +45,7 @@ def create_app(env: EnvMode = EnvMode.DEVELOPMENT) -> Flask:
     app = Flask(__name__, instance_relative_config = True)
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+    # Check the environment type, then load appropriate config.
     match env:
         case EnvMode.DEVELOPMENT:
             app.config.from_object(config.DevConfig)
@@ -60,23 +61,25 @@ def create_app(env: EnvMode = EnvMode.DEVELOPMENT) -> Flask:
     # Initialize the Admin application
     init_admin(app)
 
+    # Define a registration endpoint
     @app.route('/register', methods=('POST', 'GET'))
     def register():
         return "Hello world!"
     
-    @app.route('/books', methods=['GET', 'POST'])
-    def all_books():
+    # Define a blog posts endpoint
+    @app.route('/posts', methods=['GET', 'POST'])
+    def all_posts():
         response_object = {'status': 'success'}
         if request.method == 'POST':
             post_data = request.get_json()
-            BOOKS.append({
+            POSTS.append({
                 'title': post_data.get('title'),
-                'author': post_data.get('author'),
-                'read': post_data.get('read')
+                'body': post_data.get('body'),
+                'date': post_data.get('date')
             })
-            response_object['message'] = 'Book added!'
+            response_object['message'] = 'Post added!'
         else:
-            response_object['books'] = BOOKS
+            response_object['posts'] = POSTS
         return jsonify(response_object)
 
     return app

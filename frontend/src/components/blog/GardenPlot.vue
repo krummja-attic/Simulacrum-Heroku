@@ -82,7 +82,7 @@ const props = defineProps({
   position: relative;
   margin-top: 16px;
   text-align: justify;
-  max-height: 75px;
+  max-height: 70px;
   overflow: hidden;
   transition: all 0.15s ease-in;
 

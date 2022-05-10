@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { useTheme } from '../../../plugins/useTheme';
+import { useTheme } from '@/plugins/useTheme';
 const icon = useTheme(ref(null));
 </script>
 
