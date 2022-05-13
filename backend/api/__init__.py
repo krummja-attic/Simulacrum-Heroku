@@ -41,7 +41,7 @@ def create_app(test_config=None):
     Path(app.instance_path).mkdir(exist_ok = True)
     
     init_admin(app)
-    
+
     @app.route('/hello')
     def hello():
         return 'Hello, world!'

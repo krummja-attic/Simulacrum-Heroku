@@ -26,11 +26,18 @@ os.chdir(script_path)
 # Join the dist folder with the working path
 dist_folder = os.path.join(os.getcwd(), '../frontend/dist')
 
+# frontend = SharedDataMiddleware(NotFound(), {
+#     '/js/'  : os.path.join(dist_folder, '/js/'      ),
+#     '/css/' : os.path.join(dist_folder, '/css/'     ),
+#     '/img/' : os.path.join(dist_folder, '/img/'     ),
+#     '/'     : os.path.join(dist_folder, '/index.html'),
+# })
+
 frontend = SharedDataMiddleware(NotFound(), {
-    '/js/': os.path.join(dist_folder, '/js/'),
-    '/css/': os.path.join(dist_folder, '/css/'),
-    '/img/': os.path.join(dist_folder, '/img/'),
-    '/': os.path.join(dist_folder, 'index.html'),
+    '/js/': '../frontend/dist/js/',
+    '/css/': '../frontend/dist/css/',
+    '/img/': '../frontend/dist/img/',
+    '/': '../frontend/dist/index.html'
 })
 
 app = DispatcherMiddleware(frontend, { 
@@ -39,4 +46,4 @@ app = DispatcherMiddleware(frontend, {
 
 if __name__ == '__main__':
     from werkzeug.serving import run_simple
-    run_simple('127.0.0.1', 5000, app, use_debugger = False, use_reloader = True)
+    run_simple('127.0.0.1', 5000, app, use_debugger = True, use_reloader = True)

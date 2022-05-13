@@ -68,4 +68,4 @@ class User(DB.Model):
         self.password = generate_password_hash(password, method='sha256')
 
     def __repr__(self) -> str:
-        return repr(f'<User: {self.username}')
+        return repr(f'<User: {self.username}>')

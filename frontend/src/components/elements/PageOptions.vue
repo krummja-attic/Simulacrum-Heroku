@@ -13,7 +13,6 @@ const switchLight = () => store.dispatch('siteElements/setLightTheme');
 
 <template>
   <div class="page-options">
-   
     <div class="theme-switch">
       <OptionButton :on-click="switchDark">
         <DarkMode />

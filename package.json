@@ -6,7 +6,11 @@
   },
   "scripts": {
     "commit": "git add . && git commit -m '$(date)'",
-    "deploy": "git push https://${GITHUB_LOGIN}/Simulacrum-Heroku.git",
-    "postinstall": "cd frontend && npm install && npm run build"
+    "push": "git push https://${GITHUB_LOGIN}/Simulacrum-Heroku.git",
+    "deploy": "git add . && git commit -m '$(date)' && git push heroku master",
+    "build": "rm -rf ./frontend/dist/ && cd frontend && npm run build",
+    "postinstall": "cd frontend && npm install && npm run build",
+    "frontend": "cd frontend && npm run serve && cd ..",
+    "backend": "cd backend && python dispatcher.py && cd .."
   }
 }
