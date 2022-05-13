@@ -12,6 +12,7 @@ from dotenv import load_dotenv
 from pathlib import Path
 from flask import Flask
 from enum import Enum
+from api.admin import init_admin
 
 from .config import BASE_DIR
 
@@ -38,6 +39,8 @@ def create_app(test_config=None):
         app.config.update(test_config)
         
     Path(app.instance_path).mkdir(exist_ok = True)
+    
+    init_admin(app)
     
     @app.route('/hello')
     def hello():
