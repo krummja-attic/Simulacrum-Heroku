@@ -20,8 +20,8 @@ const switchTheme = () => {
 };
 
 onMounted(() => {
-  let bodyElement = document.body;
-  bodyElement.classList.add("app-background");
+  // let bodyElement = document.body;
+  // bodyElement.classList.add("app-background");
   switchTheme();
 });
 
