@@ -12,7 +12,7 @@ onMounted(() => {
 
 <template>
   <div class="footer">
-    <!-- <span>Copyright 2022 - Jonathan Crum</span> -->
+    <div />
   </div>
 </template>
 

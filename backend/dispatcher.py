@@ -1,5 +1,9 @@
 from __future__ import annotations
+from math import dist
 from typing import *
+
+import os
+from flask import send_from_directory
 
 # import sys
 # from pathlib import Path
@@ -13,17 +17,24 @@ from api import create_app, EnvMode
 if TYPE_CHECKING:
     pass
 
-frontend = SharedDataMiddleware(
-    NotFound(), {
-        '/js/': '../frontend/dist/js/',
-        '/css/': '../frontend/dist/css/',
-        '/img/': '../frontend/dist/img/',
-        '/': '../frontend/dist/index.html'
-    })
+# Get the current file path
+script_path = os.path.dirname(os.path.realpath(__file__))
 
-# Green Unicorn target.
-app = DispatcherMiddleware(frontend, {
-    '/api': create_app(env = EnvMode.PRODUCTION)
+# Switch working dir to that path
+os.chdir(script_path)
+
+# Join the dist folder with the working path
+dist_folder = os.path.join(os.getcwd(), '../frontend/dist')
+
+frontend = SharedDataMiddleware(NotFound(), {
+    '/js/': os.path.join(dist_folder, '/js/'),
+    '/css/': os.path.join(dist_folder, '/css/'),
+    '/img/': os.path.join(dist_folder, '/img/'),
+    '/': os.path.join(dist_folder, 'index.html'),
+})
+
+app = DispatcherMiddleware(frontend, { 
+    '/api': create_app()
 })
 
 if __name__ == '__main__':

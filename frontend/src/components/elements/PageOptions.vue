@@ -2,13 +2,10 @@
 import OptionButton from "./OptionButton.vue";
 import DarkMode from '@/components/elements/icons/DarkMode';
 import LightMode from '@/components/elements/icons/LightMode';
-// import { computed } from 'vue';
 import { useStore } from "vuex";
 
 const store = useStore();
 
-// const decreaseFontScale = () => store.dispatch('siteElements/decreaseFontScale');
-// const increaseFontScale = () => store.dispatch('siteElements/increaseFontScale');
 const switchDark = () => store.dispatch('siteElements/setDarkTheme');
 const switchLight = () => store.dispatch('siteElements/setLightTheme');
 </script>
@@ -16,22 +13,7 @@ const switchLight = () => store.dispatch('siteElements/setLightTheme');
 
 <template>
   <div class="page-options">
-    <!-- <div class="text-size">
-      <OptionButton 
-        :on-click="increaseFontScale"
-        src="text-plus.svg" 
-      />
-
-      <OptionButton 
-        src="text-size.svg" 
-      />
-
-      <OptionButton 
-        :on-click="decreaseFontScale"
-        src="text-minus.svg" 
-      />
-    </div> -->
-    
+   
     <div class="theme-switch">
       <OptionButton :on-click="switchDark">
         <DarkMode />
