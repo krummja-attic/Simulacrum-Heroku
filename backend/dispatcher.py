@@ -26,13 +26,6 @@ os.chdir(script_path)
 # Join the dist folder with the working path
 dist_folder = os.path.join(os.getcwd(), '../frontend/dist')
 
-# frontend = SharedDataMiddleware(NotFound(), {
-#     '/js/'  : os.path.join(dist_folder, '/js/'      ),
-#     '/css/' : os.path.join(dist_folder, '/css/'     ),
-#     '/img/' : os.path.join(dist_folder, '/img/'     ),
-#     '/'     : os.path.join(dist_folder, '/index.html'),
-# })
-
 frontend = SharedDataMiddleware(NotFound(), {
     '/js/': '../frontend/dist/js/',
     '/css/': '../frontend/dist/css/',
