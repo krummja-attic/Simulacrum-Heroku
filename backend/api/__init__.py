@@ -26,7 +26,7 @@ class EnvMode(Enum):
 
 
 def create_app(
-        env_mode: EnvMode = EnvMode.DEVELOPMENT, 
+        env_mode: EnvMode = EnvMode.PRODUCTION, 
         config: Optional[Dict[str, Any]] = None
     ) -> Flask:
 
