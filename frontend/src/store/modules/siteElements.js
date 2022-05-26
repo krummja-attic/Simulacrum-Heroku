@@ -1,6 +1,7 @@
 
 const state = () => ({
   darkMode: true,
+  theme: 'dark',
   fontScale: 5,
 });
 
@@ -21,6 +22,10 @@ const actions = {
 
   setLightTheme: (context) => {
     context.commit('SET_LIGHT_THEME');
+  },
+
+  setTheme: (context, value) => {
+    context.commit('SET_THEME', value);
   }
 }
 
@@ -39,6 +44,10 @@ const mutations = {
 
   SET_LIGHT_THEME (state) {
     state.darkMode = false;
+  },
+
+  SET_THEME (state, value) {
+    state.theme = value;
   }
 }
 

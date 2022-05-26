@@ -9,12 +9,12 @@ from typing import *
 
 import os
 from dotenv import load_dotenv
-from pathlib import Path
 from flask import Flask
 from enum import Enum
-from api.admin import init_admin
 
-from .config import BASE_DIR
+from api.config import BASE_DIR
+from api.admin import init_admin
+from api.model import DB
 
 
 load_dotenv(os.path.join(BASE_DIR, '../../.env'))
@@ -25,23 +25,29 @@ class EnvMode(Enum):
     PRODUCTION = 1
 
 
-def create_app(test_config=None):
-    app = Flask(__name__, instance_relative_config=True)
-    app.config.from_mapping(
-        SECRET_KEY = 'dev',
-        SQLALCHEMY_DATABASE_URI = 'sqlite:///' + str(Path(app.instance_path) / 'database.sqlite'),
-        SQLALCHEMY_TRACK_MODIFICATIONS = False
-    )
+def create_app(
+        env_mode: EnvMode = EnvMode.DEVELOPMENT, 
+        config: Optional[Dict[str, Any]] = None
+    ) -> Flask:
 
-    if test_config is None:
-        app.config.from_pyfile('config.py', silent = True)
-    else:
-        app.config.update(test_config)
-        
-    Path(app.instance_path).mkdir(exist_ok = True)
+    app = Flask(__name__)
+
+    if env_mode == EnvMode.DEVELOPMENT:
+        from .config import DevConfig
+        app.config.from_object(DevConfig())
+    elif env_mode == EnvMode.PRODUCTION:
+        from .config import ProdConfig
+        app.config.from_object(ProdConfig())
     
-    init_admin(app)
+    if config is not None:
+        app.config.update(config)
 
+    init_admin(app)
+    
+    @app.route('/')
+    def root():
+        return 'Backend root'
+    
     @app.route('/hello')
     def hello():
         return 'Hello, world!'

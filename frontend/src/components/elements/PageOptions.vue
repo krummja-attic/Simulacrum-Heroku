@@ -1,26 +1,12 @@
 <script setup>
-import OptionButton from "./OptionButton.vue";
-import DarkMode from '@/components/elements/icons/DarkMode';
-import LightMode from '@/components/elements/icons/LightMode';
-import { useStore } from "vuex";
-
-const store = useStore();
-
-const switchDark = () => store.dispatch('siteElements/setDarkTheme');
-const switchLight = () => store.dispatch('siteElements/setLightTheme');
+import ThemeSwitch from '@/components/elements/ThemeSwitch';
 </script>
 
 
 <template>
   <div class="page-options">
-    <div class="theme-switch">
-      <OptionButton :on-click="switchDark">
-        <DarkMode />
-      </OptionButton>
-      
-      <OptionButton :on-click="switchLight">
-        <LightMode />
-      </OptionButton>
+    <div class="page-options-wrapper">
+      <ThemeSwitch />
     </div>
   </div>
 </template>
@@ -33,9 +19,9 @@ const switchLight = () => store.dispatch('siteElements/setLightTheme');
   justify-content: flex-end;
   gap: 20px;
   position: sticky;
-  bottom: 20px;
+  bottom: 16px;
   width: 100%;
-  height: 24px;
+  height: auto;
 }
 
 .text-size {
@@ -54,6 +40,7 @@ const switchLight = () => store.dispatch('siteElements/setLightTheme');
   justify-content: space-between;
   gap: 3px;
 
+  height: 36px;
   margin-right: 96px;
 }
 </style>

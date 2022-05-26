@@ -4,10 +4,10 @@ import { useStore } from 'vuex';
 
 const dark = ref(true);
 const store = useStore();
-const darkMode = computed(() => store.state.siteElements.darkMode);
+const theme = computed(() => store.state.siteElements.theme);
 
-watch(darkMode, () => {
-  dark.value = !dark.value;
+watch(theme, () => {
+  dark.value = theme.value === 'dark';
 });
 </script>
 

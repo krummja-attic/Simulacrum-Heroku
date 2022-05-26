@@ -7,32 +7,37 @@ import { useStore } from 'vuex';
 
 const store = useStore();
 
-const switchTheme = () => {
-  let htmlElement = document.documentElement;
+const storageKey = 'theme-preference';
 
-  if (store.state.siteElements.darkMode) {
-    localStorage.setItem("theme", "dark");
-    htmlElement.setAttribute("theme", "dark");
+function getColorPreference () {
+  if (localStorage.getItem(storageKey)) {
+    return localStorage.getItem(storageKey);
   } else {
-    localStorage.setItem("theme", "light");
-    htmlElement.setAttribute("theme", "light");
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
-};
+}
+
+function reflectPreference (themeSetting) {
+  let htmlElement = document.documentElement;
+  htmlElement.setAttribute('theme', themeSetting);
+  localStorage.setItem(storageKey, themeSetting);
+}
 
 onMounted(() => {
-  // let bodyElement = document.body;
-  // bodyElement.classList.add("app-background");
-  switchTheme();
-});
+  store.dispatch('siteElements/setTheme', getColorPreference());
+  reflectPreference(store.state.siteElements.theme);
+})
 
-const darkMode = computed(() => store.state.siteElements.darkMode);
-
-watch(darkMode, switchTheme);
+const theme = computed(() => store.state.siteElements.theme);
+watch(theme, () => { reflectPreference(theme.value) });
 </script>
 
 
 <template>
-  <div class="app">
+  <div 
+    ref="app"
+    class="app"
+  >
     <div class="app-container">
 
       <SiteHeader />

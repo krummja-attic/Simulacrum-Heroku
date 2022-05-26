@@ -18,8 +18,17 @@ from flask_sqlalchemy import SQLAlchemy
 # Security
 from werkzeug.security import generate_password_hash, check_password_hash
 
+if TYPE_CHECKING:
+    from flask import Flask
+
 
 DB = SQLAlchemy()
+
+
+class Test(DB.Model):
+    __tablename__ = 'new_table_test'
+
+    id = Column(Integer, Sequence('test_id_seq'), primary_key = True)
 
 
 class Post(DB.Model):
