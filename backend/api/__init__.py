@@ -25,7 +25,7 @@ class EnvMode(Enum):
     PRODUCTION = 1
 
 
-def create_app(env_mode: EnvMode = EnvMode.DEVELOPMENT) -> Flask:
+def create_app(env_mode: EnvMode = EnvMode.PRODUCTION) -> Flask:
     app = Flask(__name__)
 
     if env_mode == EnvMode.DEVELOPMENT:
