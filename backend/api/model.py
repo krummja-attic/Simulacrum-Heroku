@@ -15,9 +15,6 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from flask_sqlalchemy import SQLAlchemy
 
-# Security
-from werkzeug.security import generate_password_hash, check_password_hash
-
 if TYPE_CHECKING:
     from flask import Flask
 
@@ -25,56 +22,43 @@ if TYPE_CHECKING:
 DB = SQLAlchemy()
 
 
-class Test(DB.Model):
-    __tablename__ = 'new_table_test'
-
-    id = Column(Integer, Sequence('test_id_seq'), primary_key = True)
-
-
 class Post(DB.Model):
-    __tablename__ = 'post'
+    __tablename__ = 'posts'
 
-    id = Column(Integer, Sequence('user_id_seq'), primary_key = True)
+    id = Column(Integer, Sequence('post_id_seq'), primary_key = True)
     title = Column(String)
     created = Column(DateTime, server_default = func.now())
     body = Column(Text)
 
-    author_id = Column(Integer, ForeignKey('user.id'))
-    user = relationship('User', back_populates = 'posts')
+    # author_id = Column(Integer, ForeignKey('user.id'))
+    # user = relationship('User', back_populates = 'posts')
 
     def __repr__(self) -> str:
         return repr(f'<Post: {self.title}>')
 
 
 class User(DB.Model):
-    __tablename__ = 'user'
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key = True)
+    username = Column(String(80), unique=True)
+    password = Column(String(128))
+    # posts = relationship('Post', order_by = Post.id, back_populates = 'user')
 
-    id = Column(Integer, Sequence('user_id_seq'), primary_key = True)
-    username = Column(String)
-    password = Column(String)
+    @property
+    def is_authenticated(self) -> bool:
+        return True
 
-    posts = relationship('Post', order_by = Post.id, back_populates = 'user')
-
-    @classmethod
-    def authenticate(cls, **kwargs):
-        email = kwargs.get('email')
-        password = kwargs.get('password')
-
-        if not email or not password:
-            return None
-
-        user = cls.query.filter_by(email=email).first()
-        if not user or not check_password_hash(user.password, password):
-            return None
-
-        return user
-
-    def to_dict(self):
-        return dict(id=self.id, email=self.email)
-
-    def __init__(self, email, password) -> None:
-        self.email = email
-        self.password = generate_password_hash(password, method='sha256')
-
-    def __repr__(self) -> str:
-        return repr(f'<User: {self.username}>')
+    @property
+    def is_active(self) -> bool:
+        return True
+    
+    @property
+    def is_anonymous(self) -> bool:
+        return False
+    
+    def get_id(self):
+        return self.id
+    
+    def __unicode__(self):
+        return self.username
+    

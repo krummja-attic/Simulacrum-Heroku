@@ -24,6 +24,12 @@ const routes = [
         path: '/about',
         name: 'about',
         component: AboutView,
+    },
+    {
+        path: '/admin',
+        redirect: () => {
+            return { path: '/api/admin' }
+        }
     }
 ];
 

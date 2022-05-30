@@ -9,7 +9,7 @@ from typing import *
 
 import os
 from dotenv import load_dotenv
-from flask import Flask
+from flask import Flask, render_template
 from enum import Enum
 
 from api.config import BASE_DIR
@@ -25,11 +25,7 @@ class EnvMode(Enum):
     PRODUCTION = 1
 
 
-def create_app(
-        env_mode: EnvMode = EnvMode.PRODUCTION, 
-        config: Optional[Dict[str, Any]] = None
-    ) -> Flask:
-
+def create_app(env_mode: EnvMode = EnvMode.DEVELOPMENT) -> Flask:
     app = Flask(__name__)
 
     if env_mode == EnvMode.DEVELOPMENT:
@@ -38,18 +34,11 @@ def create_app(
     elif env_mode == EnvMode.PRODUCTION:
         from .config import ProdConfig
         app.config.from_object(ProdConfig())
-    
-    if config is not None:
-        app.config.update(config)
+
+    @app.route('/')
+    def index():
+        return render_template('index.html')
 
     init_admin(app)
-    
-    @app.route('/')
-    def root():
-        return 'Backend root'
-    
-    @app.route('/hello')
-    def hello():
-        return 'Hello, world!'
-    
+
     return app
