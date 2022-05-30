@@ -83,6 +83,7 @@ def init_admin(app: Flask) -> None:
     admin.add_view(ModelView(User, DB.session))
     admin.add_view(ModelView(Post, DB.session))
     
+    app.cli.add_command(init_db_command)
     if env_mode == 'development':
         with app.app_context():
             DB.drop_all()
@@ -92,9 +93,6 @@ def init_admin(app: Flask) -> None:
             
             DB.session.add(test_user)
             DB.session.commit()
-            
-    else:
-        app.cli.add_command(init_db_command)
 
 
 @click.command('init-db')
