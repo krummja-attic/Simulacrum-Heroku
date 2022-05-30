@@ -3,13 +3,16 @@ import TagPill from "@/components/elements/TagPill.vue";
 import { defineProps } from "vue";
 
 const props = defineProps({
+  id: {
+    type: Number
+  },
   title: {
     type: String,
-    default: "Placeholder Title",
+    default: "<Unset Title>",
   },
   timestamp: {
     type: String,
-    default: "April 25, 2020 at 7:49pm"
+    default: "<Unset Timestamp>",
   },
   tags: {
     type: Array,
@@ -18,6 +21,10 @@ const props = defineProps({
       'Design'
     ]
   },
+  body: {
+    type: String,
+    default: "<Empty>",
+  }
 });
 </script>
 
@@ -27,7 +34,7 @@ const props = defineProps({
     
     <div class="title-wrapper">
       <div class="title">
-        <h1><a>{{ props.title }}</a></h1>
+        <h1><a :href="'/garden/' + props.id">{{ props.title }}</a></h1>
       </div>
     </div>
 
@@ -48,7 +55,7 @@ const props = defineProps({
     </div>
 
     <div class="preview">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>{{ props.body }}</p>
       <div class="preview-fade" />
     </div>
   </div>

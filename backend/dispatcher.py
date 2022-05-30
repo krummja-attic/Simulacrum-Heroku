@@ -5,7 +5,7 @@ from werkzeug.exceptions import NotFound
 from werkzeug.middleware.shared_data import SharedDataMiddleware
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
-from api import create_app
+from cms import create_app
 
 if TYPE_CHECKING:
     pass
@@ -20,7 +20,7 @@ frontend = SharedDataMiddleware(NotFound(), {
 
 
 app = DispatcherMiddleware(frontend, { 
-    '/api': create_app()
+    '/cms': create_app()
 })
 
 

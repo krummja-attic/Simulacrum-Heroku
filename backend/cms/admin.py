@@ -8,10 +8,11 @@ import flask_login as login
 from flask.cli import with_appcontext
 from flask_admin import Admin, helpers
 from flask_admin.contrib import sqla
-
-from api.model import DB, User, Post
-from api.login import init_login, LoginForm, RegistrationForm
 from werkzeug.security import generate_password_hash
+
+from cms.model import DB, User, Post
+from cms.login import init_login, LoginForm
+from cms.post_parser import PostParser
 
 if TYPE_CHECKING:
     from flask import Flask
@@ -28,24 +29,19 @@ class AdminIndexView(admin.AdminIndexView):
 
     @admin.expose('/')
     def index(self):
-        # Uh-oh! Throw user into the login page
         current_user: User = cast(User, login.current_user)
         if not current_user.is_authenticated:
             return redirect(url_for('.login_view'))
-        
-        # We're good - welcome to the admin space
         return super(AdminIndexView, self).index()
     
     @admin.expose('/login/', methods=('GET', 'POST'))
     def login_view(self):
         form = LoginForm(request.form)
         
-        # Validate login form submission and log in if valid
         if helpers.validate_form_on_submit(form):
             user: User = form.get_user()
             login.login_user(user)
             
-        # Bounce back to the index now that we're authenticated ^o^
         current_user: User = cast(User, login.current_user)
         if current_user.is_authenticated:
             return redirect(url_for('.index'))
@@ -53,10 +49,21 @@ class AdminIndexView(admin.AdminIndexView):
         self._template_args['form'] = form
         return super(AdminIndexView, self).index()
     
-    @admin.expose('/logout')
+    @admin.expose('/logout/')
     def logout_view(self):
         login.logout_user()
         return redirect(url_for('.index'))
+    
+    @admin.expose('/api/')
+    def api_view(self):
+        posts = DB.session.query(Post).all()
+        payload = {}
+        for post in posts:
+            post_data = post.as_dict()
+            # PostParser(post_data)
+            # post_data['body'] = PostParser(post_data['body']).to_markdown()
+            payload[post.id] = post_data
+        return payload
 
 
 def init_admin(app: Flask) -> None:
@@ -84,14 +91,22 @@ def init_admin(app: Flask) -> None:
     admin.add_view(ModelView(Post, DB.session))
     
     app.cli.add_command(init_db_command)
+    
     if env_mode == 'development':
         with app.app_context():
             DB.drop_all()
             DB.create_all()
 
-            test_user = User(id=1, username="Test", password=generate_password_hash("12345"))
-            
+            test_user = User(username="Test", password=generate_password_hash("12345"))
             DB.session.add(test_user)
+            
+            test_post = Post(
+                title = 'Test Title',
+                tags = 'Test, Vue Development',
+                body = '''This is some test content to see if I can automatically create a new blog post.'''
+            )
+            DB.session.add(test_post)
+            
             DB.session.commit()
 
 

@@ -1,6 +1,6 @@
 <script setup>
 import { defineProps, ref } from 'vue';
-import { useTheme } from '@/plugins/useTheme';
+import { useTheme } from '@/composables/useTheme';
 
 const pill = useTheme(ref(null));
 

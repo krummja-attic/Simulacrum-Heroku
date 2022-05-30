@@ -28,16 +28,6 @@ class LoginForm(form.Form):
         return DB.session.query(User).filter_by(username=self.login.data).first()
 
 
-class RegistrationForm(form.Form):
-    login = fields.StringField(validators=[DataRequired()])
-    email = fields.StringField()
-    password = fields.PasswordField(validators=[DataRequired()])
-    
-    def validate_login(self, field):
-        if DB.session.query(User).filter_by(username=self.login.data).count() > 0:
-            raise ValidationError("Duplicate username")
-
-
 def init_login(app: Flask) -> None:
     login_manager = login.LoginManager()
     login_manager.init_app(app)

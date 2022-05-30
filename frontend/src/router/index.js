@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView';
 import AboutView from '../views/AboutView';
 import GardenView from '../views/GardenView';
 import ProjectsView from '../views/ProjectsView';
+import PostView from '../views/PostView';
 
 const routes = [
     {
@@ -14,6 +15,11 @@ const routes = [
         path: '/garden',
         name: 'garden',
         component: GardenView,
+    },
+    {
+        path: '/garden/:id',
+        name: 'post',
+        component: PostView
     },
     {
         path: '/projects',

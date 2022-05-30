@@ -9,14 +9,12 @@ from sqlalchemy import (
     Sequence,
     Text,
     DateTime,
-    ForeignKey,
 )
-from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from flask_sqlalchemy import SQLAlchemy
 
 if TYPE_CHECKING:
-    from flask import Flask
+    pass
 
 
 DB = SQLAlchemy()
@@ -28,10 +26,11 @@ class Post(DB.Model):
     id = Column(Integer, Sequence('post_id_seq'), primary_key = True)
     title = Column(String)
     created = Column(DateTime, server_default = func.now())
+    tags = Column(String)
     body = Column(Text)
 
-    # author_id = Column(Integer, ForeignKey('user.id'))
-    # user = relationship('User', back_populates = 'posts')
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
     def __repr__(self) -> str:
         return repr(f'<Post: {self.title}>')
@@ -39,10 +38,10 @@ class Post(DB.Model):
 
 class User(DB.Model):
     __tablename__ = 'users'
-    id = Column(Integer, primary_key = True)
+    
+    id = Column(Integer, Sequence('user_id_seq'), primary_key = True)
     username = Column(String(80), unique=True)
     password = Column(String(128))
-    # posts = relationship('Post', order_by = Post.id, back_populates = 'user')
 
     @property
     def is_authenticated(self) -> bool:
