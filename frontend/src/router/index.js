@@ -6,42 +6,42 @@ import ProjectsView from '../views/ProjectsView';
 import PostView from '../views/PostView';
 
 const routes = [
-    {
-        path: '/',
-        name: 'home',
-        component: HomeView,
-    },
-    {
-        path: '/garden',
-        name: 'garden',
-        component: GardenView,
-    },
-    {
-        path: '/garden/:id',
-        name: 'post',
-        component: PostView
-    },
-    {
-        path: '/projects',
-        name: 'projects',
-        component: ProjectsView,
-    },
-    {
-        path: '/about',
-        name: 'about',
-        component: AboutView,
-    },
-    {
-        path: '/admin',
-        redirect: () => {
-            return { path: '/api/admin' }
-        }
+  {
+    path: '/',
+    name: 'home',
+    component: HomeView,
+  },
+  {
+    path: '/garden',
+    name: 'garden',
+    component: GardenView,
+  },
+  {
+    path: '/garden/:id',
+    component: PostView,
+    canReuse: false,
+  },
+  {
+    path: '/projects',
+    name: 'projects',
+    component: ProjectsView,
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: AboutView,
+  },
+  {
+    path: '/admin',
+    redirect: () => {
+      return { path: '/api/admin' }
     }
+  }
 ];
 
 const router = new VueRouter.createRouter({
-    history: VueRouter.createWebHistory(),
-    routes,
+  history: VueRouter.createWebHistory(),
+  routes,
 });
 
 export default router;

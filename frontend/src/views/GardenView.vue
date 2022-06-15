@@ -1,6 +1,6 @@
 <script setup>
 import { inject, onMounted, ref } from 'vue';
-import GardenPlot from "@/components/blog/GardenPlot.vue";
+import GardenPlot from "@/components/GardenPlot.vue";
 
 const axios = inject('axios');
 
@@ -37,36 +37,27 @@ onMounted(() => {
     ref="componentRoot" 
     class="garden"
   > 
-    <div class="garden-wrapper">
-      <GardenPlot
-        v-for="post in posts"
-        :key="post.id"
-        :id="post.id"
-        :title="post.title"
-        :timestamp="post.created"
-        :tags="parseTagString(post.tags)"
-        :body="post.body"
-      />
-    </div>
+    <GardenPlot
+      v-for="post in posts"
+      :key="post.id"
+      :id="post.id"
+      :title="post.title"
+      :timestamp="post.created"
+      :tags="parseTagString(post.tags)"
+      :body="post.body"
+    />
   </div>
 </template>
 
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 @import "@/assets/scss/app.scss";
 
 .garden {
   display: flex;
   height: auto;
-}
-
-.garden-wrapper {
-  display: flex;
   flex-direction: column;
-  justify-items: center;
-  align-items: center;
   gap: 32px;
-  width: 100%;
 }
 
 @include mobile {

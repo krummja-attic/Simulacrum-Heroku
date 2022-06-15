@@ -1,5 +1,5 @@
 <script setup>
-import TagPill from "@/components/elements/TagPill.vue";
+import TagPill from "@/components/TagPill.vue";
 import { defineProps } from "vue";
 
 const props = defineProps({
@@ -34,7 +34,16 @@ const props = defineProps({
     
     <div class="title-wrapper">
       <div class="title">
-        <h1><a :href="'/garden/' + props.id">{{ props.title }}</a></h1>
+        <transition
+          mode="out-in"
+          name="fade"
+        >
+          <h1>
+            <router-link :to="'/garden/' + props.id">
+              {{ props.title }}
+            </router-link>
+          </h1>
+        </transition>
       </div>
     </div>
 
@@ -114,5 +123,15 @@ const props = defineProps({
     position: absolute;
     height: 40px;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

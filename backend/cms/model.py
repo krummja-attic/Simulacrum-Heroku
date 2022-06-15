@@ -9,6 +9,7 @@ from sqlalchemy import (
     Sequence,
     Text,
     DateTime,
+    Boolean,
 )
 from sqlalchemy.sql import func
 from flask_sqlalchemy import SQLAlchemy
@@ -24,6 +25,7 @@ class Post(DB.Model):
     __tablename__ = 'posts'
 
     id = Column(Integer, Sequence('post_id_seq'), primary_key = True)
+    draft = Column(Boolean)
     title = Column(String)
     created = Column(DateTime, server_default = func.now())
     tags = Column(String)

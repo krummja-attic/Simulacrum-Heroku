@@ -101,11 +101,12 @@
     
       {# store the jinja2 context for form_rules rendering logic #}
       {% set render_ctx = h.resolve_ctx() %}
-    
-      {% block body %}
-      {% endblock %}
+
     </div>
-    {% endblock %} <!-- page_body -->
+    {% endblock %}
+
+    {% block body_content %}
+    {% endblock %}
 
     {% block tail_js %}
     <script type="text/javascript" src="{{ admin_static.url(filename='vendor/jquery.min.js', v='3.5.1') }}"></script>

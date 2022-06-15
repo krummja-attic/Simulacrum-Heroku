@@ -1,6 +1,6 @@
 <script setup>
-import NavBar from '@/components/site/NavBar';
-import SiteLogo from '@/components/site/SiteLogo';
+import NavBar from '@/components/NavBar';
+import SiteLogo from '@/components/SiteLogo';
 </script>
 
 
@@ -25,9 +25,6 @@ import SiteLogo from '@/components/site/SiteLogo';
 
 .app-header {
   display: flex;
-}
-
-.header-content {
 }
 
 @include mobile {

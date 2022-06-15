@@ -1,5 +1,5 @@
 <script setup>
-import NavItem from '@/components/site/NavItem.vue';
+import NavItem from '@/components/NavItem.vue';
 
 const pathMap = [
   {
@@ -17,6 +17,7 @@ const pathMap = [
 ];
 </script>
 
+
 <template>
   <div 
     ref="navbar" 
@@ -30,6 +31,7 @@ const pathMap = [
     />
   </div>
 </template>
+
 
 <style lang="scss" scoped>
 .app-navbar {

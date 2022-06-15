@@ -1,11 +1,13 @@
 <script setup>
-import SiteHeader from '@/components/site/SiteHeader';
-import SiteFooter from '@/components/site/SiteFooter';
-import PageOptions from '@/components/elements/PageOptions';
+import SiteHeader from '@/components/SiteHeader';
+import SiteFooter from '@/components/SiteFooter';
+import PageOptions from '@/components/PageOptions';
 import { onMounted, watch, computed } from 'vue';
+import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 
 const store = useStore();
+const route = useRoute();
 
 const storageKey = 'theme-preference';
 
@@ -44,21 +46,23 @@ watch(theme, () => { reflectPreference(theme.value) });
 
       <div class="content">
 
-        <router-view v-slot="{ Component, path }">
+        <router-view v-slot="{ Component }">
           <transition
             mode="out-in"
             name="fade"
           >
             <component 
               :is="Component"
-              :key="path"
+              :key="route.fullPath"
             />
           </transition>
         </router-view>
       </div>
 
+      <!-- In Tablet/Mobile this should disappear -->
       <PageOptions />
 
+      <!-- As should this -->
       <SiteFooter />
 
     </div>
@@ -89,6 +93,13 @@ watch(theme, () => { reflectPreference(theme.value) });
     margin: 0 auto;
     padding: 0 5px;
   }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    flex: 1 0 auto;
+    justify-content: center;
+  }
 }
 
 
@@ -102,6 +113,13 @@ watch(theme, () => { reflectPreference(theme.value) });
     margin: 0 auto;
     padding: 0 5px;
   }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    flex: 1 0 auto;
+    justify-content: center;
+  }
 }
 
 
@@ -113,10 +131,12 @@ watch(theme, () => { reflectPreference(theme.value) });
   }
 
   .content {
+    display: flex;
+    flex-direction: row;
     flex: 1 0 auto;
+    justify-content: center;
   }
 }
-
 
 .fade-enter-active,
 .fade-leave-active {

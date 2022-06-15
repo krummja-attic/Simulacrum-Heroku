@@ -14,6 +14,7 @@ from enum import Enum
 
 from cms.config import BASE_DIR
 from cms.admin import init_admin
+from flask_mde import Mde
 
 
 load_dotenv(os.path.join(BASE_DIR, '../../.env'))
@@ -45,5 +46,6 @@ def create_app(env_mode: EnvMode = env_mode) -> Flask:
         return redirect('/cms/admin')
 
     init_admin(app)
+    mde = Mde(app)
 
     return app

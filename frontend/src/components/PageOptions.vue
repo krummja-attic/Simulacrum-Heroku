@@ -1,11 +1,15 @@
 <script setup>
-import ThemeSwitch from '@/components/elements/ThemeSwitch';
+import ThemeSwitch from '@/components/ThemeSwitch';
 </script>
 
 
 <template>
   <div class="page-options">
-    <div class="page-options-wrapper">
+    <div class="mobile-options-wrapper desktop-hidden">
+      <!--  -->
+    </div>
+
+    <div class="page-options-wrapper mobile-hidden">
       <ThemeSwitch />
     </div>
   </div>
