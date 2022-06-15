@@ -1,16 +1,10 @@
 {
-  "name": "simulacrum-space",
-  "engines": {
-    "npm": ">=7.14.0",
-    "node": ">=16.14.2"
-  },
-  "scripts": {
-    "commit": "git add . && git commit -m '$(date)'",
-    "push": "git push https://${GITHUB_LOGIN}/Simulacrum-Heroku.git",
-    "deploy": "git add . && git commit -m '$(date)' && git push heroku master",
-    "build": "rm -rf ./frontend/dist/ && cd frontend && npm run build",
-    "postinstall": "cd frontend && npm install && npm run build",
-    "frontend": "cd frontend && npm run serve && cd ..",
-    "backend": "cd backend && python dispatcher.py && cd .."
-  }
+    "name": "simulacrum-space",
+    "engines": {
+        "npm": ">=7.14.0",
+        "node": ">=16.14.2"
+    },
+    "scripts": {
+        
+    }
 }

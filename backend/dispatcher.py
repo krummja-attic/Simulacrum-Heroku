@@ -1,29 +1,21 @@
 from __future__ import annotations
 from typing import *
 
+from os import path
 from werkzeug.exceptions import NotFound
 from werkzeug.middleware.shared_data import SharedDataMiddleware
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
-from cms import create_app
+from api import create_app
 
-if TYPE_CHECKING:
-    pass
 
+ROOT_DIR = path.dirname(path.dirname(__file__))
+FRONTEND_DIR = path.join(ROOT_DIR, '/frontend/')
 
 frontend = SharedDataMiddleware(NotFound(), {
-    '/js/': '../frontend/dist/js/',
-    '/css/': '../frontend/dist/css/',
-    '/img/': '../frontend/dist/img/',
-    '/': '../frontend/dist/index.html'
+    '/': path.join(FRONTEND_DIR, '/index.html'),
 })
 
-
-app = DispatcherMiddleware(frontend, { 
-    '/cms': create_app()
+app = DispatcherMiddleware(frontend, {
+    '/api': create_app()
 })
-
-
-if __name__ == '__main__':
-    from werkzeug.serving import run_simple
-    run_simple('127.0.0.1', 5000, app, use_debugger = True, use_reloader = True)

@@ -1,4 +1,5 @@
 venv
+env
 .venv
 *.pyc
 staticfiles
@@ -13,6 +14,5 @@ frontend/dist/
 frontend/package-lock.json
 frontend/postcss.config.json
 node_modules/
-
 
 .idea
