@@ -1,0 +1,6 @@
+
+.sakura-h1 {
+    @apply text-overcast-light;
+
+    font-size: 40px;
+}

@@ -1,21 +1,28 @@
-<script setup>
-const name = "App Root"
-</script>
-
 <template>
-  <div class="flex flex-col">
-    <div class="w-4xl m-auto">
-      <router-view />
-    </div>
+  <div class="container" bg="deepnight-dark">
+    <router-view />
   </div>
 </template>
 
 <style>
+html, body {
+  @apply bg-deepnight-dark;
+  
+  height: 100%;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
   text-align: center;
-  margin-top: 60px;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  margin: 0 auto;
 }
 </style>
