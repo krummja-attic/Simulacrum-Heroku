@@ -4,10 +4,11 @@
   "version": "1.0.0",
   "scripts": {
     "start": "npm run dev",
+    "clean": "npm run build:clean",
     "dev": "vite --port 8080",
     "prod": "serve dist/client/ --listen 8080",
     "build:ssg": "vite-ssg build",
-    "build:ssr": "npm run build:clean && npm run build:vite && npm run build:prerender",
+    "build:ssr": "npm run build:vite && npm run build:prerender",
     "build:clean": "rimraf dist/",
     "build:vite": "vite build && vite build --ssr",
     "build:prerender": "vite-plugin-ssr prerender"
