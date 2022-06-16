@@ -4,11 +4,7 @@ const route = useRoute();
 
 <template>
   <div class="container" bg="deepnight-dark" debug="red">
-    <nav debug="blue">
-      <router-link to="/">Home</router-link> | 
-      <router-link to="/blog">Blog</router-link> | 
-      <router-link to="/projects">Projects</router-link>
-    </nav>
+    <NavBar />
 
     <router-view v-slot="{ Component }">
       <transition mode="out-in" name="fade">
@@ -27,10 +23,6 @@ html, body {
   @apply bg-deepnight-dark;
   
   height: 100%;
-}
-
-nav {
-  height: 60px;
 }
 
 #app {

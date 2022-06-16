@@ -1,0 +1,7 @@
+{
+  "node_modules/vite-plugin-ssr/dist/esm/node/page-files/pageFiles.js": {
+    "file": "pageFiles.mjs",
+    "src": "node_modules/vite-plugin-ssr/dist/esm/node/page-files/pageFiles.js",
+    "isEntry": true
+  }
+}
