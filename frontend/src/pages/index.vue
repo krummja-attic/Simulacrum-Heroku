@@ -1,9 +1,5 @@
 <template>
-  <h1> INDEX </h1>
-  <router-link to="/blog">BLOG</router-link>
+  <div>
+    <h1>HOME</h1>
+  </div>
 </template>
-
-<route lang="yaml">
-meta:
-  layout: Default
-</route>

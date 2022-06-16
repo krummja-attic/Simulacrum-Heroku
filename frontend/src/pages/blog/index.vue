@@ -1,18 +1,21 @@
-<!-- Blog Index -->
+<!-- Blog Index -- PRESENTATION -->
 
 <script setup>
-import { usePosts } from '@/composables/usePosts.js';
-const posts = usePosts();
+import ListPosts from '@/components/ListPosts.vue';
 </script>
 
 <template>
-  <h1> BLOG </h1>
-  <router-link to="/">BACK</router-link>
-  
-  <div
-    v-for="post of posts"
-    :key="post"
-  >
-    <router-link :to="'/blog/' + post">post</router-link>
+  <div>
+    <h1>Blog Index</h1>
+    <div class="post-list">
+      <ListPosts />
+    </div>
   </div>
 </template>
+
+<style scoped>
+.post-list {
+  width: 300px;
+  height: auto;
+}
+</style>

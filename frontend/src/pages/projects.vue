@@ -1,4 +1,4 @@
-<!-- Blog Index -- CONTAINER -->
+<!-- Project Index -- CONTAINER -->
 
 <script setup>
 const route = useRoute();

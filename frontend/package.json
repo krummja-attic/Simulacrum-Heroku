@@ -10,9 +10,12 @@
     "build:prerender": "vite-plugin-ssr prerender",
     "build:clean": "rimraf dist/",
     "build:vite": "vite build && vite build --ssr",
-    "prod:serve": "serve dist/client/ --listen 3000"
+    "prod:serve": "serve dist/client/ --listen 3000",
+    "server": "node ./server",
+    "server:prod": "cross-env NODE_ENV=production node ./server"
   },
   "dependencies": {
+    "@apollo/client": "^3.6.8",
     "@unocss/preset-uno": "^0.39.0",
     "@unocss/transformer-directives": "^0.39.0",
     "@vitejs/plugin-vue": "^2.3.3",
@@ -21,10 +24,14 @@
     "@vueuse/core": "^8.6.0",
     "@vueuse/head": "^0.7.6",
     "axios": "^0.27.2",
+    "compression": "^1.7.4",
+    "cross-fetch": "^3.1.5",
     "d3": "^7.4.4",
     "d3-delaunay": "^6.0.2",
     "delaunator": "^5.0.0",
     "express": "^4.18.1",
+    "fs-extra": "^10.1.0",
+    "gray-matter": "^4.0.3",
     "markdown-it-anchor": "^8.6.4",
     "markdown-it-prism": "^2.2.4",
     "markdown-it-theme": "^0.4.0",

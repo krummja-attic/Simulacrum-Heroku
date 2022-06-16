@@ -15,7 +15,9 @@ import { presetAttributify, presetUno } from 'unocss';
 import { code, link } from 'vite-plugin-md';
 
 // Utilities
-import path from 'path';
+import path, { resolve } from 'path';
+import fs from 'fs-extra';
+import matter from 'gray-matter';
 
 
 export default defineConfig({
@@ -56,7 +58,15 @@ export default defineConfig({
       ],
       dirs: [
         { dir: 'src/pages', baseRoute: '' },
-      ]      
+      ],
+      extendRoute(route) {
+        const path = resolve(__dirname, route.component.slice(1));
+        console.log(path);
+        const md = fs.readFileSync(path, 'utf-8');
+        const { data } = matter(md);
+        route.meta = Object.assign(route.meta || {}, { frontmatter: data });
+        return route;
+      }
     }),
 
     /**
@@ -64,10 +74,10 @@ export default defineConfig({
      * Layouts are stored in `/src/layouts/` folder by default and are
      * standard Vue components with a `<router-view />` in the template
      */
-    Layouts({
-      layoutsDirs: './src/layouts',
-      defaultLayout: 'default',
-    }),
+    // Layouts({
+    //   layoutsDirs: './src/layouts',
+    //   defaultLayout: 'default',
+    // }),
     
     /**
      * Vite Markdown ---------------------------------------------------------
@@ -105,7 +115,7 @@ export default defineConfig({
     AutoImport({
       imports: [
         'vue', 
-        // 'vue-router', 
+        'vue-router', 
         '@vueuse/head', 
         '@vueuse/core'
       ],
