@@ -31,11 +31,6 @@ export default defineConfig({
     },
   },
 
-  ssgOptions: {
-    format: 'cjs',
-    formatting: 'minify'
-  },
-
   // RESOLVE =================================================================
   resolve: {
     alias: {
@@ -59,7 +54,7 @@ export default defineConfig({
      * Server-Side Rendering -------------------------------------------------
      * Like Next.js / Nuxt but as do-one-thing-do-it-well Vite plugin
      */
-    // SSR(),
+    SSR(),
 
     /**
      * Vite Pages ------------------------------------------------------------
