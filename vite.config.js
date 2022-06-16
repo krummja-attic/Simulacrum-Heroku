@@ -24,8 +24,16 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+      },
+      output: {
+        inlineDynamicImports: false
       }
     },
+  },
+
+  ssgOptions: {
+    format: 'cjs',
+    formatting: 'minify'
   },
 
   // RESOLVE =================================================================
@@ -51,7 +59,7 @@ export default defineConfig({
      * Server-Side Rendering -------------------------------------------------
      * Like Next.js / Nuxt but as do-one-thing-do-it-well Vite plugin
      */
-    SSR(),
+    // SSR(),
 
     /**
      * Vite Pages ------------------------------------------------------------

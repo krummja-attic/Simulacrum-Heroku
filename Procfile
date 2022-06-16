@@ -1,1 +1,1 @@
-web: cd frontend && npm install && npm run build:ssr && npm run prod
+web: npm run server:prod

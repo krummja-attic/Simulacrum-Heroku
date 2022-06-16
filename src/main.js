@@ -1,8 +1,8 @@
 import { createApp } from 'vue';
 import { createHead } from '@vueuse/head';
-import { createPinia } from 'pinia';
+// import { createPinia } from 'pinia';
 import axios from 'axios';
-import VueAxios from 'vue-axios';
+// import VueAxios from 'vue-axios';
 
 import '@unocss/reset/tailwind.css';
 import 'uno.css';
@@ -19,12 +19,12 @@ const app = createApp(App);
 app.use(router);
 
 // Axios
-app.use(VueAxios, axios);
-app.provide('axios', app.config.globalProperties.axios);
+// app.use(VueAxios, axios);
+// app.provide('axios', app.config.globalProperties.axios);
 
 // Pinia
-const pinia = createPinia();
-app.use(pinia);
+// const pinia = createPinia();
+// app.use(pinia);
 
 // Head
 const head = createHead();
