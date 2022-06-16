@@ -1,7 +1,7 @@
 <template>
-  <div class="container" bg="deepnight-dark">
+  <!-- <div class="container" bg="deepnight-dark"> -->
     <router-view />
-  </div>
+  <!-- </div> -->
 </template>
 
 <style>

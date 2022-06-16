@@ -10,6 +10,8 @@ import Markdown from 'vite-plugin-md';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import Unocss from 'unocss/vite';
+import transformerDirective from '@unocss/transformer-directives';
+import { presetAttributify, presetUno } from 'unocss';
 import { code, link } from 'vite-plugin-md';
 
 // Utilities
@@ -52,6 +54,9 @@ export default defineConfig({
         'vue', 
         'md'
       ],
+      dirs: [
+        { dir: 'src/pages', baseRoute: '' },
+      ]      
     }),
 
     /**
@@ -100,7 +105,7 @@ export default defineConfig({
     AutoImport({
       imports: [
         'vue', 
-        'vue-router', 
+        // 'vue-router', 
         '@vueuse/head', 
         '@vueuse/core'
       ],

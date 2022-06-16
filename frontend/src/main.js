@@ -1,21 +1,22 @@
 import { createApp } from 'vue';
 import { createHead } from '@vueuse/head';
 import { createPinia } from 'pinia';
-import { createRouter, createWebHistory } from 'vue-router';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 
 import '@unocss/reset/tailwind.css';
 import 'uno.css';
 
-import generatedRoutes from 'virtual:generated-pages';
-import { setupLayouts } from 'virtual:generated-layouts';
+import router from './router';
 
 import App from './App.vue';
 
 
 // App
 const app = createApp(App);
+
+// Router
+app.use(router);
 
 // Axios
 app.use(VueAxios, axios);
@@ -28,14 +29,6 @@ app.use(pinia);
 // Head
 const head = createHead();
 app.use(head);
-
-// Router
-const routes = setupLayouts(generatedRoutes);
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-});
-app.use(router);
 
 
 app.mount('#app');
