@@ -8,7 +8,7 @@ from api import create_app
 
 
 frontend = SharedDataMiddleware(NotFound(), {
-    '/': '../dist/index.html'
+    '/': '../frontend/dist/index.html'
 })
 
 app = DispatcherMiddleware(frontend, {
