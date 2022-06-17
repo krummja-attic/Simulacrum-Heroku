@@ -8,6 +8,7 @@ from api import create_app
 
 
 frontend = SharedDataMiddleware(NotFound(), {
+    '/assets/': '../frontend/dist/assets/',
     '/': '../frontend/dist/index.html'
 })
 
