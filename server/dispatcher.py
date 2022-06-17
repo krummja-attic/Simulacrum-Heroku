@@ -4,9 +4,13 @@ from werkzeug.exceptions import NotFound
 from werkzeug.middleware.shared_data import SharedDataMiddleware
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
+from api import create_app
 
-app = SharedDataMiddleware(NotFound(), {
+
+frontend = SharedDataMiddleware(NotFound(), {
     '/': '../dist/index.html'
 })
 
-app = DispatcherMiddleware(app)
+app = DispatcherMiddleware(frontend, {
+    '/api': create_app()
+})
