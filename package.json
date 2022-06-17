@@ -1,7 +1,11 @@
 {
     "name": "simulacrum-space",
+    "engines": {
+        "npm": ">=7.14.0",
+        "node": ">=16.14.2"
+    },
     "scripts": {
-        "build": "cross-env NODE_ENV=production vite-ssg build",
+        "build": "rm -rf ./dist/ && vite-ssg build",
         "dev": "vite --port 3333 --open",
         "preview": "vite preview",
         "serve": "cd server && gunicorn dispatcher:app --log-file -",
