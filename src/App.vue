@@ -1,9 +1,5 @@
-<script setup lang="ts">
-const name: String = "App";
-</script>
-
 <template>
   <main>
-    
+    <router-view />
   </main>
 </template>
