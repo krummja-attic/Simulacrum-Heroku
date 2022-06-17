@@ -1,2 +1,4 @@
 source 'https://rubygems.org'
-gem 'unicorn'
+group :production do
+    gem 'unicorn'
+end
