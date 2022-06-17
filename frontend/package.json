@@ -12,9 +12,7 @@
         "nprogress": "^0.2.0",
         "prism-theme-vars": "^0.2.3",
         "vue": "^3.2.37",
-        "vue-router": "4.0.16"
-    },
-    "devDependencies": {
+        "vue-router": "4.0.16",
         "@antfu/eslint-config": "^0.25.1",
         "@iconify/json": "^2.1.62",
         "@octokit/rest": "^18.12.0",
