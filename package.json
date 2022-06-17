@@ -3,7 +3,9 @@
     "scripts": {
         "build": "cross-env NODE_ENV=production vite-ssg build",
         "dev": "vite --port 3333 --open",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "serve": "cd server && gunicorn dispatcher:app --log-file -",
+        "postinstall": "npm install && npm run build"
     },
     "dependencies": {
         "@vueuse/core": "^8.7.3",

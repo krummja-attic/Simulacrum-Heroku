@@ -1,1 +1,1 @@
-web: bin/start-nginx bundle exec unicorn -c config/unicorn.rb
+web: cd server && gunicorn dispatcher:app --log-file -
