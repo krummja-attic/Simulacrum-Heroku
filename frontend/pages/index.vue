@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div debug="blue">
     <h1>Home</h1>
     <router-link to="/blog">
       Blog

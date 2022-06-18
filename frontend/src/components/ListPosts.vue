@@ -20,6 +20,7 @@ const posts = computed(() => {
     <li
       v-for="post in posts"
       :key="post.path"
+      debug="green"
     >
       <router-link :to="post.path">
         {{ post.meta.frontmatter.title }}

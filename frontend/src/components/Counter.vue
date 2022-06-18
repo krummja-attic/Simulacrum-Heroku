@@ -7,7 +7,7 @@ const counter = ref(props.init || 0)
 </script>
 
 <template>
-  <div class="counter">
+  <div class="counter" debug="indigo">
     <div>Counter: {{ counter }}</div>
     <button @click="counter += 1">
       Inc
