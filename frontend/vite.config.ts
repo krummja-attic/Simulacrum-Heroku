@@ -5,11 +5,13 @@ import fs from 'fs-extra'
 import matter from 'gray-matter'
 import Pages from 'vite-plugin-pages'
 import Components from 'unplugin-vue-components/vite'
-import Markdown, { link } from 'vite-plugin-md'
+import Markdown, { code, link } from 'vite-plugin-md'
 import Prism from 'markdown-it-prism'
 import AutoImport from 'unplugin-auto-import/vite'
 import Vue from '@vitejs/plugin-vue'
 import Unocss from 'unocss/vite'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 import transformerDirective from '@unocss/transformer-directives'
 import {
   presetAttributify,
@@ -113,9 +115,9 @@ const config: UserConfig = {
         md.use(Prism)
       },
       builders: [
-        // code({
-        //   theme: 'base',
-        // }),
+        code({
+          theme: 'base',
+        }),
         link(),
       ],
     }),
@@ -124,7 +126,16 @@ const config: UserConfig = {
       extensions: ['vue', 'md'],
       dts: true,
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
-      resolvers: [],
+      resolvers: [
+        IconsResolver({
+          componentPrefix: '',
+        }),
+      ],
+    }),
+
+    Icons({
+      defaultClass: 'inline',
+      defaultStyle: 'vertical-align: sub',
     }),
 
     AutoImport({

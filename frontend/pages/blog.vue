@@ -3,7 +3,7 @@ const route = useRoute()
 </script>
 
 <template>
-  <router-view v-slot="{ Component }" debug="red">
+  <router-view v-slot="{ Component }">
     <component
       :is="Component"
       :route="route.fullPath"

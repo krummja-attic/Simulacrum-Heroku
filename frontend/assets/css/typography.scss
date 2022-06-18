@@ -1,0 +1,8 @@
+
+html:not(.dark) {
+  @apply text-deepnight-dark;
+}
+
+html.dark {
+  @apply text-overcast-light;
+}
