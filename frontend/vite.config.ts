@@ -13,6 +13,7 @@ import Unocss from 'unocss/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import transformerDirective from '@unocss/transformer-directives'
+
 import {
   presetAttributify,
   presetUno,
@@ -31,6 +32,9 @@ const config: UserConfig = {
       'vue',
       'vue-router',
       '@vueuse/core',
+    ],
+    exclude: [
+
     ],
   },
 
@@ -154,6 +158,9 @@ const config: UserConfig = {
         if (warning.code !== 'UNUSED_EXTERNAL_IMPORT')
           next(warning)
       },
+      external: [
+        '@vueuse/integrations',
+      ],
     },
   },
 

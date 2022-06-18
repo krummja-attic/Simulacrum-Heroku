@@ -19,6 +19,7 @@
         "@vitejs/plugin-vue": "^2.3.3",
         "@vueuse/core": "^8.7.3",
         "@vueuse/head": "^0.7.6",
+        "@vueuse/integrations": "^8.7.3",
         "axios": "^0.27.2",
         "critters": "0.0.16",
         "cross-env": "^7.0.3",
