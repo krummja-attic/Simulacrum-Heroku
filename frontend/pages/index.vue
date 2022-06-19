@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <!-- <HoverCard /> -->
+    <ListPosts />
   </div>
 </template>
 

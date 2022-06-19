@@ -1,0 +1,59 @@
+@import 'prism-theme-vars/base.css';
+
+:root {
+  --prism-font-size: 0.9rem;
+  --prism-font-family: 'Fira Code', monospace;
+  --prism-block-margin-y: 3em;
+}
+
+html:not(.dark) {
+  --prism-foreground: var(--deepnight-normal);
+  --prism-background: var(--overcast-normal);
+  --prism-comment: var(--deepnight-lightest);
+  --prism-string: var(--blossom-dark);
+  --prism-literal: var(--sunset-green-darker);
+  --prism-keyword: var(--sunset-red);
+  --prism-boolean: var(--sunset-green-darker);
+  --prism-number: var(--sunset-blue-darker);
+  --prism-variable: #c2b36e;
+  --prism-function: var(--sunset-orange-darker);
+  --prism-deleted: #a14f55;
+  --prism-class: var(--sunset-yellow-darker);
+  --prism-builtin: var(--blossom-dark);
+  --prism-property: #dd8e6e;
+  --prism-namespace: #db889a;
+  --prism-punctuation: var(--blossom-dark);
+  --prism-decorator: #bd8f8f;
+  --prism-regex: #ab5e3f;
+  --prism-json-property: #6b8b9e;
+  --prism-line-number: #888888;
+  --prism-line-number-gutter: #eeeeee;
+  --prism-line-highlight-background: var(--blossom-dark);
+  --prism-selection-background: var(--blossom-lighter);
+}
+
+html.dark {
+  --prism-foreground: var(--overcast-normal);
+  --prism-background: var(--deepnight-darker);
+  --prism-comment: var(--deepnight-lighter);
+  --prism-string: var(--blossom-light);
+  --prism-literal: var(--sunset-green);
+  --prism-keyword: var(--blossom-dark);
+  --prism-boolean: var(--sunset-green);
+  --prism-number: var(--sunset-blue);
+  --prism-variable: #c2b36e;
+  --prism-function: var(--sunset-orange);
+  --prism-deleted: #a14f55;
+  --prism-class: var(--sunset-yellow);
+  --prism-builtin: var(--blossom-dark);
+  --prism-property: #dd8e6e;
+  --prism-namespace: #db889a;
+  --prism-punctuation: var(--blossom-light);
+  --prism-decorator: #bd8f8f;
+  --prism-regex: #ab5e3f;
+  --prism-json-property: #6b8b9e;
+  --prism-line-number: #888888;
+  --prism-line-number-gutter: #eeeeee;
+  --prism-line-highlight-background: #444444;
+  --prism-selection-background: #444444;
+}

@@ -1,39 +1,35 @@
-
-html:not(.dark) {
-  --c-bg: rgba(247, 243, 239);
-  --fg: rgb(39, 37, 37);
-}
-
-html.dark {
-  --c-bg: rgb(39, 37, 37);
-  --fg: rgb(247, 243, 239);
-}
-
-html {
-  background-color: var(--c-bg);
-  color: var(--fg);
-}
+@import './main.scss';
 
 .prose {
   font-family: 'Arvo', serif;
 
   h1 {
-    margin-bottom: 8px;
-    font-size: 20pt;
+    color: var(--fg-soft);
+    font-size: 16pt;
+    text-align: left;
   }
 
   h2 {
-    margin-bottom: 8px;
-    font-size: 16pt;
+    color: var(--fg-softer);
+    margin-bottom: 16px;
+    font-size: 14pt;
+    text-align: left;
   }
+
+  // h2 + p {
+  //   opacity: 0.5;
+  // }
 
   p {
     margin: 16px 0;
-
     font-size: 16px;
     font-weight: 500;
     line-height: 26px;
     text-align: left;
   }
-}
 
+  hr {
+    color: var(--c-bg);
+    transition: color 0.15s ease-in;
+  }
+}

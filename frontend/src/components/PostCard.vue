@@ -10,13 +10,15 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="post-card">
+  <div class="post-card prose">
     <router-link :to="props.path">
-      <h2 class="title">
+      <h1 class="title">
         {{ props.title }}
-      </h2>
+      </h1>
 
-      <span class="date">{{ formatDate(props.date) }}</span>
+      <h2 class="date">
+        {{ formatDate(props.date) }}
+      </h2>
     </router-link>
   </div>
 </template>
@@ -28,23 +30,18 @@ const props = defineProps<{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 24px 0;
+  margin: 8px 0;
+  padding: 8px 12px;
   width: 600px;
   height: auto;
 
   font-family: 'Arvo', serif;
   text-align: left;
 
-  .title {
-    font-size: 24px;
+  &:hover {
+    box-shadow: 2px 2px 10px var(--c-bg-darker);
   }
 
-  .date {
-    font-size: 18px;
-  }
-}
-
-.title {
-  margin-bottom: 8px;
+  transition: box-shadow 0.15s ease-in;
 }
 </style>

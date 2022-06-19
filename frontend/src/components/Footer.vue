@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <ToggleTheme />
+    <!--  -->
   </footer>
 </template>
 

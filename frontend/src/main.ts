@@ -7,6 +7,9 @@ import LocalizedFormat from 'dayjs/plugin/localizedFormat'
 import App from './App.vue'
 
 import '@unocss/reset/tailwind.css'
+import '../assets/css/main.scss'
+import '../assets/css/typography.scss'
+import '../assets/css/markdown.scss'
 import 'uno.css'
 
 const routes: RouteRecordRaw[] = autoRoutes

@@ -10,14 +10,13 @@
       <router-link to="/projects">
         Projects
       </router-link>
+      <ToggleTheme />
     </nav>
   </div>
 </template>
 
 <style scoped lang="scss">
 .navbar {
-  // @apply: bg-deepnight-normal;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -25,8 +24,26 @@
   height: 50px;
 }
 
-a {
-  margin: 0 16px;
-  font-weight: 700;
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  & > a {
+    margin: 0 16px;
+    font-weight: 700;
+  }
+
+  & * {
+    opacity: 0.6;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+
+    transition: opacity 0.15s ease-in;
+  }
 }
 </style>

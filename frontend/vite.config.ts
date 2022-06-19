@@ -5,7 +5,7 @@ import fs from 'fs-extra'
 import matter from 'gray-matter'
 import Pages from 'vite-plugin-pages'
 import Components from 'unplugin-vue-components/vite'
-import Markdown, { code, link } from 'vite-plugin-md'
+import Markdown from 'vite-plugin-md'
 import Prism from 'markdown-it-prism'
 import AutoImport from 'unplugin-auto-import/vite'
 import Vue from '@vitejs/plugin-vue'
@@ -18,6 +18,18 @@ import {
   presetAttributify,
   presetUno,
 } from 'unocss'
+
+import 'prismjs/components/prism-regex'
+import 'prismjs/components/prism-javascript'
+import 'prismjs/components/prism-typescript'
+import 'prismjs/components/prism-xml-doc'
+import 'prismjs/components/prism-yaml'
+import 'prismjs/components/prism-json'
+import 'prismjs/components/prism-markdown'
+import 'prismjs/components/prism-java'
+import 'prismjs/components/prism-javadoclike'
+import 'prismjs/components/prism-javadoc'
+import 'prismjs/components/prism-jsdoc'
 
 const config: UserConfig = {
 
@@ -33,6 +45,7 @@ const config: UserConfig = {
       'vue-router',
       '@vueuse/core',
       'dayjs',
+      'dayjs/plugin/localizedFormat',
     ],
     exclude: [
 
@@ -50,12 +63,16 @@ const config: UserConfig = {
         presetAttributify(),
         presetUno(),
       ],
+
       shortcuts: [
         [/^debug-(.*)$/, ([, c]) => `b-1 b-dashed b-${c}`],
       ],
+
       rules: [],
+
       theme: {
         colors: {
+          gray: '#333333',
           auxiliary: {
             pale: '#F7F3EF',
           },
@@ -83,6 +100,20 @@ const config: UserConfig = {
             green: 'rgb(190, 223, 169)',
             blue: 'rgb(148, 181, 224)',
           },
+
+          preflights: [
+            {
+              getCSS({ theme }: any) {
+                return `
+                  * {
+                    color: ${theme.colors.gray?.[700] ?? '#333'}
+                    padding: 0;
+                    margin: 0;
+                  }
+                `
+              },
+            },
+          ],
 
           breakpoints: {
             xs: '320px',
@@ -116,19 +147,14 @@ const config: UserConfig = {
       headEnabled: true,
       markdownItOptions: {
         quotes: '""\'\'',
-        html: true,
-        linkify: true,
-        typographer: true,
       },
       markdownItSetup(md) {
-        md.use(Prism)
+        md.use(Prism, {
+          plugins: [
+            'show-language',
+          ],
+        })
       },
-      builders: [
-        code({
-          theme: 'base',
-        }),
-        link(),
-      ],
     }),
 
     Components({
