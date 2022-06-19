@@ -32,6 +32,7 @@ const config: UserConfig = {
       'vue',
       'vue-router',
       '@vueuse/core',
+      'dayjs',
     ],
     exclude: [
 
@@ -50,11 +51,14 @@ const config: UserConfig = {
         presetUno(),
       ],
       shortcuts: [
-        [/^debug-(.*)$/, ([, c]) => `b-2 b-dashed b-${c}`],
+        [/^debug-(.*)$/, ([, c]) => `b-1 b-dashed b-${c}`],
       ],
       rules: [],
       theme: {
         colors: {
+          auxiliary: {
+            pale: '#F7F3EF',
+          },
           deepnight: {
             dark: 'rgb(39, 37, 37)',
             normal: 'rgb(53, 49, 50)',
@@ -63,7 +67,7 @@ const config: UserConfig = {
           },
           overcast: {
             light: 'rgb(249, 240, 244)',
-            normal: 'rgb(235, 229, 231)',
+            normal: '#ebe5e7',
             dark: 'rgb(220, 214, 216)',
           },
           cherryblossom: {
@@ -108,6 +112,7 @@ const config: UserConfig = {
 
     Markdown({
       wrapperComponent: 'Post',
+      wrapperClasses: 'prose m-auto',
       headEnabled: true,
       markdownItOptions: {
         quotes: '""\'\'',

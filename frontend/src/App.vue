@@ -6,7 +6,10 @@ const route = useRoute()
   <div class="container">
     <NavBar />
 
-    <router-view v-slot="{ Component }">
+    <router-view
+      v-slot="{ Component }"
+      class="content-wrapper"
+    >
       <transition mode="out-in" name="fade">
         <component
           :is="Component"
@@ -15,16 +18,13 @@ const route = useRoute()
       </transition>
     </router-view>
 
-    <p>
-      Test text to see if the theme switcher is working.
-    </p>
-
     <Footer />
   </div>
 </template>
 
 <style lang="scss">
 @import "@/../assets/css/typography.scss";
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 html {
   @apply bg-overcast-light;
@@ -46,6 +46,10 @@ body {
   grid-template-rows: auto 1fr auto;
   height: 100vh;
   margin: 0 auto;
+}
+
+.content-wrapper {
+  margin: 24px 0;
 }
 
 .fade-enter-active,

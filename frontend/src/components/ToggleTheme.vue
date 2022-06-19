@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const isDark = useDark()
+import { isDark } from '../utilities'
 
 function toggleDark() {
   isDark.value = !isDark.value

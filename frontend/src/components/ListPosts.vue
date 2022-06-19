@@ -3,10 +3,12 @@ const router = useRouter()
 const route = useRoute()
 
 const postRoutes = router.getRoutes()
-  .filter(i => i.path.startsWith('/blog')
-           && !i.path.endsWith('.html')
-           && !(i.name === 'blog'
-             || i.name === undefined))
+  .filter(i =>
+    i.path.startsWith('/blog')
+    && i.meta.frontmatter.date
+    && !i.path.endsWith('.html')
+    && !(i.name === 'blog' || i.name === undefined))
+  .sort((a, b) => +new Date(b.meta.frontmatter.date) - +new Date(a.meta.frontmatter.date))
 
 const posts = computed(() => {
   if (route.query.tags)
@@ -16,14 +18,24 @@ const posts = computed(() => {
 </script>
 
 <template>
-  <ul>
+  <ul class="list-posts">
     <li
       v-for="post in posts"
       :key="post.path"
     >
-      <router-link :to="post.path">
-        {{ post.meta.frontmatter.title }}
-      </router-link>
+      <PostCard
+        :title="post.meta.frontmatter.title"
+        :date="post.meta.frontmatter.date"
+        :path="post.path"
+      />
     </li>
   </ul>
 </template>
+
+<style scoped lang="scss">
+.list-posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>

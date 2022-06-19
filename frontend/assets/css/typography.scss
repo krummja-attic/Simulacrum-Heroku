@@ -1,8 +1,39 @@
 
 html:not(.dark) {
-  @apply text-deepnight-dark;
+  --c-bg: rgba(247, 243, 239);
+  --fg: rgb(39, 37, 37);
 }
 
 html.dark {
-  @apply text-overcast-light;
+  --c-bg: rgb(39, 37, 37);
+  --fg: rgb(247, 243, 239);
 }
+
+html {
+  background-color: var(--c-bg);
+  color: var(--fg);
+}
+
+.prose {
+  font-family: 'Arvo', serif;
+
+  h1 {
+    margin-bottom: 8px;
+    font-size: 20pt;
+  }
+
+  h2 {
+    margin-bottom: 8px;
+    font-size: 16pt;
+  }
+
+  p {
+    margin: 16px 0;
+
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+    text-align: left;
+  }
+}
+
