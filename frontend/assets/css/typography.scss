@@ -65,6 +65,11 @@
     }
   }
 
+  a {
+    color: var(--sunset-orange-darker);
+    border-bottom: 1px dotted var(--sunset-orange-darker);
+  }
+
   hr {
     margin: 16px 0;
     color: var(--c-bg);
