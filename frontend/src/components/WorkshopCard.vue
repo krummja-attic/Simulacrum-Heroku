@@ -1,40 +1,38 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from 'vue-router'
-import { formatDate } from '../utilities'
 
 const props = defineProps<{
   title: string
   date: string | number
+  icon?: string
   path: RouteLocationRaw
 }>()
 </script>
 
 <template>
-  <div class="post-card prose">
-    <router-link :to="props.path">
+  <router-link :to="props.path">
+    <div class="workshop-card prose">
+      <div v-if="props.icon">
+        <div class="text-3xl opacity-50" :class="`i-${props.icon}`" w-10 h-10 mr-5 />
+      </div>
       <h1 class="title">
         {{ props.title }}
       </h1>
-
-      <h2 class="date">
-        {{ formatDate(props.date) }}
-      </h2>
-    </router-link>
-  </div>
+    </div>
+  </router-link>
 </template>
 
 <style scoped lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import "@/../assets/css/layout.scss";
 
-.post-card {
+.workshop-card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   margin: 8px 0;
   padding: 8px 12px;
   height: auto;
 
-  font-family: 'Lato', sans-serif;
   text-align: left;
 
   &:hover {

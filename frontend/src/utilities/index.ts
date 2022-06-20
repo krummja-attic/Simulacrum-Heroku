@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 
 export const isDark = useDark()
 
-export function formatDate(d: string | Date) {
+export function formatDate(d: string | number | Date) {
   const date = dayjs(d)
   if (date.year() === dayjs().year())
     return date.format('MMM D')

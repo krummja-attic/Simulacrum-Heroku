@@ -18,6 +18,7 @@ import transformerDirective from '@unocss/transformer-directives'
 
 import {
   presetAttributify,
+  presetIcons,
   presetUno,
 } from 'unocss'
 
@@ -71,6 +72,11 @@ const config: UserConfig = {
       presets: [
         presetAttributify(),
         presetUno(),
+        presetIcons({
+          extraProperties: {
+            opacity: '0.8',
+          },
+        }),
       ],
 
       shortcuts: [
@@ -169,8 +175,8 @@ const config: UserConfig = {
     }),
 
     Icons({
-      defaultClass: 'inline',
-      defaultStyle: 'vertical-align: sub',
+      // defaultClass: 'inline',
+      // defaultStyle: 'vertical-align: sub',
     }),
 
     AutoImport({

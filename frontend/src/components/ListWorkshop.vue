@@ -6,7 +6,7 @@ const route = useRoute()
 function fetchRoutes() {
   const routes: PostRoute[] = router.getRoutes()
     .filter((route: any): PostRoute =>
-      route.path.startsWith('/blog')
+      route.path.startsWith('/workshop')
       && route.meta.frontmatter.date
       && !route.path.endsWith('.html')
       && !(route.name === 'blog' || route.name === undefined))
@@ -15,7 +15,7 @@ function fetchRoutes() {
   return routes
 }
 
-const posts = computed(() => {
+const projects = computed(() => {
   if (route.query.tags)
     return
   return fetchRoutes()
@@ -23,22 +23,23 @@ const posts = computed(() => {
 </script>
 
 <template>
-  <ul class="list-posts">
+  <ul class="list-workshop">
     <li
-      v-for="post in posts"
-      :key="post.path"
+      v-for="project in projects"
+      :key="project.path"
     >
-      <PostCard
-        :title="post.meta.frontmatter.title"
-        :date="post.meta.frontmatter.date"
-        :path="post.path"
+      <WorkshopCard
+        :title="project.meta.frontmatter.title"
+        :date="project.meta.frontmatter.date"
+        :icon="project.meta.frontmatter.icon"
+        :path="project.path"
       />
     </li>
   </ul>
 </template>
 
 <style scoped lang="scss">
-.list-posts {
+.list-workshop {
   grid-column-start: 2;
   grid-column-end: 8;
 

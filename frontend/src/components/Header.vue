@@ -19,6 +19,10 @@ import { isDark } from '../utilities'
       <router-link to="/projects">
         Projects
       </router-link>
+
+      <router-link to="/workshop">
+        Workshop
+      </router-link>
       <ToggleTheme />
     </nav>
   </header>
