@@ -33,6 +33,8 @@ import 'prismjs/components/prism-javadoclike'
 import 'prismjs/components/prism-javadoc'
 import 'prismjs/components/prism-jsdoc'
 
+import { customElements } from './custom-elements'
+
 const config: UserConfig = {
 
   resolve: {
@@ -58,6 +60,11 @@ const config: UserConfig = {
     Vue({
       include: [/\.vue$/, /\.md$/],
       reactivityTransform: true,
+      template: {
+        compilerOptions: {
+          isCustomElement: tag => customElements.includes(tag),
+        },
+      },
     }),
 
     Unocss({
@@ -143,7 +150,10 @@ const config: UserConfig = {
           ],
         })
 
-        md.use(Katex)
+        md.use(Katex, {
+          throwOnError: false,
+          errorColor: ' #cc0000',
+        })
       },
     }),
 
