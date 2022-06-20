@@ -7,6 +7,8 @@ import Pages from 'vite-plugin-pages'
 import Components from 'unplugin-vue-components/vite'
 import Markdown from 'vite-plugin-md'
 import Prism from 'markdown-it-prism'
+// @ts-expect-error missing types
+import Katex from 'markdown-it-katex'
 import AutoImport from 'unplugin-auto-import/vite'
 import Vue from '@vitejs/plugin-vue'
 import Unocss from 'unocss/vite'
@@ -101,20 +103,6 @@ const config: UserConfig = {
             blue: 'rgb(148, 181, 224)',
           },
 
-          preflights: [
-            {
-              getCSS({ theme }: any) {
-                return `
-                  * {
-                    color: ${theme.colors.gray?.[700] ?? '#333'}
-                    padding: 0;
-                    margin: 0;
-                  }
-                `
-              },
-            },
-          ],
-
           breakpoints: {
             xs: '320px',
             sm: '640px',
@@ -154,6 +142,8 @@ const config: UserConfig = {
             'show-language',
           ],
         })
+
+        md.use(Katex)
       },
     }),
 

@@ -2,13 +2,13 @@
 
 
 .prose {
-  font-family: 'Arvo', serif;
+  font-family: 'Lato', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 16px 0;
 
-  h1, h2 {
+  h1, h2, h3, h4, h5 {
     text-align: left;
     width: 100%;
 
@@ -47,9 +47,24 @@
     }
   }
 
+  h3 {
+    margin-top: 16px;
+    color: var(--fg-softer);
+    font-size: 12px;
+    
+    @include tablet {
+      font-size: 14px;
+    }
+
+    @include desktop {
+      font-size: 16px;
+    }
+  }
+
   p {
     margin: 16px 0;
-    text-align: justify;
+    // text-align: justify;
+    text-align: left;
     width: 100%;
 
     @include tablet {
@@ -67,6 +82,22 @@
     a {
       color: var(--sunset-orange-darker);
       border-bottom: 1px dotted var(--sunset-orange-darker);
+    }
+  }
+
+  ul, ol {
+    list-style: decimal;
+
+    @include desktop {
+      max-width: 650px;
+    }
+
+    li {
+      padding-left: 10px;
+
+      &::marker {
+        color: var(--fg-soft);
+      }
     }
   }
 
@@ -92,14 +123,29 @@
       margin: 0;
       padding: 0;
       background-color: inherit;
+
+      &::before {
+        content: ""
+      }
+  
+      &::after {
+        content: ""
+      }
     }
   }
 
   code {
-    background-color: var(--c-bg-darker);
     color: var(--fg-soft);
     margin: 0 2px;
-    padding: 2px 6px;
+    padding: 2px 2px;
     border-radius: 4px;
+
+    &::before {
+      content: "`"
+    }
+
+    &::after {
+      content: "`"
+    }
   }
 }
