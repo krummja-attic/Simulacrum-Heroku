@@ -6,6 +6,7 @@
 
 <style scoped lang="scss">
 footer {
+  grid-column: 2 / 8;
   height: 60px;
 
   a {

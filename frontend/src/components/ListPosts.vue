@@ -34,6 +34,9 @@ const posts = computed(() => {
 
 <style scoped lang="scss">
 .list-posts {
+  grid-column-start: 2;
+  grid-column-end: 8;
+
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,5 +1,6 @@
 @use "sass:color";
-@import "@/../assets/abstracts/_mixins.scss";
+@import "../abstracts/_mixins.scss";
+@import "./layout.scss";
 
 :root {
   --deepnight-darker: rgb(22, 21, 21);

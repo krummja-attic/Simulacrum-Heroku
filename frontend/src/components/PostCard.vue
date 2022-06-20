@@ -32,7 +32,6 @@ const props = defineProps<{
   justify-content: space-between;
   margin: 8px 0;
   padding: 8px 12px;
-  width: 600px;
   height: auto;
 
   font-family: 'Arvo', serif;
