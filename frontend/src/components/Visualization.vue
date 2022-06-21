@@ -148,12 +148,13 @@ onMounted(async () => {
 </script>
 
 <template lang="pug">
-div#canvas.fixed
+div#canvas
   canvas(ref="el" width="400" height="400")/
 </template>
 
 <style scoped lang="scss">
 #canvas {
+  position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -1;
