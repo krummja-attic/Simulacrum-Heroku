@@ -2,25 +2,27 @@
 const route = useRoute()
 </script>
 
-<template lang="pug">
-div.app
-  Header
-  router-view.content(v-slot="{ Component }")
+<template>
+  <div class="app">
+    <Header />
 
-    transition(
-      mode="out-in" 
-      name="fade"
-    )
+    <router-view
+      v-slot="{ Component }"
+      class="content"
+    >
+      <transition mode="out-in" name="fade">
+        <component
+          :is="Component"
+          :key="route.fullPath"
+        />
+      </transition>
+    </router-view>
 
-      component(
-        :is="Component" 
-        :key="route.fullPath"
-      )
-
-  ClientOnly
-    Visualization
-  
-  Footer
+    <ClientOnly>
+      <Visualization />
+    </ClientOnly>
+    <Footer />
+  </div>
 </template>
 
 <style lang="scss">
