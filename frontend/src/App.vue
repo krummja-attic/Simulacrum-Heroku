@@ -2,36 +2,30 @@
 const route = useRoute()
 </script>
 
-<template>
-  <div class="app">
-    <!--  -->
-    <Header />
+<template lang="pug">
+div.app
+  Header
+  router-view.content(v-slot="{ Component }")
 
-    <!--  -->
-    <router-view
-      v-slot="{ Component }"
-      class="content"
-    >
-      <transition mode="out-in" name="fade">
-        <component
-          :is="Component"
-          :key="route.fullPath"
-        />
-      </transition>
-    </router-view>
-    <!--  -->
+    transition(
+      mode="out-in" 
+      name="fade"
+    )
 
-    <Footer />
-    <!--  -->
-  </div>
+      component(
+        :is="Component" 
+        :key="route.fullPath"
+      )
+
+  ClientOnly
+    Visualization
+  
+  Footer
 </template>
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import "@/../assets/css/layout.scss";
-
-$desktop-max-width: 650px;
-$tablet-max-width: 550px;
 
 .app {
   display: grid;

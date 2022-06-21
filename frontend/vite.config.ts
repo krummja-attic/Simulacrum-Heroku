@@ -170,13 +170,17 @@ const config: UserConfig = {
       resolvers: [
         IconsResolver({
           componentPrefix: '',
+          enabledCollections: [
+            'carbon',
+            'mdi',
+            'ri',
+          ],
         }),
       ],
     }),
 
     Icons({
-      // defaultClass: 'inline',
-      // defaultStyle: 'vertical-align: sub',
+      autoInstall: true,
     }),
 
     AutoImport({

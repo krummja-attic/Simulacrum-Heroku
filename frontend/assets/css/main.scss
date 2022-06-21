@@ -19,6 +19,7 @@
   --blossom-light: rgb(232, 155, 177);
   --blossom-normal: rgb(224, 123, 150);
   --blossom-dark: rgb(215, 101, 128);
+  --blossom-darker: rgb(190, 58, 89);
 
   --sunset-red: rgb(224, 77, 80);
   --sunset-orange: rgb(224, 150, 118);
@@ -46,8 +47,8 @@ html:not(.dark) {
   --c-bg: var(--overcast-soft);
   --c-bg-darker: var(--overcast-dark);
   --fg: var(--deepnight-dark);
-  --fg-soft: var(--blossom-normal);
-  --fg-softer: var(--blossom-light);
+  --fg-soft: var(--blossom-darker);
+  --fg-softer: var(--blossom-dark);
 }
 
 html.dark {

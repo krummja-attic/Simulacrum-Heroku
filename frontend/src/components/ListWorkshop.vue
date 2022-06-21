@@ -18,7 +18,8 @@ function fetchRoutes() {
 const projects = computed(() => {
   if (route.query.tags)
     return
-  return fetchRoutes()
+  const routes = fetchRoutes()
+  return routes
 })
 </script>
 
@@ -31,7 +32,6 @@ const projects = computed(() => {
       <WorkshopCard
         :title="project.meta.frontmatter.title"
         :date="project.meta.frontmatter.date"
-        :icon="project.meta.frontmatter.icon"
         :path="project.path"
       />
     </li>

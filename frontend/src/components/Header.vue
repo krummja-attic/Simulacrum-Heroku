@@ -11,7 +11,7 @@ import { isDark } from '../utilities'
       </router-link>
     </div>
 
-    <nav>
+    <nav class="desktop-nav">
       <router-link to="/blog">
         Blog
       </router-link>
@@ -67,7 +67,7 @@ nav {
 
   & > a {
     margin: 0 16px;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 16px;
 
     @include tablet {

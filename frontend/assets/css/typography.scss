@@ -11,6 +11,7 @@
   h1, h2, h3, h4, h5 {
     text-align: left;
     width: 100%;
+    font-weight: 300;
 
     @include tablet {
       width: 650px;
@@ -23,7 +24,7 @@
 
   h1 {
     color: var(--fg-soft);
-    font-size: 16px;
+    font-size: 18px;
 
     @include tablet {
       font-size: 20px;
@@ -48,34 +49,35 @@
   }
 
   h3 {
-    margin-top: 16px;
+    margin-top: 24px;
+    margin-bottom: 8px;
     color: var(--fg-softer);
-    font-size: 12px;
+    font-weight: 500;
+    font-size: 16px;
     
     @include tablet {
-      font-size: 14px;
+      font-size: 18px;
     }
 
     @include desktop {
-      font-size: 16px;
+      font-size: 20px;
     }
   }
 
   p {
-    margin: 16px 0;
-    // text-align: justify;
-    text-align: left;
+    margin: 8px 0;
+    text-align: justify;
     width: 100%;
 
     @include tablet {
       max-width: 600px;
-      font-size: 15px;
+      font-size: 1rem;
       line-height: 24px;
     }
 
     @include desktop {
       max-width: 650px;
-      font-size: 16px;
+      font-size: 1.1rem;
       line-height: 28px;
     }
 
@@ -137,7 +139,6 @@
   code {
     color: var(--fg-soft);
     margin: 0 2px;
-    padding: 2px 2px;
     border-radius: 4px;
 
     &::before {

@@ -10,7 +10,8 @@ function fetchRoutes() {
       && route.meta.frontmatter.date
       && !route.path.endsWith('.html')
       && !(route.name === 'blog' || route.name === undefined))
-    .sort((a, b) => +new Date(b.meta.frontmatter.date) - +new Date(a.meta.frontmatter.date))
+    .sort((a, b) => +new Date(b.meta.frontmatter.date) 
+                  - +new Date(a.meta.frontmatter.date))
 
   return routes
 }
@@ -22,19 +23,14 @@ const posts = computed(() => {
 })
 </script>
 
-<template>
-  <ul class="list-posts">
-    <li
-      v-for="post in posts"
-      :key="post.path"
-    >
-      <PostCard
-        :title="post.meta.frontmatter.title"
-        :date="post.meta.frontmatter.date"
-        :path="post.path"
-      />
-    </li>
-  </ul>
+<template lang="pug">
+ul.list-posts
+  li(v-for = "post in posts")
+    PostCard(
+      :title = "post.meta.frontmatter.title"
+      :date  = "post.meta.frontmatter.date"
+      :path  = "post.path"
+    )
 </template>
 
 <style scoped lang="scss">

@@ -1,6 +1,7 @@
 import type { RouteRecordNormalized } from 'vue-router'
 import 'vue-router'
 import 'markdown-it-katex'
+import 'vanta'
 
 declare module 'vue-router' {
   interface Frontmatter {

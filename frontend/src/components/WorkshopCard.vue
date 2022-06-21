@@ -4,7 +4,6 @@ import type { RouteLocationRaw } from 'vue-router'
 const props = defineProps<{
   title: string
   date: string | number
-  icon?: string
   path: RouteLocationRaw
 }>()
 </script>
@@ -12,9 +11,6 @@ const props = defineProps<{
 <template>
   <router-link :to="props.path">
     <div class="workshop-card prose">
-      <div v-if="props.icon">
-        <div class="text-3xl opacity-50" :class="`i-${props.icon}`" w-10 h-10 mr-5 />
-      </div>
       <h1 class="title">
         {{ props.title }}
       </h1>
@@ -24,6 +20,13 @@ const props = defineProps<{
 
 <style scoped lang="scss">
 @import "@/../assets/css/layout.scss";
+
+.icon {
+  display: block;
+  width: 2em;
+  height: 2em;
+  margin-right: 5px;
+}
 
 .workshop-card {
   display: flex;
