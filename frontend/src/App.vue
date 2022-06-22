@@ -2,27 +2,17 @@
 const route = useRoute()
 </script>
 
-<template>
-  <div class="app">
-    <Header />
+<template lang="pug">
+.app
+  Header
+  
+  router-view.content(v-slot="{ Component }")
+    transition(mode="out-in" name="fade")
+      component(:is="Component" :key="route.fullPath")
 
-    <router-view
-      v-slot="{ Component }"
-      class="content"
-    >
-      <transition mode="out-in" name="fade">
-        <component
-          :is="Component"
-          :key="route.fullPath"
-        />
-      </transition>
-    </router-view>
-
-    <ClientOnly>
-      <Visualization />
-    </ClientOnly>
-    <Footer />
-  </div>
+  Client-Only
+    Sakura
+  Footer
 </template>
 
 <style lang="scss">
@@ -43,7 +33,8 @@ const route = useRoute()
   flex-direction: column;
   grid-row-start: 2;
   grid-column: 1 / 9;
-  padding: 0 16px;
+  padding: 32px 16px 0 16px;
+  margin-top: 32px;
   width: 100%;
 
   @include desktop {

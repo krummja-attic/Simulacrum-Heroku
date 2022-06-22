@@ -1,12 +1,7 @@
-<template>
-  <div class="blog-wrapper">
-    <div class="blog-header prose">
-      <h1>
-        Blog
-      </h1>
-    </div>
-    <ListPosts />
-  </div>
+<template lang="pug">
+.blog-wrapper
+  .blog-header.prose
+  ListPosts
 </template>
 
 <style scoped lang="scss">

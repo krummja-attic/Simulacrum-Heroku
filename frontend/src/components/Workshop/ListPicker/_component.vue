@@ -14,5 +14,5 @@
 </template>
 
 <style scoped lang="scss">
-@import "./style.scss";
+@import "./_style.scss";
 </style>

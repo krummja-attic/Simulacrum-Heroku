@@ -1,12 +1,7 @@
-<template>
-  <div class="workshop-wrapper">
-    <div class="workshop-header prose">
-      <h1>
-        Workshop
-      </h1>
-    </div>
-    <ListWorkshop />
-  </div>
+<template lang="pug">
+.workshop-wrapper
+  .workshop-header.prose
+  ListWorkshop
 </template>
 
 <style scoped lang="scss">

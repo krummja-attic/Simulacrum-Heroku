@@ -1,0 +1,11 @@
+
+@mixin glass($blur) {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    clip-path: inset(1em);
+    filter: blur($blur);
+    justify-content: center;
+    align-items: center;
+}

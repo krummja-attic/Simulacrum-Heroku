@@ -1,12 +1,6 @@
-<template>
-  <div class="projects-wrapper">
-    <div class="projects-header prose">
-      <h1>
-        Projects
-      </h1>
-    </div>
-    <!-- <ListPosts /> -->
-  </div>
+<template lang="pug">
+.projects-wrapper
+  .projects-header.prose
 </template>
 
 <style scoped lang="scss">

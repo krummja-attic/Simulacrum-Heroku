@@ -2,30 +2,18 @@
 import { isDark } from '../utilities'
 </script>
 
-<template>
-  <header>
-    <div class="logo">
-      <router-link to="/">
-        <img v-show="isDark" src="@/../assets/img/logo-light.svg">
-        <img v-show="!isDark" src="@/../assets/img/logo-dark.svg">
-      </router-link>
-    </div>
+<template lang="pug">
+header
+  .logo
+    router-link(to="/")
+      img(v-show="isDark"  src="@/../assets/img/logo-light.svg")
+      img(v-show="!isDark" src="@/../assets/img/logo-dark.svg" )
 
-    <nav class="desktop-nav">
-      <router-link to="/blog">
-        Blog
-      </router-link>
-
-      <router-link to="/projects">
-        Projects
-      </router-link>
-
-      <router-link to="/workshop">
-        Workshop
-      </router-link>
-      <ToggleTheme />
-    </nav>
-  </header>
+  nav
+    HeaderLink(to="/blog" label="Blog")
+    HeaderLink(to="/projects" label="Projects")
+    HeaderLink(to="/workshop" label="Workshop")
+    ToggleTheme
 </template>
 
 <style scoped lang="scss">

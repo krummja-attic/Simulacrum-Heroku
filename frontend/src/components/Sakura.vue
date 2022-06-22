@@ -9,13 +9,11 @@ import { polarToCartesian, R180, R90, R15, colorFromRGBA } from '@/utilities'
 type Canvas = HTMLCanvasElement
 
 const { random } = Math
-
 const el = ref<Canvas | null>(null)
 const size = reactive(useWindowSize())
 const stopped = ref(false)
 const interval = 1000 / 40
-
-const color = '#CC88AA15'
+const color = '#CC88AA25'
 const init = ref(4)
 const len = ref(6)
 
@@ -29,9 +27,9 @@ class Visualization {
   private lastTime: number
   private debug: boolean = false
 
-  public constructor( public canvas: Canvas, width: number, height: number ) {
+  public constructor(public canvas: Canvas, width: number, height: number) {
     this.ctx = canvas.getContext('2d')!
-    
+
     // https://web.dev/canvas-hidipi/
     const dpr: number = window.devicePixelRatio || 1
     canvas.width = width * dpr
@@ -149,7 +147,7 @@ onMounted(async () => {
 
 <template lang="pug">
 div#canvas
-  canvas(ref="el" width="400" height="400")/
+  canvas#ctx(ref="el" width="400" height="400")/
 </template>
 
 <style scoped lang="scss">

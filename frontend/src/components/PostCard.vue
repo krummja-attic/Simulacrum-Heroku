@@ -9,18 +9,11 @@ const props = defineProps<{
 }>()
 </script>
 
-<template>
-  <div class="post-card prose">
-    <router-link :to="props.path">
-      <h1 class="title">
-        {{ props.title }}
-      </h1>
-
-      <h2 class="date">
-        {{ formatDate(props.date) }}
-      </h2>
-    </router-link>
-  </div>
+<template lang="pug">
+.post-card.prose
+  router-link(:to="props.path")
+    h1.title {{ props.title }}
+    h2.date  {{ formatDate(props.date) }}
 </template>
 
 <style scoped lang="scss">
@@ -37,10 +30,10 @@ const props = defineProps<{
   font-family: 'Lato', sans-serif;
   text-align: left;
 
-  &:hover {
-    box-shadow: 2px 2px 10px var(--c-bg-darker);
-  }
+  // &:hover {
+  //   box-shadow: 2px 2px 10px var(--c-bg-darker);
+  // }
 
-  transition: box-shadow 0.15s ease-in;
+  // transition: box-shadow 0.15s ease-in;
 }
 </style>

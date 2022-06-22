@@ -2,11 +2,6 @@
 const route = useRoute()
 </script>
 
-<template>
-  <router-view v-slot="{ Component }">
-    <component
-      :is="Component"
-      :route="route.fullPath"
-    />
-  </router-view>
+<template lang="pug">
+Router(:route="route.fullPath")
 </template>
