@@ -1,15 +1,30 @@
 <script setup lang="ts">
 import { isDark } from '../utilities'
+
+const lastKnownPos = ref(0)
+const isAtTop = ref(true)
+
+onMounted(() => {
+  document.addEventListener('scroll', (ev) => {
+    lastKnownPos.value = window.scrollY
+    if (lastKnownPos.value <= 45) {
+      isAtTop.value = true
+    } else {
+      isAtTop.value = false
+    }
+  })
+})
 </script>
 
 <template lang="pug">
 header
-  .logo
-    router-link(to="/")
-      img(v-show="isDark"  src="@/../assets/img/logo-light.svg")
-      img(v-show="!isDark" src="@/../assets/img/logo-dark.svg" )
+  .logo-wrapper(:class="{ 'reduced': !isAtTop }")
+    .logo(:class="{ 'reduced': !isAtTop }")
+      router-link(to="/")
+        img(v-show="isDark"  src="@/../assets/img/logo-light.svg")
+        img(v-show="!isDark" src="@/../assets/img/logo-dark.svg" )
 
-  nav
+  nav(:class="{ 'reduced': !isAtTop }")
     HeaderLink(to="/blog" label="Blog")
     HeaderLink(to="/projects" label="Projects")
     HeaderLink(to="/workshop" label="Workshop")
@@ -23,30 +38,53 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  position: fixed;
+  width: 100vw;
+  top: 10px;
 
-  grid-column: 1 / 9;
-  padding: 0 16px;
-  width: 100%;
-  height: 100%;
+  .logo-wrapper {
+    width: 40px;
+    height: 35px;
+    margin-top: 10px;
+    margin-left: 30px;
+    transition: margin 0.25s ease-out;
 
-  @include desktop {
-    grid-column: 2 / 8;
-    padding: 0;
-    width: 100%;
-    height: 100%;
+    @include tablet {
+      width: 48px;
+      height: 35px;
+    }
+
+    @include desktop {
+      width: 64px;
+      height: 35px;
+    }
+  }
+
+  .logo-wrapper:not(.reduced) {
+    margin-top: 25px;
+    margin-left: 200px;
+  }
+
+  nav {
+    margin-top: 10px;
+    margin-right: 30px;
+    transition: margin 0.25s ease-out;
+  }
+  nav:not(.reduced) {
+    margin-top: 25px;
+    margin-right: 200px;
   }
 }
 
+.logo:not(.reduced) {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
 .logo {
-  width: 40px;
-
-  @include tablet {
-    width: 48px;
-  }
-
-  @include desktop {
-    width: 64px;
-  }
+  width: 50%;
+  height: 100%;
+  transition: width 0.25s ease-out;
 }
 
 nav {
@@ -75,7 +113,7 @@ nav {
       opacity: 1;
     }
 
-    transition: opacity 0.15s ease-in;
+    transition: opacity 0.15s ease-out;
   }
 }
 </style>

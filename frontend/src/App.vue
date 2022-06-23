@@ -20,26 +20,13 @@ const route = useRoute()
 @import "@/../assets/css/layout.scss";
 
 .app {
-  display: grid;
-  grid-template-rows: 60px 1fr auto;
-  grid-template-columns: repeat(8, 1fr);
-
-  height: 100vh;
+  // height: 100vh;
   margin: 0 auto;
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  grid-row-start: 2;
-  grid-column: 1 / 9;
-  padding: 32px 16px 0 16px;
-  margin-top: 32px;
-  width: 100%;
-
-  @include desktop {
-    grid-column: 2 / 8;
-  }
+  margin-top: 160px;
+  height: auto;
 }
 
 // Transition definitions

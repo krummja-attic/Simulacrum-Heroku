@@ -7,6 +7,7 @@ import Pages from 'vite-plugin-pages'
 import Components from 'unplugin-vue-components/vite'
 import Markdown from 'vite-plugin-md'
 import Prism from 'markdown-it-prism'
+import Anchor from 'markdown-it-anchor'
 // @ts-expect-error missing types
 import Katex from 'markdown-it-katex'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -15,6 +16,10 @@ import Unocss from 'unocss/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import transformerDirective from '@unocss/transformer-directives'
+// @ts-expect-error missing types
+import TOC from 'markdown-it-table-of-contents'
+
+import { slugify } from './scripts/slugify'
 
 import {
   presetAttributify,
@@ -35,6 +40,7 @@ import 'prismjs/components/prism-javadoc'
 import 'prismjs/components/prism-jsdoc'
 
 import { customElements } from './custom-elements'
+import anchor from 'markdown-it-anchor'
 
 const config: UserConfig = {
 
@@ -154,11 +160,24 @@ const config: UserConfig = {
           plugins: [
             'show-language',
           ],
-        })
+        }),
+
+        md.use(Anchor, {
+          slugify,
+          permalink: anchor.permalink.linkInsideHeader({
+            symbol: '#',
+            renderAttrs: () => ({ 'aria-hidden': 'true' }),
+          }),
+        }),
 
         md.use(Katex, {
           throwOnError: false,
           errorColor: ' #cc0000',
+        }),
+
+        md.use(TOC, {
+          includeLevel: [1, 2, 3],
+          slugify,
         })
       },
     }),

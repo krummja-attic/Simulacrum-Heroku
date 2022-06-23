@@ -1,7 +1,6 @@
-<template>
-  <footer>
-    <!--  -->
-  </footer>
+<template lang="pug">
+footer
+  <!--  -->
 </template>
 
 <style scoped lang="scss">

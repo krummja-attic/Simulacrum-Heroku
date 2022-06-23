@@ -3,5 +3,6 @@ const route = useRoute()
 </script>
 
 <template lang="pug">
-Router(:route="route.fullPath")
+.projects
+  Router(:route="route.fullPath")
 </template>

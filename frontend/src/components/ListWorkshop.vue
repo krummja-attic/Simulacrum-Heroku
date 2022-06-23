@@ -23,19 +23,14 @@ const projects = computed(() => {
 })
 </script>
 
-<template>
-  <ul class="list-workshop">
-    <li
-      v-for="project in projects"
-      :key="project.path"
-    >
-      <WorkshopCard
-        :title="project.meta.frontmatter.title"
-        :date="project.meta.frontmatter.date"
-        :path="project.path"
-      />
-    </li>
-  </ul>
+<template lang="pug">
+ul.list-workshop
+  li(v-for="project in projects" :key="project.path")
+    WorkshopCard(
+      :title="project.meta.frontmatter.title"
+      :date="project.meta.frontmatter.date"
+      :path="project.path"
+    )
 </template>
 
 <style scoped lang="scss">

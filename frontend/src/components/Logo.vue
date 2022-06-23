@@ -2,13 +2,11 @@
 import { isDark } from '../utilities'
 </script>
 
-<template>
-  <div class="logo">
-    <router-link to="/">
-      <img v-show="isDark" src="@/../assets/img/logo-light.svg">
-      <img v-show="!isDark" src="@/../assets/img/logo-dark.svg">
-    </router-link>
-  </div>
+<template lang="pug">
+.logo
+  router-link(to="/")
+    img(v-show="isDark" src="@/../assets/img/logo-light.svg")
+    img(v-show="!isDark" src="@/../assets/img/logo-dark.svg")
 </template>
 
 <style scoped lang="scss">

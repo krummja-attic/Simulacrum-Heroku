@@ -73,7 +73,11 @@ class Visualization {
    * @param rad Start radians
    */
   public step(x: number, y: number, rad: number) {
-    const length = random() * len.value
+    /**
+     * Controls the "flow" of the lines
+     * The higher the value for `len` the faster and less chaotic the lines
+     */
+    const length = random() * (len.value * 1.0)
     const [nx, ny] = polarToCartesian(x, y, length, rad)
     
     // Does the actual drawing
@@ -93,10 +97,10 @@ class Visualization {
      || ny > size.height + 100)
       return
   
-    // Randomly decide to continue a particular branch or terminate.
-    if (this.iterations <= init.value || random() > 0.5)
+    // Branch at random points
+    if (this.iterations <= init.value || random() > 0.50)
       this.steps.push(() => this.step(nx, ny, rad1))
-    if (this.iterations <= init.value || random() > 0.5)
+    if (this.iterations <= init.value || random() > 0.50)
       this.steps.push(() => this.step(nx, ny, rad2))
   }
 

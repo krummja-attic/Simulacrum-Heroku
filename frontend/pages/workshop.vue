@@ -3,5 +3,6 @@ const route = useRoute()
 </script>
 
 <template lang="pug">
-Router(:route="route.fullPath")
+.workshop
+  Router(:route="route.fullPath")
 </template>

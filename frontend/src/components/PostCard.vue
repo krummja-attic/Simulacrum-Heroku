@@ -23,17 +23,10 @@ const props = defineProps<{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 8px 0;
   padding: 8px 12px;
   height: auto;
 
   font-family: 'Lato', sans-serif;
   text-align: left;
-
-  // &:hover {
-  //   box-shadow: 2px 2px 10px var(--c-bg-darker);
-  // }
-
-  // transition: box-shadow 0.15s ease-in;
 }
 </style>

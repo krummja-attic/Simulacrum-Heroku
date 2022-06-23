@@ -6,14 +6,9 @@ const props = defineProps({
 const counter = ref(props.init || 0)
 </script>
 
-<template>
-  <div class="counter">
-    <div>Counter: {{ counter }}</div>
-    <button @click="counter += 1">
-      Inc
-    </button>
-    <button @click="counter -= 1">
-      Dec
-    </button>
-  </div>
+<template lang="pug">
+.counter 
+  div Counter: {{ counter }}
+  button(@click="counter += 1") Inc
+  button(@click="counter -= 1") Dec
 </template>

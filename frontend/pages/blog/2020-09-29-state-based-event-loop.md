@@ -3,15 +3,7 @@ title: Building a State-Based Game Loop in Python
 date: 2020-09-29T12:00:00+00:00
 ---
 
-<script setup>
-import { formatDate } from '@/utilities'
-</script>
-
-# {{ frontmatter.title }}
-
-## {{ formatDate(frontmatter.date) }}
-
----
+[[toc]]
 
 The core of the Simulacra engine is a state-based game loop, itself an extension of the `EventDispatch` class provided by the TCOD library. To get started, we want to define a base `State` class, from which we will extend all of the game's relevant states.
 

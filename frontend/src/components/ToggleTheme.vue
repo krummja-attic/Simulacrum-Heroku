@@ -1,18 +1,13 @@
 <script setup lang="ts">
 import { isDark } from '../utilities'
-
-function toggleDark() {
-  isDark.value = !isDark.value
-}
+const toggleDark = () => { isDark.value = !isDark.value }
 </script>
 
-<template>
-  <div class="toggle-theme">
-    <a class="select-none" title="Toggle Color Scheme" @click="toggleDark">
-      <ri-moon-line v-show="isDark" />
-      <ri-sun-line v-show="!isDark" />
-    </a>
-  </div>
+<template lang="pug">
+.toggle-theme
+  a.select-none(title="Toggle Color Scheme" @click="toggleDark")
+    ri-moon-line(v-show="isDark")
+    ri-sun-line(v-show="!isDark")
 </template>
 
 <style scoped lang="scss">
